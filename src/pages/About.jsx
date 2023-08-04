@@ -1,5 +1,5 @@
 import Button from "../components/Button";
-import bgImg from "../assets/images/about-hero-img.jpg";
+import bgImg from "../assets/images/about-hero-image.jpg";
 
 export default function About() {
   return (
@@ -7,25 +7,21 @@ export default function About() {
       <img src={bgImg} className="about-hero-img" />
       <section className="about-content">
         <h1>
-          Forget the allotment waiting list, get ahead of the game and start
-          growing.
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus praesentium minus sapiente voluptas delectus eos repellat corrupti sunt quisquam architecto illo ab, perferendis, hic dignissimos corporis velit adipisci, ratione sint?
         </h1>
         <p>
-          The benefits of home grown produce are endless, eg. saving costs,
-          reducing the environmental impact of packaging.
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, consequuntur aspernatur iusto fugit vitae doloremque recusandae quis repellat cum vel illo velit! Soluta sit, ab facere sed at corporis ex?
         </p>
         <p>
-          Our mission is to get people growing. Allotment wait lists are getting
-          longer and surplus land is going to waste.
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque culpa maiores error sunt repudiandae quae repellendus aliquid fuga! Id aut asperiores iure doloremque voluptatibus sint rerum obcaecati cum, ea sapiente.
         </p>
         <p>
-          Lets skip the queue and put you in touch to rent land directly from
-          our community of land owners.
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eos quas sit in quis eaque officia quam omnis facere voluptate fugiat molestiae asperiores ad, illum, molestias iure tempora voluptatibus temporibus!
         </p>
       </section>
       <section className="about-call-to-action">
-        <h2>What are you waiting for? Your plot is waiting.</h2>
-        <h3>Check out our List of Rentals</h3>
+        <h2>What are you waiting for? Your dogs play date is waiting.</h2>
+        <h3>Check out our doggys online.</h3>
         <Button btnText="Explore our dogs" route="/dogs"/>
       </section>
     </section>

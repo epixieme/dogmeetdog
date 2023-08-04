@@ -288,13 +288,19 @@ padding: 20px 10px;
 
 /*** About Page ***/
 .about-hero-img {
-  max-width: 100%;
+  margin-top:40px;
+  max-width: 90%;
+  border-radius: 20px;
 }
-
+.about-container{
+  background-color: #2C2C2C;
+ 
+}
 .about-content {
   padding-inline: 23px;
-  color: #161616;
+  color: white;
   margin-bottom: 55px;
+
 }
 
 .about-content h1 {
@@ -308,7 +314,7 @@ padding: 20px 10px;
 .about-call-to-action {
   background-color: #C3CA95;
   border: 4px solid #3A673A;
-  color: black;
+  color: white;
   padding-inline: 32px;
   padding-bottom: 32px;
   margin-inline: 27px;
