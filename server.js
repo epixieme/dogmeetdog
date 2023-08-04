@@ -9,88 +9,84 @@ createServer({
   seeds(server) {
     server.create("dog", {
       id: "1",
-      name: "Front and Back Gardens",
-      price: 20,
+      name: "Wolfy",
       description:
-        "Front & back garden in leafy Leckhampton, Cheltenham with a raised bed, needs some TLC. Many shrubs, trees and a chance to grown your own vegetables",
-      imageUrl: "https://i.ibb.co/VgcBCcF/close-up-vegetation-front-house.jpg",
-      condition: "needs-love",
+        "Large dog, very friendly and ready to meet other large breeds",
+      imageUrl:
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "Juicy Bones",
     });
     server.create("dog", {
       id: "2",
-      name: "Back Garden",
-      price: 30,
-      description: "Very quiet sunny back garden in London",
+      name: "Wolfy",
+      description:
+        "Large dog, very friendly and ready to meet other large breeds",
       imageUrl:
-        "https://i.ibb.co/FBj4pfW/sincerely-media-Agr1-YTrz-YPI-unsplash.jpg",
-      condition: "good-condition",
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "Juicy Bones",
     });
     server.create("dog", {
       id: "3",
-      name: "Surplus Land",
-      price: 40,
+      name: "Wolfy",
       description:
-        "Large dog of surplus land opposite a residential flat block",
+        "Large dog, very friendly and ready to meet other large breeds",
       imageUrl:
-        "https://dog.ceo/api/breeds/image/random",
-      condition: "top-notch",
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "Juicy Bones",
     });
     server.create("dog", {
       id: "4",
-      name: "Small Garden",
-      price: 20,
+      name: "Wolfy",
       description:
-        "Small Garden with lots of natural light, has been rented before so in great condition",
-      imageUrl: "https://dog.ceo/api/breeds/image/random",
-      condition: "needs-love",
+        "Large dog, very friendly and ready to meet other large breeds",
+      imageUrl:
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "Juicy Bones",
     });
     server.create("dog", {
       id: "5",
-      name: "Commerical land",
-      price: 10,
+      name: "Wolfy",
       description:
-        "Commerical Land at the back of an industrial estate, start from scratch project",
+        "Large dog, very friendly and ready to meet other large breeds",
       imageUrl:
-        "https://dog.ceo/api/breeds/image/random",
-      condition: "needs-love",
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "Juicy Bones",
     });
     server.create("dog", {
       id: "6",
-      name: "Disused dog",
-      price: 30,
+      name: "Wolfy",
       description:
-        "Tired dog that needs attention and would be great for producing own produce",
+        "Large dog, very friendly and ready to meet other large breeds",
       imageUrl:
-        "https://dog.ceo/api/breeds/image/random",
-      condition: "top-notch",
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "Juicy Bones",
     });
     server.create("dog", {
       id: "7",
-      name: "Unused Land",
-      price: 20,
+      name: "Wolfy",
       description:
-        "Unused land, would love to see it being put to use. Needs TLC",
-      imageUrl: "./assets/images/husky.jpg",
-      condition: "needs-love",
+        "Large dog, very friendly and ready to meet other large breeds",
+      imageUrl:
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "Juicy Bones",
     });
     server.create("dog", {
       id: "8",
-      name: "Back Garden",
-      price: 30,
-      description: "Very quiet sunny back garden in London",
+      name: "Wolfy",
+      description:
+        "Large dog, very friendly and ready to meet other large breeds",
       imageUrl:
-        "https://i.ibb.co/FBj4pfW/sincerely-media-Agr1-YTrz-YPI-unsplash.jpg",
-      condition: "good-condition",
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "Juicy Bones",
     });
     server.create("dog", {
       id: "9",
-      name: "New Land",
-      price: 40,
+      name: "Wolfy",
       description:
-        "Large dog of new land opposite a residential flat block",
+        "Large dog, very friendly and ready to meet other large breeds",
       imageUrl:
-        "https://i.ibb.co/spTkbfm/steve-adams-b-Y-q4-Vod-Uc0-unsplash.jpg",
-      condition: "top-notch",
+      "https://i.ibb.co/tzWGk3j/husky.jpg",
+      likes: "juicy-bones",
     });
   },
 

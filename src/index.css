@@ -408,37 +408,35 @@ padding: 20px 10px;
 }
 
 
-.dog-condition {
+.dog-likes {
+  display: flex;
+  align-items: center;
   height: 34px;
   padding: 6px 26px;
   font-style: normal;
   font-weight: 500;
   border: none;
   border-radius: 5px;
-  background-color: #FFEAD0;
-  color: #4D4D4D;
+  background-color: #115E59;
+  color: white
 }
 
-.dog-condition:hover {
+.dog-likes:hover {
   color: #FFEAD0;
 }
 
-.dog-condition:focus {
+.dog-likes:focus {
   outline: none;
 }
 
-.dog-condition{
-  color: #FFEAD0;
-}
 
-.dog-condition.needs-love {
+
+/* .dog-condition.juicy-bones {
   background-color: #dd542b;
-}
+} */
 
 
-.dog-condition.good-condition {
-  background-color: #115E59;
-}
+
 
 
 .dog-condition.top-notch {

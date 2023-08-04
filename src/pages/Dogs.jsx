@@ -28,13 +28,10 @@ export default function Dogs() {
       <img src={dog.imageUrl} />
       <div className="dog-info">
         <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
-        <p>
-          £{dog.price}
-          <span>/month</span>
-        </p>
+       
       </div>
-      <i className={`dog-condition ${dog.condition}`}>
-        {dog.condition.replace("-", " ")}
+      <i className={`dog-likes ${dog.likes}`}>
+        {dog.likes.replace("-", " ")}
       </i>
     </div>
   ));
