@@ -8,7 +8,7 @@ This is a React project created with Vite, to run it please install node and the
 - npm install
 - npm run dev
 
-# dog-meet-dog
+
 <section>
   <h1>Dog Meet Dog</h1>
 <img width="757" alt="dmd" src="https://user-images.githubusercontent.com/39728053/225086962-3c6079aa-2c68-4027-aa41-2cffcf544e17.png">
