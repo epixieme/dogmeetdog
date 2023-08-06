@@ -138,7 +138,7 @@ body {
 }
 
 .nav-links-container a:hover {
-  color: #161616;
+  color:white;
   text-decoration: underline;
 }
 
@@ -395,7 +395,7 @@ padding: 20px 10px;
 }
 
 .dog-card a {
-  color: #161616;
+  color:white;
   text-decoration: none;
 }
 
@@ -498,7 +498,9 @@ padding: 20px 10px;
   margin:0
 }
 
+.dog-detail-container{
 
+}
 
 @media screen and (min-width: 800px) {
   .nav-menu-container .logo > h1 {

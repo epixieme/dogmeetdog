@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Dogs from "../pages/Dogs";
 import NotFound from "../pages/NotFound";
+import DogDetails from "../pages/DogDetails";
 
 //nested routes
 const router = createBrowserRouter(
@@ -17,8 +18,10 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="dogs" element={<Dogs />} />
+      <Route path="/dogs/:id" element={<DogDetails />} />
       <Route path="*" element={<NotFound />} />
     </Route>
+    
   )
 );
 

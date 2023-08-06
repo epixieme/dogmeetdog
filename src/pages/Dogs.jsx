@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getDogs } from "../api";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import { Link } from "react-router-dom";
 
 export default function Dogs() {
   const [dogs, setDogs] = useState([]);
@@ -25,6 +26,7 @@ export default function Dogs() {
 
   const dogElements = dogs.map((dog) => (
     <div key={dog.id} className="dog-card">
+ <Link to={`/dogs/${dog.id}`}>
       <img src={dog.imageUrl} />
       <div className="dog-info">
         <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
@@ -33,6 +35,7 @@ export default function Dogs() {
       <i className={`dog-likes ${dog.likes}`}>
         {dog.likes.replace("-", " ")}
       </i>
+      </Link>
     </div>
   ));
 
