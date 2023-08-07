@@ -8,7 +8,8 @@ export default function Dogs() {
   const [dogs, setDogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-// could save the fetch request to local storage
+// could save the fetch request to local storage or fetch cache
+//https://www.smashingmagazine.com/2020/07/custom-react-hook-fetch-cache-data/
 
   useEffect(() => {
     async function loadDogs() {

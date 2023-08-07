@@ -1,13 +1,12 @@
-import Footer from "./Footer"
-import Header from "./Header"
+
+import Login_Header from "../Login_Header"
 import { Outlet } from "react-router-dom"
 
-export default function Layout(){
+export default function Login_Layout(){
     return (
         <>
-        <Header />
+        <Login_Header />
         <main className="layout-wrapper"><Outlet/></main>
-        <Footer />
         </>
     )
 }
