@@ -25,7 +25,7 @@ export default function Dogs() {
     loadDogs();
   }, []);
 
-  const dogElements = dogs.map((dog) => (
+  const dogElements = dogs && dogs.map((dog) => (
     <div key={dog.id} className="dog-card">
  <Link to={`/dogs/${dog.id}`}>
       <img src={dog.imageUrl} />

@@ -6,6 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom'
 import App from './App';
 import About from './pages/About';
+import Dogs from './pages/Dogs';
 
 
 describe('App', () => {
@@ -20,6 +21,14 @@ describe('App', () => {
 test('loads and displays About header text', async () => {
   render(<MemoryRouter><About /></MemoryRouter>)
   const titleValue = screen.getByText('Welcome')
+  console.log(titleValue)
+  expect(titleValue).toBeInTheDocument()
+})
+
+test('loads and displays Dogs text', async () => {
+  render(<MemoryRouter><Dogs/></MemoryRouter>)
+  screen.debug();
+  const titleValue = screen.getByText('Explore our dogs')
   console.log(titleValue)
   expect(titleValue).toBeInTheDocument()
 })
