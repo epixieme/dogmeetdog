@@ -8,6 +8,8 @@ export default function DogDetails(){
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const params = useParams()
+
+
     useEffect(() => {
         async function loadDogs() {
           setIsLoading(true);
@@ -21,11 +23,11 @@ export default function DogDetails(){
           }
         }
         loadDogs();
-      }, []);
+      }, [params.id]);
 
     return(
         <div className="dog-detail-container">
-        {dog ? (
+        {!isLoading ? (
             <div className="dog-detail">
                 <img src={dog.imageUrl} />
                 <i className={`dog-type ${dog.type} selected`}>{dog.type}</i>
@@ -34,7 +36,7 @@ export default function DogDetails(){
                 <p>{dog.description}</p>
                 <button className="link-button">Arrange a Play Date</button>
             </div>
-        ) :<Loader/>}
+        ) :  <div className="dog-detail-container"><Loader/></div>}
     </div>
 )
     

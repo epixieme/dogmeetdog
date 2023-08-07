@@ -7,7 +7,7 @@ export default function About() {
       <img src={bgImg} className="about-hero-img" />
       <section className="about-content">
         <h1>
-         Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus praesentium minus sapiente voluptas delectus eos repellat corrupti sunt quisquam architecto illo ab, perferendis, hic dignissimos corporis velit adipisci, ratione sint?
+        Welcome
         </h1>
         <p>
          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, consequuntur aspernatur iusto fugit vitae doloremque recusandae quis repellat cum vel illo velit! Soluta sit, ab facere sed at corporis ex?

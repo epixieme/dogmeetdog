@@ -69,8 +69,8 @@ body {
 .spinner-container {
   display: grid;
   justify-content: center;
-  align-items: center;
-  height: 350px;
+  align-items: flex-start;
+  height: 100vh;
 }
 /*** layout ***/
 
@@ -499,7 +499,30 @@ padding: 20px 10px;
 }
 
 .dog-detail-container{
+  display: flex;
+  justify-content: center;
+  background-color: #2C2C2C;
+ 
 
+  
+  }
+.dog-detail{
+  margin-top:40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:400px;
+  color: white;
+}
+
+
+.dog-detail-container img{
+  border-radius: 20px;
+  object-fit: cover;
+  width:400px;
+  border:white 2px solid
+ 
 }
 
 @media screen and (min-width: 800px) {

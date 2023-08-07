@@ -8,6 +8,7 @@ export default function Dogs() {
   const [dogs, setDogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+// could save the fetch request to local storage
 
   useEffect(() => {
     async function loadDogs() {
@@ -42,7 +43,7 @@ export default function Dogs() {
   return (
     <section className="dogs-container" id="dogAnchor">
       <div className="dog-list">
-        <h1>Explore our dogs </h1>
+        <h1>Explore our dogs</h1>
         <section className="dog-card-container">{dogElements}</section>
         {isLoading && <Loader loading="...loading" />}
         {error && <Error error={`There was an error "${error.message}".`} />}
