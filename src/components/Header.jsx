@@ -8,7 +8,7 @@ import useWindowWidth from "../hooks/useWindowWidth";
 export default function Header() {
   const activeStyles = {
     textDecoration: "underline",
-    color:"white"
+    color: "white",
   };
 
   const screenWidth = useWindowWidth();

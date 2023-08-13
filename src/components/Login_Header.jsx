@@ -8,17 +8,16 @@ import useWindowWidth from "../hooks/useWindowWidth";
 export default function Login_Header() {
   const activeStyles = {
     textDecoration: "underline",
-    color:"white"
+    color: "white",
   };
 
   const screenWidth = useWindowWidth();
 
   return (
     <header className="">
-      
       <nav>
-      <Link to="/login">Dashboard</Link>
-      <Link to="/login/reviews">Reviews</Link>
+        <Link to="/login">Dashboard</Link>
+        <Link to="/login/reviews">Reviews</Link>
       </nav>
     </header>
   );

@@ -48,8 +48,8 @@ export default function Carousel({
     );
   };
 
-  const currentSlideNumber = currentSlide
-  const slidesLength = isMobile ? image.length -6: image.length - 3;
+  const currentSlideNumber = currentSlide;
+  const slidesLength = isMobile ? image.length - 6 : image.length - 3;
 
   return (
     <section className="carousel-container">
