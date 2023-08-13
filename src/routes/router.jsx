@@ -17,20 +17,17 @@ import Reviews from "../pages/Login/Reviews";
 //nested routes
 const router = createBrowserRouter(
   createRoutesFromElements(
-  
     <Route path="/" element={<Main_Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="dogs" element={<Dogs />} />
-      <Route path="/dogs/:id" element={<DogDetails />} />
-    <Route path="login" element={<Login_Layout />}>
-    <Route index element={<Dashboard />}/>
-      <Route path="/login/reviews" element={<Reviews />} />
+      <Route path="dogs/:id" element={<DogDetails />} />
+      <Route path="login" element={<Login_Layout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="reviews" element={<Reviews />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
     </Route>
-    <Route path="*" element={<NotFound />} />
-    </Route>
-  
-   
   )
 );
 
