@@ -15,7 +15,6 @@ export default function Question1() {
       <input type="text"></input>
 
       <Button route ="/question2"/>
-
       
     </form>
   );
