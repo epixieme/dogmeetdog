@@ -4,17 +4,28 @@ import Button from "../components/Button";
 import Carousel from "../components/Carousel";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
-import useCarousel from "../hooks/useCarousel";
-import { getDogs } from "../api";
+// import useCarousel from "../hooks/useCarousel";
+
+
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+import { getDogs } from '../api'
 
 export default function Home() {
   const [dogs, setDogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const text = dogs.map((item) => item.name);
-  const images = dogs.map((item) => item.imageUrl);
-  const carousel = useCarousel(images.length, 1);
+
+  const queryClient = useQueryClient()
+  // const carousel = useCarousel(images.length, 1);
+  // const query = useQuery({ queryKey: ['todos'], queryFn: getDogs })
 
   // could have used useloaderdata
   useEffect(() => {
@@ -32,6 +43,9 @@ export default function Home() {
     loadDogs();
   }, []);
 
+  const text = dogs.map((item) => item.name);
+  const images = dogs.map((item) => item.imageUrl);
+  
   return (
     <>
       <section className="home-container">

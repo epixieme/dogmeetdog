@@ -4,12 +4,17 @@ import Loader from "../components/Loader";
 import Error from "../components/Error";
 import { Link } from "react-router-dom";
 
+interface Dog {
+  id: number;
+  name: string;
+  imageUrl: string;
+  likes: string;
+}
+
 export default function Dogs() {
-  const [dogs, setDogs] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-// could save the fetch request to local storage or fetch cache
-//https://www.smashingmagazine.com/2020/07/custom-react-hook-fetch-cache-data/
+  const [dogs, setDogs] = useState<Dog[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     async function loadDogs() {
@@ -18,7 +23,9 @@ export default function Dogs() {
         const data = await getDogs();
         setDogs(data);
       } catch (err) {
-        setError(err);
+       
+          setError(err);
+       
       } finally {
         setIsLoading(false);
       }
@@ -26,17 +33,16 @@ export default function Dogs() {
     loadDogs();
   }, []);
 
-  const dogElements = dogs && dogs.map((dog) => (
+  const dogElements = dogs.map((dog) => (
     <div key={dog.id} className="dog-card">
- <Link to={`/dogs/${dog.id}`}>
-      <img src={dog.imageUrl} />
-      <div className="dog-info">
-        <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
-       
-      </div>
-      <i className={`dog-likes ${dog.likes}`}>
-        {dog.likes.replace("-", " ")}
-      </i>
+      <Link to={`/dogs/${dog.id}`}>
+        <img src={dog.imageUrl} alt={dog.name} />
+        <div className="dog-info">
+          <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
+        </div>
+        <i className={`dog-likes ${dog.likes}`}>
+          {dog.likes.replace("-", " ")}
+        </i>
       </Link>
     </div>
   ));
@@ -52,4 +58,3 @@ export default function Dogs() {
     </section>
   );
 }
-
