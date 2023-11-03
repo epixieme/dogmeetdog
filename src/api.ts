@@ -12,11 +12,3 @@ export async function getDogs(id?:number){
   const data = await res.json();
   return data.dogs;
 }
-
-
-// function fetchToDo<T>(resourceUrl: string): Promise<T> {
-//   return fetch(resourceUrl).then(response => {
-//       // fetching the reponse body data
-//       return response.json<T>()
-//     })
-// }

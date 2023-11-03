@@ -13,7 +13,7 @@ import NotFound from "../pages/NotFound";
 import DogDetails from "../pages/DogDetails";
 import Dashboard from "../pages/Login/Dashboard";
 import Reviews from "../pages/Login/Reviews";
-import Questions from "../pages/Questions";
+import Question from "../pages/Question";
 
 //nested routes
 const router = createBrowserRouter(
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Main_Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="questions" element={<Questions/>} />
+      <Route path="questions" element={<Question/>} />
       <Route path="dogs" element={<Dogs />} />
       <Route path="dogs/:id" element={<DogDetails />} />
       <Route path="login" element={<Login_Layout />}>
