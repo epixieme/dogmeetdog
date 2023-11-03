@@ -45,9 +45,8 @@ export default function Dogs() {
         <h1>Explore our dogs</h1>
         <section className="dog-card-container">{dogElements}</section>
         {isLoading && <Loader loading="...loading" />}
-        {isError && (
-          <Error error={`There was an error "${(error as Error).message}".`} />
-        )}
+        {isError && <Error error={`There was an error "${(error as Error).message}".`} />
+      }
       </div>
     </section>
   );
