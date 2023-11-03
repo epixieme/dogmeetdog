@@ -97,8 +97,8 @@ createServer({
 
     this.get("/dogs", (schema, request) => {
       // use commented out response to test error handling
-      // return new Response(400, {}, { error: "Error fetching data" });
-        return schema.dogs.all()
+      return new Response(400, {}, { error: "Error fetching data" });
+        // return schema.dogs.all()
     });
 
     this.get("/dogs/:id", (schema, request) => {

@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 
 import { useQuery, useQueryClient } from "react-query";
 
-
-
 interface Dog {
   id: number;
   name: string;
@@ -21,8 +19,6 @@ export default function Dogs() {
 
   const queryClient = useQueryClient()
   const [dogs, setDogs] = useState<Dog[]>([]);
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [error, setError] = useState< {} | null>(null);
 
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ['dogList'],
@@ -31,27 +27,6 @@ export default function Dogs() {
       setDogs(data)
     }, 
   })
-  // useEffect(() => {
-  //   async function loadDogs() {
-  //     setIsLoading(true);
-  //     try {
-  //       const data = await getDogs();
-  //       setDogs(data);
-  //     } catch (error:unknown) {
-  //       if (typeof error === "string") {
-  //         error.toUpperCase() // works, `e` narrowed to string
-  //     } else if (error && error instanceof Error) {
-  //       setError(error);
-  //     }
-  //     // ..
-  
-       
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
-  //   loadDogs();
-  // }, []);
 
   const dogElements = dogs.map((dog) => (
     <div key={dog.id} className="dog-card">
@@ -72,9 +47,10 @@ export default function Dogs() {
       <div className="dog-list">
         <h1>Explore our dogs</h1>
         <section className="dog-card-container">{dogElements}</section>
-        {/* {isLoading && <Loader loading="...loading" />} */}
-        {/* {error && <Error error={`There was an error "${error.message}".`} />} */}
+        {isLoading && <Loader loading="...loading" />}
+        {isError && <Error error={`There was an error "${(error as Error).message}".`} />}
       </div>
     </section>
   );
 }
+
