@@ -3,7 +3,7 @@
 
 If you wish to fork and clone the code then feel free. 
 
-This is a React project created with Vite React Router 6.18, React Query, GraphQL and Socket.io.
+This is a React project.
 
 To run it please install node and then install all dependencies by running the following from a terminal:
 
@@ -17,7 +17,7 @@ To run it please install node and then install all dependencies by running the f
 
   <h2>About</h2>
 
-<p>Dog Meet Dog is a full stack application created with React, PostGresSQL, Node.js.</p>
+<p>Dog Meet Dog is a full stack application created with created with Vite React, React Router 6.18, React Query, GraphQL and Socket.io.</p>
 
 
   <p>This application is currently in development and the figma files can be found here:</p>
