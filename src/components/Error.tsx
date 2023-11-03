@@ -1,16 +1,18 @@
-import PropTypes from "prop-types";
 
-export default function Error({ error }) {
-  Error.propTypes = {
-    error: PropTypes.string,
-  };
+interface errorProps {
+  error: string
+};
+
+
+const Error: React.FC<errorProps> = ({ error }) => {
   return (
     <div
       style={
-        error && {
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+       {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          height: '50vh',
         }
       }
     >
@@ -18,3 +20,5 @@ export default function Error({ error }) {
     </div>
   );
 }
+
+export default Error;

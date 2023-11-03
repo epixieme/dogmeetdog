@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 interface buttonProps {
   btnText:string,
   route:string, 
-  onClick: () => void,
+  onClick?: () => void,
   //can also add optional properties using a ? eg route?:
 }
 
