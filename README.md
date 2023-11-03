@@ -3,7 +3,9 @@
 
 If you wish to fork and clone the code then feel free. 
 
-This is a React project created with Vite, to run it please install node and then install all dependencies by running the following from a terminal:
+This is a React project created with Vite React Router 6.18, React Query, GraphQL and Socket.io.
+
+To run it please install node and then install all dependencies by running the following from a terminal:
 
 - npm install
 - npm run dev
