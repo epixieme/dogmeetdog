@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getDogs } from "../api";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import { Link } from "react-router-dom";
-
-
 
 import { useQuery, useQueryClient } from "react-query";
 
@@ -16,17 +14,16 @@ interface Dog {
 }
 
 export default function Dogs() {
-
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
   const [dogs, setDogs] = useState<Dog[]>([]);
 
   const { isLoading, isError, data, error } = useQuery({
-    queryKey: ['dogList'],
+    queryKey: ["dogList"],
     queryFn: async () => {
-      const data = await getDogs()
-      setDogs(data)
-    }, 
-  })
+      const data = await getDogs();
+      setDogs(data);
+    },
+  });
 
   const dogElements = dogs.map((dog) => (
     <div key={dog.id} className="dog-card">
@@ -48,9 +45,10 @@ export default function Dogs() {
         <h1>Explore our dogs</h1>
         <section className="dog-card-container">{dogElements}</section>
         {isLoading && <Loader loading="...loading" />}
-        {isError && <Error error={`There was an error "${(error as Error).message}".`} />}
+        {isError && (
+          <Error error={`There was an error "${(error as Error).message}".`} />
+        )}
       </div>
     </section>
   );
 }
-
