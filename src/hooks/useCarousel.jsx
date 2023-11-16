@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useCarousel = (arrayLength,num) => {
+const useCarousel = (arrayLength, num) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   function nextSlide() {

@@ -4,9 +4,9 @@ import { MemoryRouter } from 'react-router-dom';
 
 // import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
-import App from './App';
-import About from './pages/About';
-import Dogs from './pages/Dogs';
+import App from './src/App';
+import About from './src/pages/About';
+import Dogs from './src/pages/Dogs';
 
 
 describe('App', () => {
