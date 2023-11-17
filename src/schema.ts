@@ -1,14 +1,14 @@
-// import { gql } from "@apollo/client";
+import { gql } from "@apollo/client";
 
-// const ALL_DOGS = gql`
-//   query {
-//     allDogs {
-//       description
-//       id
-//       likes
-//       name
-//     }
-//   }
-// `;
+const ALL_DOGS = gql`
+  query {
+    allDogs {
+      description
+      id
+      likes
+      name
+    }
+  }
+`;
 
-// export default ALL_DOGS;
+export default ALL_DOGS;

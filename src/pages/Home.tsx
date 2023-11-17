@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Button from "../components/Button";
+import Button from "../components/Button/Button";
 import Carousel from "../components/Carousel";
 
 // import useCarousel from "../hooks/useCarousel";

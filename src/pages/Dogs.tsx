@@ -3,10 +3,30 @@ import { getDogs } from "../api";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import { Link } from "react-router-dom";
-import { All_Dogs } from "../schema"
-console.log(All_Dogs)
+import All_Dogs from "../schema"
+
 import { gql,useQuery } from '@apollo/client'
 // import { useQuery, useQueryClient } from "react-query";
+
+// const client = new ApolloClient({
+//   uri: 'http://localhost:4000',
+//   cache: new InMemoryCache(),
+// })
+
+// const query = gql`
+// query {
+//   allDogs {
+//     description,
+//     id,
+//     likes,
+//     name
+//   }
+// }
+// `
+// client.query({ query })
+//   .then((response) => {
+//     console.log(response.data)
+//   })
 
 interface Dog {
   id: number;
@@ -19,7 +39,8 @@ export default function Dogs() {
   // const queryClient = useQueryClient();
  
   const [dogs, setDogs] = useState<Dog[]>([]);
-  const result = useQuery(All_Dogs)
+  // const result = useQuery(All_Dogs)
+  // console.log(result)
   // const { isLoading, isError, data, error } = useQuery({
   //   queryKey: ["dogList"],
   //   queryFn: async () => {
