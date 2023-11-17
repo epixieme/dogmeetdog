@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { getDogs } from "../api";
-import Loader from "../components/Loader/Loader";
-import Error from "../components/Error/Error";
+import { getDogs } from "../../api";
+import Loader from "../../components/Loader/Loader";
 import { Link } from "react-router-dom";
-import All_Dogs from "../schema"
+import All_Dogs from "../../schema"
+import Error from "../../components/Error/Error";
 
 import { gql,useQuery } from '@apollo/client'
 // import { useQuery, useQueryClient } from "react-query";

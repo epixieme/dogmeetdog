@@ -8,9 +8,9 @@ import Main_Layout from "../components/Layouts/Main_Layout";
 import Login_Layout from "../components/Layouts/Login_Layout";
 import Home from "../pages/Home";
 import About from "../pages/About";
-import Dogs from "../pages/Dogs";
+import Dogs from "../pages/Dogs/Dogs";
 import NotFound from "../pages/NotFound";
-import DogDetails from "../pages/DogDetails";
+import DogDetails from "../pages/Dogs/DogDetails";
 import Dashboard from "../pages/Login/Dashboard";
 import Reviews from "../pages/Login/Reviews";
 import Question from "../pages/Question";
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Main_Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="questions" element={<Question/>} />
+      <Route path="questions" element={<Question name={""} age={""} breed={""} sex={""} owner={""}/>} />
       <Route path="dogs" element={<Dogs />} />
       <Route path="dogs/:id" element={<DogDetails />} />
       <Route path="login" element={<Login_Layout />}>

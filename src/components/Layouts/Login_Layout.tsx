@@ -1,10 +1,10 @@
-import Login_Header from "../Login_Header";
+import DashboardHeader from "../Headers/Dashboard-Header/DashboardHeader";
 import { Outlet } from "react-router-dom";
 
 export default function Login_Layout() {
   return (
     <>
-      <Login_Header />
+      <DashboardHeader />
       <main className="layout-wrapper">
         <Outlet />
       </main>
