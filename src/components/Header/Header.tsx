@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import useWindowWidth from "../hooks/useWindowWidth";
+import useWindowWidth from "../../hooks/useWindowWidth";
 // import PetsIcon from '@mui/icons-material/Pets';
 // import Box from '@mui/material/Box';
 // import { faPaw } from '@fortawesome/free-solid-svg-icons'

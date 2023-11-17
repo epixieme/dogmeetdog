@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getDogs } from "../api";
-import Loader from "../components/Loader";
-import Error from "../components/Error";
+import Loader from "../components/Loader/Loader";
+import Error from "../components/Error/Error";
 import { Link } from "react-router-dom";
 import All_Dogs from "../schema"
 

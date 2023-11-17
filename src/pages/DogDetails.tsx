@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDogs } from "../api";
 import { useParams } from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../components/Loader/Loader";
 
 
 
