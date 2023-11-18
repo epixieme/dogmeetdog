@@ -10,14 +10,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
-import { QueryClient, QueryClientProvider } from "react-query";
+// import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as Element).render(
 
- <QueryClientProvider client={queryClient}>
+<ApolloProvider client={client}>
     <App />
-</QueryClientProvider>
+</ApolloProvider>
 
 );

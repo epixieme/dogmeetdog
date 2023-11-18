@@ -6,13 +6,13 @@ import {
 
 import Main_Layout from "../components/Layouts/Main_Layout";
 import Login_Layout from "../components/Layouts/Login_Layout";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Dogs from "../pages/Dogs/Dogs";
-import NotFound from "../pages/NotFound";
-import DogDetails from "../pages/Dogs/DogDetails";
-import Dashboard from "../pages/Login/Dashboard";
-import Reviews from "../pages/Login/Reviews";
+import Home from "../pages/LoggedOut/Home";
+import About from "../pages/LoggedOut/About";
+import Dogs from "../pages/LoggedOut/Dogs/Dogs";
+import NotFound from "../pages/Shared/NotFound";
+import DogDetails from "../pages/LoggedOut/Dogs/DogDetails";
+import Dashboard from "../pages/LoggedIn/Dashboard";
+import Reviews from "../pages/LoggedIn/Reviews";
 import Question from "../pages/Question";
 
 //nested routes

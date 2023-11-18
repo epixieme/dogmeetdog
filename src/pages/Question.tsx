@@ -1,4 +1,4 @@
-import Button from "../components/Button/Button";
+import Button from "../components/Shared/Button/Button";
 
 interface Props {
   name: string;
