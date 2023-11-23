@@ -31,15 +31,16 @@ export default function Dogs() {
 
   const dogElements = data.allDogs.map((dog) => (
     <div key={dog.id} className="dog-card">
-      {/* <Link to={`/dogs/${dog.id}`}>
+      <Link to={`/dogs/${dog.id}`}>
         <img src={dog.imageUrl} alt={dog.name} />
-        <div className="dog-info"> */}
+        <div className="dog-info">
+        <div>{dog.description}</div>
           <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
-        {/* </div>
+        </div>
         <i className={`dog-likes ${dog.likes}`}>
           {dog.likes}
         </i>
-      </Link> */}
+      </Link>
     </div>
   ));
 

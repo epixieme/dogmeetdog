@@ -13,7 +13,7 @@ import NotFound from "../pages/Shared/NotFound";
 import DogDetails from "../pages/LoggedOut/Dogs/DogDetails";
 import Dashboard from "../pages/LoggedIn/Dashboard";
 import Reviews from "../pages/LoggedIn/Reviews";
-import Question from "../pages/Question";
+import Question from "../pages/SignUp/Question";
 
 //nested routes
 const router = createBrowserRouter(

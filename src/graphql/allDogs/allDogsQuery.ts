@@ -4,8 +4,9 @@ const ALL_DOGS = gql`
   query{
     allDogs {
       name
-      
-     
+      description
+      imageUrl
+      likes
     }
   }
 `
