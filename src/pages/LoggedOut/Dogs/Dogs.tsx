@@ -4,19 +4,11 @@ import Loader from "../../../components/Shared/Loader/Loader";
 import { Link } from "react-router-dom";
 // import All_Dogs from "../../../schema"
 import Error from "../../../components/Shared/Error/Error";
+import ALL_DOGS from '../../../../src/graphql/allDogs/allDogsQuery'
 
-import { gql } from "@apollo/client";
 import { useQuery } from '@apollo/client'
 
-const ALL_DOGS = gql`
-  query{
-    allDogs {
-      name
-      
-     
-    }
-  }
-`
+
 
 interface Dog {
   id: number;
@@ -27,12 +19,15 @@ interface Dog {
 
 export default function Dogs() {
 
-  const { data, loading } = useQuery(ALL_DOGS)
+  const { data, loading, error} = useQuery(ALL_DOGS)
 
   if (loading) {
     return <div>.jdagshjkdas.</div>
   }
 
+  if (error){
+    console.log(error)
+  }
 
   const dogElements = data.allDogs.map((dog) => (
     <div key={dog.id} className="dog-card">
