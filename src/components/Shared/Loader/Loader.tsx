@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 
-export default function Loader({ loading }) {
-  Loader.propTypes = {
-    loading: PropTypes.string,
-  };
+interface LoadingProps {
+  loading:string
+}
+
+export default function Loader({loading}: LoadingProps) {
+
   return (
     <section className="Loader-container">
       <section className="spinner-container">
