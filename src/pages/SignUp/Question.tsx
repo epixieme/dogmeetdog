@@ -22,7 +22,7 @@ export default function Question1({ name, age, breed, sex, owner }: Props) {
       <label>{owner}:</label>
       <input type="text"></input>
 
-      <Button route="/question2" />
+      <Button route="/question2" btnText={""} />
     </form>
   );
 }
