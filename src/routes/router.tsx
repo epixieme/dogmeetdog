@@ -14,18 +14,21 @@ import DogDetails from "../pages/LoggedOut/Dogs/DogDetails";
 import Dashboard from "../pages/LoggedIn/Dashboard";
 import Reviews from "../pages/LoggedIn/Reviews";
 import Question from "../pages/SignUp/Question";
-import DisplayDogs from "../pages/LoggedOut/Dogs/DisplayDogs";
+import DisplayDogs, {dogData as dataLoader} from "../pages/LoggedOut/Dogs/DisplayDogs";
+import Login from "../pages/Login/Login";
+
 
 //nested routes
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Main_Layout />}>
-      <Route index element={<Home />} />
+      <Route index element={<Home />} loader={}/>
+      <Route path="dogs" element={<DisplayDogs /> } loader={dataLoader} />
       <Route path="about" element={<About />} />
-      <Route path="questions" element={<Question name={""} age={""} breed={""} sex={""} owner={""}/>} />
-      <Route path="dogs" element={<DisplayDogs/>} />
+      <Route path="questions" element={<Question name={""} age={""} breed={""} sex={""} owner={""} />} />
+      <Route path="login"element={<Login />}/>
       {/* <Route path="dogs/:id" element={<DogDetails />} /> */}
-      <Route path="login" element={<Login_Layout />}>
+      <Route path="meetdogs" element={<Login_Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="reviews" element={<Reviews />} />
       </Route>

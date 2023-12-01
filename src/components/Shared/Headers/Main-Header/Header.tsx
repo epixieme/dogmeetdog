@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import useWindowWidth from "../../../hooks/useWindowWidth";
+import useWindowWidth from "../../../../hooks/useWindowWidth";
 // import PetsIcon from '@mui/icons-material/Pets';
 // import Box from '@mui/material/Box';
 // import { faPaw } from '@fortawesome/free-solid-svg-icons'
@@ -36,6 +36,12 @@ export default function Header() {
       </Link>
 
       <nav className={screenWidth > 800 ? "nav-links-container" : "hidden"}>
+      <NavLink
+          to="/meetdogs"
+          style={({ isActive }) => (isActive ? activeStyles : null)}
+        >
+          Meet the Dogs
+        </NavLink>
         <NavLink
           to="/about"
           style={({ isActive }) => (isActive ? activeStyles : null)}

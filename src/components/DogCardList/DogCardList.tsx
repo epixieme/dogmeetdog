@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import FIND_DOG from "../../../src/graphql/findDogs/findDogsByName";
+import FIND_DOG from "../../graphql/findDogs/findDogsByName";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
-import Dog from "../Dog/Dog";
+import DogCard from "../DogInformationCard/DogInformationCard";
 import Loader from "../Shared/Loader/Loader";
-import Error from "../Shared/Error/Error";
-import FIND_DOGS from "../../../src/graphql/findDogs/findDogsByName";
+import Error from "../Shared/ErrorMessage/ErrorMessage";
+import FIND_DOGS from "../../graphql/findDogs/findDogsByName";
 
 
 interface Dogs {
@@ -38,27 +38,22 @@ const [nameToSearch, setNameToSearch] = useState<null|string>(null)
     
       const dogElements = dogs.map((dog:any) => (
         <div key={dog.id} className="dog-card">
-          {/* <Link to={`/dogs/${dog.id}`}> */}
+          <Link to={`/dogs/${dog.id}`}>
             <img src={dog.imageUrl} alt={dog.name} />
             <div className="dog-info">
             <div>{dog.description}</div>
               <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
             </div>
-           
             <i className={`dog-likes ${dog.likes}`}>
               {dog.likes}
             </i>
-            <button onClick={() => setNameToSearch(dog.name)}>
-            show name
-          </button>
-         
-          {/* </Link> */}
+          </Link>
         </div>
       ));
       
     if (nameToSearch && data) {
         return (
-          <Dog
+          <DogCard
             dog={data.findDog !== null && data.findDog}
             onClose={() => setNameToSearch(null)}
           />
@@ -67,10 +62,16 @@ const [nameToSearch, setNameToSearch] = useState<null|string>(null)
      
 
 return (<>
-{dogElements}
+<div className="search-bar" >
 <input onChange ={(event) =>setName(event.target.value)} />
 <button onClick={(event) => setNameToSearch(name)}></button>
-</>)
+</div>
+<section className="dog-card-container">
+{dogElements}
+</section>
+
+</>
+)
 }
 
 

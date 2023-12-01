@@ -15,12 +15,4 @@ const FIND_DOGS = gql`
 export default FIND_DOGS
 
 
-query GetAlbumsByIds {
-  albums (ids: ["1", "4", "5", "6", "8"]) {
-    title
-    genre
-    artist {
-      name
-    }
-  }
-}
+
