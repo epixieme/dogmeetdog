@@ -1,11 +1,11 @@
-import Loader from "../../../components/Shared/Loader/Loader";
+import Loader from "../../../components/shared/Loader/Loader";
 import { Link } from "react-router-dom";
-import Error from "../../../components/Shared/ErrorMessage/ErrorMessage";
+import Error from "../../../components/shared/ErrorMessage/ErrorMessage";
 import ALL_DOGS from '../../../graphql/allDogs/allDogs'
 
 //add absolute imports and barrel files
 import { useQuery } from '@apollo/client'
-import DogCardList from "../../../components/Features/DogCardList/DogCardList";
+import { DogCardList } from "../../../components/Features";
 
 
 interface Dog {

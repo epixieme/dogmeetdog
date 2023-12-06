@@ -1,4 +1,4 @@
-import Button from "../../components/Shared/Button/Button";
+import Button from "../../components/shared/Button/Button";
 import bgImg from "../../assets/images/about-hero-image.jpg";
 
 export default function About() {

@@ -1,11 +1,10 @@
 import { useState } from "react";
-import Dog from "../../components/DogInformationCard/DogInformationCard";
-import Search from "../../components/Shared/Filter/Filter";
+import Dog from "../../components/Features/DogInformationCard/DogInformationCard";
 import { useQuery } from "@apollo/client";
 import FIND_DOG from "../../../src/graphql/findDogs/findDogsByName";
 import ALL_DOGS from "../../../src/graphql/allDogs/allDogs";
-import Error from "../../components/Shared/ErrorMessage/ErrorMessage";
-import Loader from "../../../src/components/Shared/Loader/Loader";
+import Error from "../../components/shared/ErrorMessage/ErrorMessage";
+import Loader from "../../components/shared/Loader/Loader";
 
 
 interface Dog {

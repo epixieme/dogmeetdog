@@ -1,4 +1,4 @@
-import DashboardHeader from "../Shared/Headers/Dashboard-Header/DashboardHeader";
+import DashboardHeader from "../shared/Headers/Dashboard-Header/DashboardHeader";
 import { Outlet } from "react-router-dom";
 
 export default function Login_Layout() {
