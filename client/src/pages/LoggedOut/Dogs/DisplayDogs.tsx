@@ -5,8 +5,8 @@ import ALL_DOGS from '../../../graphql/allDogs/allDogs'
 
 //add absolute imports and barrel files
 import { useQuery } from '@apollo/client'
-import Search from "../../../components/Shared/Filter/Filter";
-import Dogs from "../../../components/DogCardList/DogCardList";
+import DogCardList from "../../../components/Features/DogCardList/DogCardList";
+
 
 interface Dog {
   id: number;
@@ -37,7 +37,7 @@ export default function DisplayDogs() {
       <div className="dog-list">
         <h1>Explore our dogs</h1>
       
-        <Dogs dogs={data.allDogs}/>
+        <DogCardList dogs={data.allDogs}/>
       
       </div>
     </section>
