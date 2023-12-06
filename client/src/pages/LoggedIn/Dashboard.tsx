@@ -5,6 +5,7 @@ import FIND_DOG from "../../../src/graphql/findDogs/findDogsByName";
 import ALL_DOGS from "../../../src/graphql/allDogs/allDogs";
 import Error from "../../components/shared/ErrorMessage/ErrorMessage";
 import Loader from "../../components/shared/Loader/Loader";
+import React from "react";
 
 
 interface Dog {
