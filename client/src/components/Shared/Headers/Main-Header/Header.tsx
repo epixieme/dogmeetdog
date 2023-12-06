@@ -13,7 +13,7 @@ export default function Header() {
     color: "white",
   };
 
-  const screenWidth = useWindowWidth();
+  const screenWidth = useWindowWidth()
 
   return (
     <header className="nav-menu-container">
@@ -37,7 +37,8 @@ export default function Header() {
         <p>Find the perfect play date for your Dog.</p>
       </Link>
 
-      <nav className={screenWidth > 800 ? "nav-links-container" : "hidden"}>
+      <nav className={// @ts-ignore 
+      screenWidth > 800 ? "nav-links-container" : "hidden"}>
       <NavLink
           to="/meetdogs"
           style={({ isActive }) => (isActive ? activeStyles : null)}
@@ -66,7 +67,6 @@ export default function Header() {
     </header>
   );
 }
-function useWindowWidth() {
-  throw new Error("Function not implemented.");
-}
+
+
 
