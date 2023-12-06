@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-import useWindowWidth from "../../../../hooks/useWindowWidth";
+// @ts-ignore
+import useWindowWidth  from '../../../../hooks/useWindowWidth'
+import React from "react";
 // import PetsIcon from '@mui/icons-material/Pets';
 // import Box from '@mui/material/Box';
 // import { faPaw } from '@fortawesome/free-solid-svg-icons'
@@ -64,3 +66,7 @@ export default function Header() {
     </header>
   );
 }
+function useWindowWidth() {
+  throw new Error("Function not implemented.");
+}
+

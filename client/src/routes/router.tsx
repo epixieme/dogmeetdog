@@ -10,7 +10,7 @@ import Home from "../pages/LoggedOut/Home";
 import About from "../pages/LoggedOut/About";
 import Dogs from "../pages/LoggedOut/Dogs/DisplayDogs";
 import NotFound from "../pages/Shared/NotFound";
-import DogDetails from "../pages/LoggedOut/Dogs/DogDetails";
+// import DogDetails from "../pages/LoggedOut/Dogs/DogDetails";
 import Dashboard from "../pages/LoggedIn/Dashboard";
 import Reviews from "../pages/LoggedIn/Reviews";
 import Question from "../pages/SignUp/Question";

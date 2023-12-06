@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-import useWindowWidth from "../../../../hooks/useWindowWidth";
+// import useWindowWidth from "../../../../hooks/useWindowWidth";
 import "./dashboardHeader.css";
+import React from "react";
 // import PetsIcon from '@mui/icons-material/Pets';
 // import Box from '@mui/material/Box';
 // import { faPaw } from '@fortawesome/free-solid-svg-icons'
@@ -12,7 +13,7 @@ export default function DashboardHeader() {
     color: "white",
   };
 
-  const screenWidth = useWindowWidth();
+  // const screenWidth = useWindowWidth();
 
   return (
     <header className="nav">

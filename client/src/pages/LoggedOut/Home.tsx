@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 import Button from "../../components/shared/Button/Button";
-import Carousel from "../components/Carousel";
+// import Carousel from "../components/Carousel";
+import React from "react";
 
 // import useCarousel from "../hooks/useCarousel";
 
