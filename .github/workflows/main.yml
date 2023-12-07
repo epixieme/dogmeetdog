@@ -4,6 +4,9 @@ name: Jest Automatic Testing
 # Event triggers on pull request event
 # For more detail visit https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on
 on: push
+defaults:
+  run:
+    working-directory: client
 
 # The jobs this action will run. You can write as many jobs as you want.
 # For more detail on this section visit https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs
@@ -18,9 +21,11 @@ jobs:
 
     # Steps this job must take to complete
     steps:
+    
       # Reference the main branch. For more information visit https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses
       - name: Checkout under $GITHUB_WORKSPACE
         uses: actions/checkout@main
+        
 
       # Specify which version of Node this project is using. For more information visit.
       # https://docs.github.com/en/actions/guides/building-and-testing-nodejs#specifying-the-nodejs-version
