@@ -29,8 +29,6 @@ https://www.figma.com/file/pYXdTp9SYz2y0spCLOWRm6/dogmeetsdog?node-id=0%3A1&t=N0
   <ul>
     <li>Ability to register and create an account and to be able to login and authenticate using google OAuth 2.0 </li>
   </ul>
-
-  
   </section>
 
 
