@@ -23,6 +23,7 @@
   "baseUrl": "./client",
   "paths": {
     "client/*": ["./client/*"]
+    
   },
 
   /* Linting */

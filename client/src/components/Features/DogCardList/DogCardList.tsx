@@ -17,7 +17,7 @@ interface Dogs {
     description:string
   }
 
-export default function Dogs({dogs}:any){
+export default function DogCardList({dogs}:any){
 
     // console.log(dogs.name.includes('Wolfy'))
 const [name, setName] = useState<null|string>(null)
