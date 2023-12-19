@@ -4,12 +4,10 @@ import FIND_DOG from "../../../graphql/findDogs/FindDogByName";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import DogCard from "../DogInformationCard/DogInformationCard";
-import Loader from "../../shared/Loader/Loader";
+// import { Loader } from "@shared";
+
+
 import React from "react";
-// import Loader from "../Shared/Loader/Loader";
-// import Error from "../Shared/ErrorMessage/ErrorMessage";
-
-
 
 interface Dogs {
     id: number;

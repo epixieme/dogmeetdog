@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 // import useWindowWidth from "../../../../hooks/useWindowWidth";
 import "./dashboardHeader.css";
+
 import React from "react";
+import Button from "../../Button/Button";
 // import PetsIcon from '@mui/icons-material/Pets';
 // import Box from '@mui/material/Box';
 // import { faPaw } from '@fortawesome/free-solid-svg-icons'

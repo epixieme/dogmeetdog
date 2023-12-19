@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "outDir": "../../builds/dev/public",
+    "rootDir": ".",
+    "composite": true
+}
+}

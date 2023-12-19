@@ -5,7 +5,9 @@ import ALL_DOGS from '../../../graphql/allDogs/allDogs'
 
 //add absolute imports and barrel files
 import { useQuery } from '@apollo/client'
-import { DogCardList } from "../../../components/Features";
+
+import { DogCardList } from "src/components";
+
 
 
 interface Dog {
