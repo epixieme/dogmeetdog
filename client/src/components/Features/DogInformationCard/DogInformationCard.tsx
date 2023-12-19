@@ -5,7 +5,7 @@ interface DogProps{
     dog: any
 }
 
-const Dog = ({ dog, onClose }:DogProps) => {
+const DogInformationCard = ({ dog, onClose }:DogProps) => {
     return (
       <div key={dog.id} className="dog-card">
         <h2>{dog.name}</h2>
@@ -23,5 +23,5 @@ const Dog = ({ dog, onClose }:DogProps) => {
     )
   }
 
-  export default Dog
+  export default DogInformationCard
   

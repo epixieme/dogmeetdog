@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
-
-import FIND_DOG from "../../../graphql/findDogs/FindDogByName";
-import { useQuery } from "@apollo/client";
 import { useState } from "react";
-import DogCard from "../DogInformationCard/DogInformationCard";
-// import { Loader } from "@shared";
-
-
-import React from "react";
+import { FIND_DOG_BY_NAME } from "@graphql/queries";
+import { DogInformationCard } from "@components/features";
+import { Loader } from "@components/shared";
+import { useQuery } from "@apollo/client";
 
 interface Dogs {
     id: number;
@@ -23,7 +19,7 @@ export default function DogCardList({dogs}:any){
 const [name, setName] = useState<null|string>(null)
 const [nameToSearch, setNameToSearch] = useState<null|string>(null)
 
-    const {data, error, loading} = useQuery(FIND_DOG, {
+    const {data, error, loading} = useQuery(FIND_DOG_BY_NAME, {
       variables: { nameToSearch },
       skip: !nameToSearch,
     })
@@ -54,7 +50,7 @@ const [nameToSearch, setNameToSearch] = useState<null|string>(null)
       
     if (nameToSearch && data) {
         return (
-          <DogCard
+          <DogInformationCard
             dog={data.findDog !== null && data.findDog}
             onClose={() => setNameToSearch(null)}
           />

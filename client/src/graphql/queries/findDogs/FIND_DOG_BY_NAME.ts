@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const FIND_DOG = gql`
+const FIND_DOG_BY_NAME = gql`
   query findDogByName($nameToSearch: String!) {
     findDog(name: $nameToSearch) {
       id
@@ -12,4 +12,4 @@ const FIND_DOG = gql`
   }
 `
 
-export default FIND_DOG
+export default FIND_DOG_BY_NAME

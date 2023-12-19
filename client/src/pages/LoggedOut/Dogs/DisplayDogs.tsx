@@ -1,15 +1,14 @@
 import Loader from "../../../components/shared/Loader/Loader";
 import { Link } from "react-router-dom";
 import Error from "../../../components/shared/ErrorMessage/ErrorMessage";
-import ALL_DOGS from '../../../graphql/allDogs/allDogs'
 
-//add absolute imports and barrel files
+
+//absolute imports
+
+import { DogCardList } from "@components/features";
+import { ALL_DOGS } from "@graphql/queries";
+
 import { useQuery } from '@apollo/client'
-
-import { DogCardList } from "src/components";
-
-
-
 interface Dog {
   id: number;
   name: string;

@@ -20,11 +20,19 @@
   "isolatedModules": true,
   "noEmit": true,
   "jsx": "react-jsx",
-  "baseUrl": "./client",
+  "baseUrl": "./client/src",
   "paths": {
-    "client/*": ["./client/*"]
-    
+    "client/*": ["./*"],
+    "@components/*": ["components/*"],
+    "@graphql/*": ["graphql/*"],
   },
+
+  // "baseUrl": "./src",
+  //   "paths": {
+  //     "src/*": ["./*"],
+  //     "@features/*": ["features/*"],
+  //     "@shared/*": ["shared/*"]
+  //   },
 
   /* Linting */
   "strict": true,

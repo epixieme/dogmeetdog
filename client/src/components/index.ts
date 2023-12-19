@@ -1,1 +1,0 @@
-export {default as DogCardList } from './features/DogCardList/DogCardList'
