@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 
 // import Carousel from "../components/Carousel";
-import Button from "../../components/shared/Button/Button";
+import Button from "@/components/shared/Button/Button";
 import React from "react";
 
 // import useCarousel from "../hooks/useCarousel";

@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-import { DogInformationCard } from "../../components/features";
-import { ALL_DOGS, FIND_DOG_BY_NAME} from "../../graphql/queries";
-
-import { ErrorMessage, Loader } from "../../components/shared";
-
-
 import { useQuery } from "@apollo/client";
+import { useState } from "react";
 
+import { DogInformationCard } from "@/components/features";
+import { ALL_DOGS, FIND_DOG_BY_NAME} from "@/graphql/queries";
+import { ErrorMessage, Loader } from "@/components/shared";
 
 interface Dog {
   id: number;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 //absolute imports
-import { Loader } from "@/components/shared";
+import { ErrorMessage, Loader } from "@/components/shared";
 // import { DogCardList } from "../../../components/features";
 import { getDogs } from "client/src/api";
 import { DogCardList } from "@/components/features";
