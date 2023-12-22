@@ -1,14 +1,13 @@
-import Loader from "../../../components/shared/Loader/Loader";
 import { Link } from "react-router-dom";
-import Error from "../../../components/shared/ErrorMessage/ErrorMessage";
-
 
 //absolute imports
-
-import { DogCardList } from "@components/features";
-import { ALL_DOGS } from "@graphql/queries";
-
+import { Loader } from "@/components/shared";
+// import { DogCardList } from "../../../components/features";
+import { getDogs } from "client/src/api";
+import { DogCardList } from "@/components/features";
+import { ALL_DOGS } from "@/graphql/queries";
 import { useQuery } from '@apollo/client'
+
 interface Dog {
   id: number;
   name: string;
@@ -30,7 +29,7 @@ export default function DisplayDogs() {
   }
 
   if (error){
-    return <Error error={error.message} />
+    return <ErrorMessage error={error.message} />
   }
 
   return (

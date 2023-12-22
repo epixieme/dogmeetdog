@@ -1,15 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 // @ts-ignore
 import useWindowWidth  from '../../../../hooks/useWindowWidth'
-import React from "react";
-// import PetsIcon from '@mui/icons-material/Pets';
-// import Box from '@mui/material/Box';
-// import { faPaw } from '@fortawesome/free-solid-svg-icons'
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Header() {
   const activeStyles = {
     textDecoration: "underline",
+    color: "white",
+  };
+
+  const inactiveStyles = {
     color: "white",
   };
 
@@ -41,25 +40,25 @@ export default function Header() {
       screenWidth > 800 ? "nav-links-container" : "hidden"}>
       <NavLink
           to="/meetdogs"
-          style={({ isActive }) => (isActive ? activeStyles : null)}
+          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
         >
           Meet the Dogs
         </NavLink>
         <NavLink
           to="/about"
-          style={({ isActive }) => (isActive ? activeStyles : null)}
+          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
         >
           About
         </NavLink>
         <NavLink
           to="/dogs"
-          style={({ isActive }) => (isActive ? activeStyles : null)}
+          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
         >
           Our Dogs
         </NavLink>
         <NavLink
           to="/login"
-          style={({ isActive }) => (isActive ? activeStyles : null)}
+          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
         >
           Login
         </NavLink>

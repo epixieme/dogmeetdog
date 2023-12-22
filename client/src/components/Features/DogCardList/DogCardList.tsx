@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FIND_DOG_BY_NAME } from "@graphql/queries";
-import { DogInformationCard } from "@components/features";
-import { Loader } from "@components/shared";
+import { FIND_DOG_BY_NAME } from "../../../graphql/queries";
+import { DogInformationCard } from "..";
+import { Loader } from "../../shared";
 import { useQuery } from "@apollo/client";
 
 interface Dogs {

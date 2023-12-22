@@ -1,10 +1,10 @@
-// import Button from "../../components/shared/Button/Button";
-import bgImg from "../../assets/images/about-hero-image.jpg";
+import { Button } from '../../../components/shared';
+import backgroundImage from './assets/about-hero-image.jpg'
 
 export default function About() {
   return (
     <section className="about-container">
-      <img src={bgImg} className="about-hero-img" />
+      <img src={backgroundImage} className="about-hero-img" />
       <section className="about-content">
         <h1>Welcome</h1>
         <p>
