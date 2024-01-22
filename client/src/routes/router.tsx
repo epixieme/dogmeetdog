@@ -15,6 +15,7 @@ import Dashboard from "../pages/LoggedIn/Dashboard";
 import Reviews from "../pages/LoggedIn/Reviews";
 import Question from "../pages/SignUp/Question";
 import Login from "../pages/Login/Login";
+import QuestionPage from "../pages/SignUp/QuestionPage";
 
 
 
@@ -25,7 +26,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="dogs" element={<DisplayDogs /> } />
       <Route path="about" element={<About />} />
-      <Route path="questions" element={<Question name={""} age={""} breed={""} sex={""} owner={""} />} />
+      <Route path="questions" element={<QuestionPage />} />
       <Route path="login"element={<Login />}/>
       {/* <Route path="dogs/:id" element={<DogDetails />} /> */}
       <Route path="meetdogs" element={<Login_Layout />}>
