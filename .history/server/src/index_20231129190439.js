@@ -3,58 +3,40 @@ const { startStandaloneServer } = require('@apollo/server/standalone')
 
 const { v1: uuid } = require('uuid')
 
-// let dogs = [
-//   {
+let dogs = [
+  {
 
-//     id: "3d594650-3436-11e9-bc57-8b80ba54c431",
-//     name: "Wolfy",
-//     description: "Large dog, very friendly and ready to meet other large breeds",
-//     imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
-//     likes: "Juicy Bones",
-//     street:"3 the view",
-//     city:"London"
-//   },
-//   {
+    id: "3d594650-3436-11e9-bc57-8b80ba54c431",
+    name: "Wolfy",
+    description: "Large dog, very friendly and ready to meet other large breeds",
+    imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
+    likes: "Juicy Bones",
+    street:"3 the view",
+    city:"London"
+  },
+  {
 
-//     id: '3d599470-3436-11e9-bc57-8b80ba54c431',
-//     name: "Wolfy2",
-//     description: "Large dog, very friendly and ready to meet other large breeds",
-//     imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
-//     likes: "Juicy Bones",
-//     street:"3 the view",
-//     city:"London"
-//   },
+    id: '3d599470-3436-11e9-bc57-8b80ba54c431',
+    name: "Wolfy2",
+    description: "Large dog, very friendly and ready to meet other large breeds",
+    imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
+    likes: "Juicy Bones",
+    street:"3 the view",
+    city:"London"
+  },
 
-//   {
+  {
 
-//     id: '3d599471-3436-11e9-bc57-8b80ba54c431',
-//     name: "Wolfy3",
-//     description: "Large dog, very friendly and ready to meet other large breeds",
-//     imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
-//     likes: "Juicy Bones",
-//     street:"3 the view",
-//     city:"London"
-//   },
+    id: '3d599471-3436-11e9-bc57-8b80ba54c431',
+    name: "Wolfy3",
+    description: "Large dog, very friendly and ready to meet other large breeds",
+    imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
+    likes: "Juicy Bones",
+    street:"3 the view",
+    city:"London"
+  },
 
-// ]
-
-const mongoose = require('mongoose')
-mongoose.set('strictQuery', false)
-const Person = require('./models/Dog')
-
-require('dotenv').config()
-
-const MONGODB_URI = process.env.MONGODB_URI
-
-console.log('connecting to', MONGODB_URI)
-
-mongoose.connect(MONGODB_URI)
-  .then(() => {
-    console.log('connected to MongoDB')
-  })
-  .catch((error) => {
-    console.log('error connection to MongoDB:', error.message)
-  })
+]
 
 const typeDefs = `
 type Address {
