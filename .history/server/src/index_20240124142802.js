@@ -40,7 +40,7 @@ const { v1: uuid } = require('uuid')
 
 const mongoose = require('mongoose')
 mongoose.set('strictQuery', false)
-const Person = require('./models/Dog')
+const Dog = require('.../model/dog')
 
 require('dotenv').config()
 

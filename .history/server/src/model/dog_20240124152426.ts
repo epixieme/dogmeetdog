@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+let mongoose = require('mongoose')
 
 const DogSchema = new mongoose.Schema({
   name: {

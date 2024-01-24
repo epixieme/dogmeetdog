@@ -5,13 +5,16 @@
   "outDir": "./dist",
   "rootDir": ".",
   "composite": true,
-  "target": "ES2020",
+  "target": "ES2016",
   "useDefineForClassFields": true,
   "lib": ["ES2020", "DOM", "DOM.Iterable"],
-  "module": "ESNext",
+  "module": "CommonJS",
   "skipLibCheck": true,
-  // "moduleDetection": "force",
-  
+
+
+"esModuleInterop": true,
+
+"forceConsistentCasingInFileNames": true,
   
 
   /* Bundler mode */
@@ -22,9 +25,7 @@
   "noEmit": true,
   "jsx": "react-jsx",
   "baseUrl": "./client",
-  "paths": {
-    "@/*": ["src/*"]
-  },
+ 
 
   /* Linting */
   "strict": true,
