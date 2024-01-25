@@ -10,7 +10,7 @@ export default function useQuestionHook(){
     // console.log(answers);
   
 
-    function nextScreen() {
+    function nextScreen(inputValue:string) {
         if (currentScreen < questionText.length) {
         //  setAnswers(prevVal=>[...prevVal,inputValue])
           // need to add to local state too

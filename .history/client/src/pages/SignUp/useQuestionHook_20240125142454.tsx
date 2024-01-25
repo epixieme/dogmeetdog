@@ -2,17 +2,15 @@ import { useState } from "react";
 
 const questionText =['whats your dogs name?', 'whats your dogs Breed?', 'where do you live?','whats your dogs age?', 'whats your dogs personality?' ]
 const questionText2 =['Now Tell me about your owner(s)', 'names', 'hobbies' ]
-export default function useQuestionHook(){
+export default function useQuestionHook(inputValue:any){
     
     const [currentScreen, setCurrentScreen] = useState(0)
 
-    // const [answers, setAnswers] = useState<string[]>([]);
-    // console.log(answers);
-  
+    const [answers, setAnswers] = useState<string[]>([])
 
     function nextScreen() {
         if (currentScreen < questionText.length) {
-        //  setAnswers(prevVal=>[...prevVal,inputValue])
+          setAnswers(answers=>[...answers, inputValue])
           // need to add to local state too
           setCurrentScreen(currentScreen + 1);
         } 

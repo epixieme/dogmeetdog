@@ -6,13 +6,11 @@ export default function useQuestionHook(){
     
     const [currentScreen, setCurrentScreen] = useState(0)
 
-    // const [answers, setAnswers] = useState<string[]>([]);
-    // console.log(answers);
-  
+    const [answers, setAnswers] = useState([])
 
     function nextScreen() {
         if (currentScreen < questionText.length) {
-        //  setAnswers(prevVal=>[...prevVal,inputValue])
+          // setAnswers(prevstate=>[...prevstate, value])
           // need to add to local state too
           setCurrentScreen(currentScreen + 1);
         } 

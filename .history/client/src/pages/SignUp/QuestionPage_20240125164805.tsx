@@ -8,28 +8,15 @@ export default function Questions() {
   //store answers  to local storage
   // post answers and create a graph query
   // animate
-
-  const [answer, setAnswer] = useState<string>("");
-  const [allAnswers, setAllAnswers] = useState<string[]>([]);
-  console.log(allAnswers);
-
-  console.log(answer);
   const { questionText, currentScreen, nextScreen } = useQuestionHook();
-// change below to a hook
-  async function handleAnswers() {
-    setAllAnswers((prev) => [...prev, answer]);
-    setAnswer("");
-    nextScreen();
-  }
 
   return (
     <div className="questionText">
       <Question
         questionText={questionText[currentScreen]}
-        onChange={(e) => setAnswer(e.target.value)}
-        value={answer}
+        onChange={(e)=>e.target.value}
       />
-      <Button btnText={">"} onClick={handleAnswers} />
+      <Button btnText={">"} onClick={nextScreen} />
     </div>
   );
 }
