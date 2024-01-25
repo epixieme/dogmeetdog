@@ -6,10 +6,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 // vite config needs to be set to allow absolute imports
 export default defineConfig({
   plugins: [react(),tsconfigPaths()],
-  resolve: {
-    alias: [{ find: '@', replacement: '/src' }],
-  
-  }
+  // resolve: {
+  //   alias: [{ find: '@', replacement: '/features' }],
+  // }
   
   // test: {
   //   globals: true,

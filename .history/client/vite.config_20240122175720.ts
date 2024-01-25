@@ -8,7 +8,6 @@ export default defineConfig({
   plugins: [react(),tsconfigPaths()],
   resolve: {
     alias: [{ find: '@', replacement: '/src' }],
-  
   }
   
   // test: {
