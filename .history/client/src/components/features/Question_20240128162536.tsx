@@ -4,7 +4,7 @@ import {  useState } from "react";
 interface Props {
   questionText: string;
   onChange:(e: any)=>void
-  value:string
+  // value:string
 
 
 

@@ -23,7 +23,7 @@ export default function Questions(initialAnswer = '') {
     window.localStorage.setItem("answers", answers);
   });
   console.log(answer);
-  const { questionText, currentScreen, nextScreen, previousScreen } = useQuestionHook();
+  const { questionText, currentScreen, nextScreen } = useQuestionHook();
   // change below to a hook
   async function handleAnswers() {
     setAllAnswers((prev) => [...prev, answer]);
@@ -36,7 +36,7 @@ export default function Questions(initialAnswer = '') {
       <Question
         questionText={questionText[currentScreen]}
         onChange={(e) => setAnswer(e.target.value)}
-        value ={allAnswers[previousScreen]}
+        // value ={allAnswers[currentScreen]}
         
       />
       <Button btnText={">"} onClick={handleAnswers} />
