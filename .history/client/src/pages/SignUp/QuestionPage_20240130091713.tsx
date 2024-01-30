@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from "react";
 
 export default function Questions(initialAnswer = []) {
   // post answers and create a graph query
-  // animate inputs and text
+  // animate inputs
 
   const getAnswers = window.localStorage.getItem("answers") as string;
   const [answers, setAnswers] = useState<string[]>(
