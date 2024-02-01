@@ -28,8 +28,8 @@ type Address {
     id: ID
     name: String
     breed:String
-    age:Int
-    Personality: String
+    age:String
+    personality: String
     address: Address
   }
 
@@ -54,8 +54,8 @@ type Address {
     addDog(
       name: String
       breed:String
-      age:Int
-      Personality: String
+      age:String
+      personality: String
       
     ): Dog
     editStreet (
