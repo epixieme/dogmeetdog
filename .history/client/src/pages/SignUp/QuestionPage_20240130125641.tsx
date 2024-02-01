@@ -47,9 +47,10 @@ export default function Questions(initialAnswer = []) {
   };
 
   const handleLoginDetails=()=>{
-    
+console.log('click')
   }
   
+
   return (
     <div className="questionText">
       <Question

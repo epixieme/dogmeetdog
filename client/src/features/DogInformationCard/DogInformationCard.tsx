@@ -1,5 +1,3 @@
-import React from "react"
-
 interface DogProps{
     onClose:()=>void
     dog: any

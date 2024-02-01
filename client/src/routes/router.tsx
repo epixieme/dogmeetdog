@@ -4,8 +4,8 @@ import {
   Route,
 } from "react-router-dom";
 
-import Main_Layout from "../components/Layouts/Main_Layout";
-import Login_Layout from "../components/Layouts/Login_Layout";
+import Main_Layout from "../Layouts/Main_Layout";
+import Login_Layout from "../Layouts/Login_Layout";
 import Home from "../pages/LoggedOut/Home";
 import About from "../pages/LoggedOut/About/About";
 import DisplayDogs from "../pages/LoggedOut/Dogs/DisplayDogs";
@@ -13,7 +13,6 @@ import NotFound from "../pages/Shared/NotFound";
 // import DogDetails from "../pages/LoggedOut/Dogs/DogDetails";
 import Dashboard from "../pages/LoggedIn/Dashboard";
 import Reviews from "../pages/LoggedIn/Reviews";
-import Question from "../pages/SignUp/Question";
 import Login from "../pages/Login/Login";
 import QuestionPage from "../pages/SignUp/QuestionPage";
 

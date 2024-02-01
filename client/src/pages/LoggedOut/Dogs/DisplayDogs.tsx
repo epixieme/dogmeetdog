@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 //absolute imports
 
-import { ErrorMessage, Loader } from "@shared";
+import { ErrorMessage, Loader } from "shared";
 // import { getDogs } from "client/src/api";
-import { DogCardList } from "@features";
+import { DogCardList } from "features";
 import { ALL_DOGS } from "graphql/queries";
 import { useQuery } from "@apollo/client";
 

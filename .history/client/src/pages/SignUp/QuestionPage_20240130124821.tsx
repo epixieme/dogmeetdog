@@ -1,7 +1,6 @@
 import { Question } from "@features";
 import { Button } from "@shared";
-import useQuestionHook from "./hooks/useQuestionHook";
-
+import useQuestionHook from "./useQuestionHook";
 import "./signUp.css";
 import { useEffect, useState, useRef } from "react";
 
@@ -20,7 +19,6 @@ export default function Questions(initialAnswer = []) {
 
   const { questionText, currentScreen, nextScreen, previousScreen } =
     useQuestionHook();
-    
   // change below to a hook
 
   const handleAnswerChange = (
@@ -46,10 +44,6 @@ export default function Questions(initialAnswer = []) {
     });
   };
 
-  const handleLoginDetails=()=>{
-    
-  }
-  
   return (
     <div className="questionText">
       <Question
@@ -60,7 +54,7 @@ export default function Questions(initialAnswer = []) {
 
       <Button btnText={"<"} onClick={previousScreen} />
       <Button btnText={">"} onClick={nextScreen} />
-      {currentScreen === questionText.length -1 && <Button  btnText={"Login"} onClick={handleLoginDetails}/>}
+      {currentScreen === questionText.length -1 && <Button  btnText={"Login"}/>}
     </div>
   );
 }

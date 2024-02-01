@@ -9,49 +9,9 @@ require('./config');
 const { v1: uuid } = require('uuid')
 const { GraphQLError } = require('graphql')
 
-
-let dogs = [
-
-  {
-
-    id: "3d594650-3436-11e9-bc57-8b80ba54c431",
-    name: "Wolfy",
-    description: "Large dog, very friendly and ready to meet other large breeds",
-    imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
-    likes: "Juicy Bones",
-    street:"3 the view",
-    city:"London"
-  },
-  {
-
-    id: '3d599470-3436-11e9-bc57-8b80ba54c431',
-    name: "Wolfy2",
-    description: "Large dog, very friendly and ready to meet other large breeds",
-    imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
-    likes: "Juicy Bones",
-    street:"3 the view",
-    city:"London"
-  },
-
-  {
-
-    id: '3d599471-3436-11e9-bc57-8b80ba54c431',
-    name: "Wolfy3",
-    description: "Large dog, very friendly and ready to meet other large breeds",
-    imageUrl: "https://i.ibb.co/tzWGk3j/husky.jpg",
-    likes: "Juicy Bones",
-    street:"3 the view",
-    city:"London"
-  },
-
-]
-
-
+const Dog = require('../model/Dog')
 
 mongoose.set('strictQuery', false)
-
-// const Dog = require('./model/Dog.ts')
-
 
 require('dotenv').config()
 
@@ -67,15 +27,15 @@ type Address {
   type Dog {
     id: ID
     name: String
-    description: String
-    imageUrl: String
-    likes: String
+    breed:String
+    age:Int
+    Personality: String
     address: Address
   }
 
   input DogsInputFilter {
     id:ID
-    name:String
+    breed:String
   }
 
   enum YesNo {
@@ -86,16 +46,17 @@ type Address {
   type Query {
     dogCount: Int!
     allDogs(street: YesNo): [Dog!]!
-    findDog(name: String!): Dog
+    findDog(breed: String!): Dog
     findDogs(input: DogsInputFilter):[Dog]
   }
 
   type Mutation {
     addDog(
-      name: String!
-      description: String
-      imageUrl: String!
-      likes: String!
+      name: String
+      breed:String
+      age:Int
+      Personality: String
+      
     ): Dog
     editStreet (
       name: String!
@@ -107,24 +68,14 @@ type Address {
 const resolvers = {
 
   Query: {
-    dogCount: () => dogs.length,
-    allDogs: (_root:any, args:any) => {
-      if (!args.street)
-        return dogs
-      const byStreet = (dog:any) => args.street === 'yes' ? dog.street : !dog.street
-      return dogs.filter(byStreet)
-    },
-    findDog: (_root:any, args:any) =>{
-      console.log(dogs.filter(a=>a.name === args.name))
-      return dogs.find(d => d.name === args.name)
-    },
-      
-    findDogs: (_root:any, args:any) =>
-      // dogs.find(d => d.name === args.name)
-      dogs.filter(d => args.includes(d.name))
-  },
+    dogCount: () =>async()=> Dog.collection.countDocuments(),
+    allDogs: async (_root:any, args:any) => {
+      if (!args.breed) {
+        return Dog.find({})
+      }
+      return Dog.find({ phone: { $exists: args.breed === 'YES' } })
+  }},
   Dog: {
-    // apollo handles the other resolvers by default if not specified like the address is below eg name, description and so on
     address: (root:any) => {
       return {
         street: root.street,
@@ -133,33 +84,44 @@ const resolvers = {
     }
   },
   Mutation: {
-    addDog: (_root:any, args:any) => {
-      if (dogs.find(d => d.name === args.name)) {
-        throw new GraphQLError('Name must be unique', {
+    addDog: async (_root:any, args:any) => {
+      const dog = new Dog({ ...args })
+     
+      try {
+        await dog.save()
+      } catch (error) {
+        throw new GraphQLError('Saving person failed', {
           extensions: {
             code: 'BAD_USER_INPUT',
-            invalidArgs: args.name
+            invalidArgs: args.name,
+            error
           }
         })
       }
-      const dog = { ...args, id: uuid() }
-      dogs = dogs.concat(dog)
-      return dog
 
+      return Dog
     },
-    editStreet: (_root:any, args:any) => {
-      const dog = dogs.find(d => d.name === args.name)
-      if (!dog) {
-        return null
+    editStreet: async (_root:any, args:any) => {
+      const dog = await Dog.findOne({ name: args.name })
+      dog.street = args.street
+      try {
+        await dog.save()
+      } catch (error) {
+        throw new GraphQLError('Saving number failed', {
+          extensions: {
+            code: 'BAD_USER_INPUT',
+            invalidArgs: args.name,
+            error
+          }
+        })
       }
-  
-      const updatedDog = { ...dog, street: args.street }
-      dogs = dogs.map(d => d.name === args.name ? updatedDog : d)
-      return updatedDog
-    }   
+
+      return dog
+    }
+}
     
   }
-}
+
 
 const server = new ApolloServer({
   typeDefs,

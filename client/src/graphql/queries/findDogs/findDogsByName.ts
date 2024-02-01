@@ -6,7 +6,6 @@ const FIND_DOGS = gql`
       id
       name
       description
-      imageUrl
       likes
     }
   }

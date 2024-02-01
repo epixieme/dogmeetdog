@@ -1,12 +1,5 @@
-import { useEffect, useState } from "react";
 
-
-// import Carousel from "../components/Carousel";
 import { Button } from "@shared";
-import React from "react";
-
-// import useCarousel from "../hooks/useCarousel";
-
 
 export default function Home() {
 

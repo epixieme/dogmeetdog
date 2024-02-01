@@ -47,9 +47,10 @@ export default function Questions(initialAnswer = []) {
   };
 
   const handleLoginDetails=()=>{
-    
+
   }
   
+
   return (
     <div className="questionText">
       <Question

@@ -23,8 +23,9 @@
   "jsx": "react-jsx",
   "baseUrl": "./src",
   "paths": {
-    "@features": ["components/features"],
-    "@shared": ["components/shared"]
+    "@features": ["features"],
+    "@shared": ["shared"],
+    "@queries": ["graphql/queries"],
   },
 
   /* Linting */

@@ -5,7 +5,6 @@ const ALL_DOGS = gql`
     allDogs {
       name
       description
-      imageUrl
       likes
     }
   }

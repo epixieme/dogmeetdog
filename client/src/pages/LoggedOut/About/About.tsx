@@ -1,4 +1,4 @@
-import { Button } from '@/components/shared';
+import { Button } from '@shared';
 import backgroundImage from './assets/about-hero-image.jpg'
 
 export default function About() {

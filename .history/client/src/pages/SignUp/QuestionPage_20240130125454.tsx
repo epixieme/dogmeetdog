@@ -46,10 +46,6 @@ export default function Questions(initialAnswer = []) {
     });
   };
 
-  const handleLoginDetails=()=>{
-    
-  }
-  
   return (
     <div className="questionText">
       <Question
@@ -60,7 +56,7 @@ export default function Questions(initialAnswer = []) {
 
       <Button btnText={"<"} onClick={previousScreen} />
       <Button btnText={">"} onClick={nextScreen} />
-      {currentScreen === questionText.length -1 && <Button  btnText={"Login"} onClick={handleLoginDetails}/>}
+      {currentScreen === questionText.length -1 && <Button  btnText={"Login"} onClick={}/>}
     </div>
   );
 }

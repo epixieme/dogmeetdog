@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FIND_DOG_BY_NAME } from "../../../graphql/queries";
-import { DogInformationCard } from "..";
-import { Loader } from "../../shared";
+import { FIND_DOG_BY_NAME } from "@queries";
+import { DogInformationCard } from "@features";
+import { Loader } from "@shared";
 import { useQuery } from "@apollo/client";
 
 interface Dogs {
@@ -15,7 +15,6 @@ interface Dogs {
 
 export default function DogCardList({dogs}:any){
 
-    // console.log(dogs.name.includes('Wolfy'))
 const [name, setName] = useState<null|string>(null)
 const [nameToSearch, setNameToSearch] = useState<null|string>(null)
 

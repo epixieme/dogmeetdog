@@ -6,16 +6,22 @@ const DogSchema = new mongoose.Schema({
     required: true,
     minlength: 5
   },
-  age: {
-    type: String,
-    minlength: 5
-  },
   breed: {
     type: String,
     required: true,
     minlength: 5
   },
+  age: {
+    type: String,
+    minlength: 5
+  },
+
   personality: {
+    type: String,
+    required: true,
+    minlength: 3
+  },
+  address: {
     type: String,
     required: true,
     minlength: 3
