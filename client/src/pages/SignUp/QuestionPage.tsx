@@ -14,7 +14,7 @@ export default function Questions(initialAnswer = []) {
   const [answers, setAnswers] = useState<string[]>(
     [JSON.parse(getAnswers)] || initialAnswer
   );
-  const [loggedin, setLoggedIn] = useState<boolean>(false)
+  const [loggedin, setLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     window.localStorage.setItem("answers", JSON.stringify(answers));
@@ -42,35 +42,33 @@ export default function Questions(initialAnswer = []) {
   };
 
   const handleSubmit = (e: any) => {
+    const [name, breed, age, personality] = answers;
 
     e.preventDefault();
     addDog({
       variables: {
-        name: answers[0],
-        breed: answers[1],
-        age: answers[2],
-        personality: answers[3],
+        name: name,
+        breed: breed,
+        age: age,
+        personality: personality,
       },
     });
-    setLoggedIn(true)
-    localStorage.clear()
-    
+    setLoggedIn(true);
+    localStorage.clear();
   };
 
   return (
     <div className="questionText">
-   
-        <Question
-          questionText={questionText[currentScreen]}
-          onChange={(event) => handleAnswerChange(currentScreen, event)}
-          value={answers[currentScreen] || ""}
-          onSubmit = {handleSubmit}
-          questionLength={questionText.length}
-          answersLength={answers.length}
-          previousScreen={previousScreen}
-          nextScreen={nextScreen}
-        />
-     
+      <Question
+        questionText={questionText[currentScreen]}
+        onChange={(event) => handleAnswerChange(currentScreen, event)}
+        value={answers[currentScreen] || ""}
+        onSubmit={handleSubmit}
+        questionLength={questionText.length}
+        answersLength={answers.length}
+        previousScreen={previousScreen}
+        nextScreen={nextScreen}
+      />
     </div>
   );
 }
