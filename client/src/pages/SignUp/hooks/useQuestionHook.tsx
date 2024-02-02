@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const questionText =['whats your dogs name?', 'whats your dogs Breed?','whats your dogs age?', 'whats your dogs personality?','where do you live?' ]
+const questionText =['whats your dogs name?', 'whats your dogs Breed?','whats your dogs age?', 'whats your dogs personality?']
 const questionText2 =['Now Tell me about your owner(s)', 'names', 'hobbies' ]
 
 export default function useQuestionHook(){
