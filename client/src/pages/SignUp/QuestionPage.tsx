@@ -7,6 +7,7 @@ import ADD_DOG from "graphql/mutations/ADD_DOG";
 import "./signUp.css";
 
 export default function Questions(initialAnswer = []) {
+  const fieldType =['input', 'select', 'select', 'select']
   // post answers and create a graph query
   // animate inputs and text
   const [addDog] = useMutation(ADD_DOG);
@@ -30,6 +31,7 @@ export default function Questions(initialAnswer = []) {
     event: { target: { value: string } }
   ) => {
     setAnswers((prevAnswers) => {
+      
       // Create a new copy of the answers array
       const newAnswers = [...prevAnswers];
       // Set the value at the specified index
@@ -63,6 +65,7 @@ export default function Questions(initialAnswer = []) {
         questionText={questionText[currentScreen]}
         onChange={(event) => handleAnswerChange(currentScreen, event)}
         value={answers[currentScreen] || ""}
+        fieldType={fieldType[currentScreen]}
         onSubmit={handleSubmit}
         questionLength={questionText.length}
         answersLength={answers.length}

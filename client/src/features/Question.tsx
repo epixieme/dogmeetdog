@@ -9,7 +9,9 @@ interface Props {
   answersLength: number;
   previousScreen: () => void;
   nextScreen: () => void;
+  fieldType: any;
 }
+
 // how to display a new input field on next so it can be saved to local storage
 export default function Question({
   questionText,
@@ -20,19 +22,25 @@ export default function Question({
   answersLength,
   previousScreen,
   nextScreen,
+  fieldType,
 }: Props) {
   return (
     <form className="question1-container" onSubmit={onSubmit}>
       <label>{questionText}:</label>
-      {/* <input type="text" onChange ={onChange}></input> */}
-      <input type="text" onChange={onChange} value={value}></input>
+      {fieldType === "input" ? (
+        <input type="text" onChange={onChange} value={value}></input>
+      ) : (
+        <select>
+          <option value="test"></option>
+        </select>
+      )}
 
       <Button btnText={"<"} onClick={previousScreen} />
 
       {questionLength !== answersLength ? (
         <Button btnText={">"} onClick={nextScreen} />
       ) : (
-        <button type='submit'>test</button>
+        <button type="submit">test</button>
       )}
     </form>
   );
