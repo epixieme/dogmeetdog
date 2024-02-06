@@ -1,13 +1,20 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import useQuestionHook from "./hooks/useQuestionHook";
 import { Question } from "@features";
-import { Button } from "@shared";
 import ADD_DOG from "graphql/mutations/ADD_DOG";
 import "./signUp.css";
 
 export default function Questions(initialAnswer = []) {
-  const fieldType =['input', 'select', 'select', 'select']
+  
+  const fieldType = ["input", "select", "select", "select"];
+  const questionText = [
+    "whats your dogs name?",
+    "whats your dogs Breed?",
+    "whats your dogs age?",
+    "whats your dogs personality?",
+  ];
+  const { ageData, loading, error } = useQuery(DOG_AGES);
   // post answers and create a graph query
   // animate inputs and text
   const [addDog] = useMutation(ADD_DOG);
@@ -21,8 +28,8 @@ export default function Questions(initialAnswer = []) {
     window.localStorage.setItem("answers", JSON.stringify(answers));
   }, []);
 
-  const { questionText, currentScreen, nextScreen, previousScreen } =
-    useQuestionHook();
+  const { currentScreen, nextScreen, previousScreen } =
+    useQuestionHook(questionText);
 
   // change below to a hook
 
@@ -31,7 +38,6 @@ export default function Questions(initialAnswer = []) {
     event: { target: { value: string } }
   ) => {
     setAnswers((prevAnswers) => {
-      
       // Create a new copy of the answers array
       const newAnswers = [...prevAnswers];
       // Set the value at the specified index

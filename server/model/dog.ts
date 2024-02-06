@@ -1,24 +1,24 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose"
 
 const DogSchema = new mongoose.Schema({
   name: {
     type: String,
-  // required:true
-    // minlength: 5
+    required:true,
+    minlength: 1
   },
   breed: {
     type: String,
-   
+    required:true,
   
   },
   age: {
     type: String,
- 
+    required:true,
   },
 
   personality: {
     type: String,
-
+    required:true,
    
   }
 })

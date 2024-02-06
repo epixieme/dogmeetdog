@@ -24,19 +24,29 @@ export default function Question({
   nextScreen,
   fieldType,
 }: Props) {
+
+
+
   return (
+
+   
+     
     <form className="question1-container" onSubmit={onSubmit}>
       <label>{questionText}:</label>
       {fieldType === "input" ? (
         <input type="text" onChange={onChange} value={value}></input>
       ) : (
-        <select>
-          <option value="test"></option>
+        <select defaultValue={"Select"} onChange={onChange} >
+          { questionText?.includes('age') &&  ageData.map(age=><option>{age}</option>)}
+          {/* <option value="Select" disabled>Select a Breed:</option>
+          <option>Doberman</option>
+          <option>border</option>
+          <option>staf</option> */}
+
         </select>
       )}
 
       <Button btnText={"<"} onClick={previousScreen} />
-
       {questionLength !== answersLength ? (
         <Button btnText={">"} onClick={nextScreen} />
       ) : (
