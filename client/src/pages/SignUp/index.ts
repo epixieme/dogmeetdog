@@ -1,1 +1,1 @@
-export { default as useQuestionHook } from './hooks/useQuestionHook'
+export { default as useQuestionHook } from '../../features/SignUp/hooks/useQuestionHook'

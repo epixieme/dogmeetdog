@@ -10,6 +10,8 @@ interface Props {
   previousScreen: () => void;
   nextScreen: () => void;
   fieldType: any;
+  ageData:any
+
 }
 
 // how to display a new input field on next so it can be saved to local storage
@@ -23,9 +25,10 @@ export default function Question({
   previousScreen,
   nextScreen,
   fieldType,
+  ageData
 }: Props) {
 
-
+ 
 
   return (
 

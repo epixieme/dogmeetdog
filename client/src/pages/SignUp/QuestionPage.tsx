@@ -1,23 +1,29 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import useQuestionHook from "./hooks/useQuestionHook";
+import useQuestionHook from "../../features/SignUp/hooks/useQuestionHook";
 import { Question } from "@features";
 import ADD_DOG from "graphql/mutations/ADD_DOG";
-import "./signUp.css";
 
-export default function Questions(initialAnswer = []) {
-  
-  const fieldType = ["input", "select", "select", "select"];
+import "./signUp.css";
+import ALL_AGES from "graphql/queries/allAges/ALL_AGES";
+import { ErrorMessage, Loader } from "@shared";
+
+const fieldType = ["input", "select", "select", "select"];
   const questionText = [
     "whats your dogs name?",
     "whats your dogs Breed?",
     "whats your dogs age?",
     "whats your dogs personality?",
   ];
-  const { ageData, loading, error } = useQuery(DOG_AGES);
+  
+export default function Questions(initialAnswer = []) {
+  const { data, loading, error } = useQuery(ALL_AGES);
+  const [addDog] = useMutation(ADD_DOG);
+  
+
   // post answers and create a graph query
   // animate inputs and text
-  const [addDog] = useMutation(ADD_DOG);
+ 
   const getAnswers = window.localStorage.getItem("answers") as string;
   const [answers, setAnswers] = useState<string[]>(
     [JSON.parse(getAnswers)] || initialAnswer
@@ -65,6 +71,16 @@ export default function Questions(initialAnswer = []) {
     localStorage.clear();
   };
 
+
+
+  if (loading) {
+    return <Loader loading={"Loading"} />;
+  }
+
+  if (error) {
+    return <ErrorMessage error={error.message} />;
+  }
+
   return (
     <div className="questionText">
       <Question
@@ -76,8 +92,8 @@ export default function Questions(initialAnswer = []) {
         questionLength={questionText.length}
         answersLength={answers.length}
         previousScreen={previousScreen}
-        nextScreen={nextScreen}
-      />
+        nextScreen={nextScreen} 
+        ageData={data?.allAges.map((item: { age: number })=>item.age)} />
     </div>
   );
 }
