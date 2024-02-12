@@ -1,4 +1,10 @@
 import { Button } from "@shared";
+import {
+  ReactElement,
+  JSXElementConstructor,
+  ReactNode,
+  ReactPortal,
+} from "react";
 
 interface Props {
   questionText?: string;
@@ -10,8 +16,7 @@ interface Props {
   previousScreen: () => void;
   nextScreen: () => void;
   fieldType: any;
-  ageData:any
-
+  ageData: any;
 }
 
 // how to display a new input field on next so it can be saved to local storage
@@ -25,27 +30,31 @@ export default function Question({
   previousScreen,
   nextScreen,
   fieldType,
-  ageData
+  ageData,
 }: Props) {
-
- 
-
   return (
-
-   
-     
     <form className="question1-container" onSubmit={onSubmit}>
       <label>{questionText}:</label>
-      {fieldType === "input" ? (
-        <input type="text" onChange={onChange} value={value}></input>
+      {fieldType === "text" ||
+      fieldType === "email" ||
+      fieldType === "password" ? (
+        <input type={fieldType} onChange={onChange} value={value}></input>
       ) : (
-        <select defaultValue={"Select"} onChange={onChange} >
-          { questionText?.includes('age') &&  ageData.map(age=><option>{age}</option>)}
-          {/* <option value="Select" disabled>Select a Breed:</option>
-          <option>Doberman</option>
-          <option>border</option>
-          <option>staf</option> */}
-
+        <select defaultValue={"Select"} onChange={onChange}>
+          {questionText?.includes("age") &&
+            ageData.map(
+              (
+                age:
+                  | string
+                  | number
+                  | boolean
+                  | ReactElement<any, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | ReactPortal
+                  | null
+                  | undefined
+              ) => <option>{age}</option>
+            )}
         </select>
       )}
 

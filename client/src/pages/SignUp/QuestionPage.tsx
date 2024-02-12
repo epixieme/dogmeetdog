@@ -8,22 +8,35 @@ import "./signUp.css";
 import ALL_AGES from "graphql/queries/allAges/ALL_AGES";
 import { ErrorMessage, Loader } from "@shared";
 
-const fieldType = ["input", "select", "select", "select"];
-  const questionText = [
-    "whats your dogs name?",
-    "whats your dogs Breed?",
-    "whats your dogs age?",
-    "whats your dogs personality?",
-  ];
-  
+
+// add these arrays to mongodb
+const fieldType = [
+  "text",
+  "select",
+  "select",
+  "select",
+  "email",
+  "password",
+  "password",
+];
+
+const questionText = [
+  "whats your dogs name?",
+  "whats your dogs Breed?",
+  "whats your dogs age?",
+  "whats your dogs personality?",
+  "Enter your Email Address",
+  "Enter your Password",
+  "confirm your Password",
+];
+
 export default function Questions(initialAnswer = []) {
   const { data, loading, error } = useQuery(ALL_AGES);
   const [addDog] = useMutation(ADD_DOG);
-  
 
   // post answers and create a graph query
   // animate inputs and text
- 
+
   const getAnswers = window.localStorage.getItem("answers") as string;
   const [answers, setAnswers] = useState<string[]>(
     [JSON.parse(getAnswers)] || initialAnswer
@@ -56,7 +69,7 @@ export default function Questions(initialAnswer = []) {
   };
 
   const handleSubmit = (e: any) => {
-    const [name, breed, age, personality] = answers;
+    const [name, breed, age, personality, email, password, confirmPassword] = answers;
 
     e.preventDefault();
     addDog({
@@ -65,13 +78,14 @@ export default function Questions(initialAnswer = []) {
         breed: breed,
         age: age,
         personality: personality,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
       },
     });
     setLoggedIn(true);
     localStorage.clear();
   };
-
-
 
   if (loading) {
     return <Loader loading={"Loading"} />;
@@ -92,8 +106,9 @@ export default function Questions(initialAnswer = []) {
         questionLength={questionText.length}
         answersLength={answers.length}
         previousScreen={previousScreen}
-        nextScreen={nextScreen} 
-        ageData={data?.allAges.map((item: { age: number })=>item.age)} />
+        nextScreen={nextScreen}
+        ageData={data?.allAges.map((item: { age: number }) => item.age)}
+      />
     </div>
   );
 }
