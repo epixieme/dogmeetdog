@@ -11,8 +11,7 @@ interface Props {
   onChange?: (e: any) => void;
   value?: string;
   onSubmit: (e: any) => void;
-  questionLength: number;
-  answersLength: number;
+  answers: string[];
   previousScreen: () => void;
   nextScreen: () => void;
   fieldType: any;
@@ -25,8 +24,7 @@ export default function Question({
   onChange,
   value,
   onSubmit,
-  questionLength,
-  answersLength,
+  answers,
   previousScreen,
   nextScreen,
   fieldType,
@@ -59,7 +57,7 @@ export default function Question({
       )}
 
       <Button btnText={"<"} onClick={previousScreen} />
-      {questionLength !== answersLength ? (
+      {answers.some(item=>item == "") ? (
         <Button btnText={">"} onClick={nextScreen} />
       ) : (
         <button type="submit">test</button>

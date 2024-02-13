@@ -31,41 +31,46 @@ const questionText = [
 ];
 
 export default function Questions(initialAnswer = []) {
+  const { currentScreen, nextScreen, previousScreen } =
+  useQuestionHook(questionText);
+
   const { data, loading, error } = useQuery(ALL_AGES);
   const [addDog] = useMutation(ADD_DOG);
 
   // post answers and create a graph query
   // animate inputs and text
 
+  // save current screen index to local storage to handle refresh
+
   const getAnswers = window.localStorage.getItem("answers") as string;
+
   const [answers, setAnswers] = useState<string[]>(
-    [JSON.parse(getAnswers)] || initialAnswer
+    Array(questionText.length).fill("")
   );
-  const [loggedin, setLoggedIn] = useState<boolean>(false);
+
 
   useEffect(() => {
-    window.localStorage.setItem("answers", JSON.stringify(answers));
+    const storedAnswers = JSON.parse(localStorage.getItem("answers") as string);
+    if (storedAnswers) {
+      setAnswers(storedAnswers);
+    }
   }, []);
 
-  const { currentScreen, nextScreen, previousScreen } =
-    useQuestionHook(questionText);
+
+  // const [loggedin, setLoggedIn] = useState<boolean>(false);
+
 
   // change below to a hook
 
   const handleAnswerChange = (
     index: number,
-    event: { target: { value: string } }
+    value: string
   ) => {
-    setAnswers((prevAnswers) => {
-      // Create a new copy of the answers array
-      const newAnswers = [...prevAnswers];
-      // Set the value at the specified index
-      newAnswers[index] = event.target.value;
-      // Store the updated answers in local storage
-      localStorage.setItem("answers", JSON.stringify(newAnswers));
-      // Return the updated answers
-      return newAnswers;
-    });
+    const newAnswers = [...answers];
+    newAnswers[index] = value
+    setAnswers(newAnswers);
+    localStorage.setItem("answers", JSON.stringify(newAnswers));
+
   };
 
   const handleSubmit = (e: any) => {
@@ -83,7 +88,7 @@ export default function Questions(initialAnswer = []) {
         confirmPassword: confirmPassword,
       },
     });
-    setLoggedIn(true);
+    // setLoggedIn(true);
     localStorage.clear();
   };
 
@@ -99,12 +104,11 @@ export default function Questions(initialAnswer = []) {
     <div className="questionText">
       <Question
         questionText={questionText[currentScreen]}
-        onChange={(event) => handleAnswerChange(currentScreen, event)}
+        onChange={(event) => handleAnswerChange(currentScreen, event.target.value)}
         value={answers[currentScreen] || ""}
         fieldType={fieldType[currentScreen]}
         onSubmit={handleSubmit}
-        questionLength={questionText.length}
-        answersLength={answers.length}
+        answers={answers}
         previousScreen={previousScreen}
         nextScreen={nextScreen}
         ageData={data?.allAges.map((item: { age: number }) => item.age)}
