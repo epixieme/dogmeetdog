@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
 } from "react-router-dom";
 
@@ -15,24 +16,30 @@ import Dashboard from "../pages/LoggedIn/Dashboard";
 import Reviews from "../pages/LoggedIn/Reviews";
 import Login from "../pages/Login/Login";
 import QuestionPage from "../pages/SignUp/QuestionPage";
-
-
+import AuthRequired from "features/auth/components/AuthRequired";
+import { useState } from "react";
 
 //nested routes
+const [authenticated, setAuthenticated] = useState(true);
+
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Main_Layout />}>
+    <Route
+      path="/"
+      element={authenticated ? <Login_Layout /> : <Main_Layout />}
+    >
       <Route index element={<Home />} />
-      <Route path="dogs" element={<DisplayDogs /> } />
+      <Route path="dogs" element={<DisplayDogs />} />
       <Route path="about" element={<About />} />
       <Route path="questions" element={<QuestionPage />} />
-      <Route path="login"element={<Login />}/>
-      {/* <Route path="dogs/:id" element={<DogDetails />} /> */}
-      <Route path="meetdogs" element={<Login_Layout />}>
-        <Route index element={<Dashboard />} />
+      <Route path="login" element={<Login setAuthenticated={setAuthenticated}/>} />
+      <Route element={<AuthRequired authenticated={authenticated} />}>
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="reviews" element={<Reviews />} />
+        {/* </Route> */}
       </Route>
       <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<Navigate to="/login" />} />
     </Route>
   )
 );

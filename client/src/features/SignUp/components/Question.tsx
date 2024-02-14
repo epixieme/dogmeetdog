@@ -57,10 +57,11 @@ export default function Question({
       )}
 
       <Button btnText={"<"} onClick={previousScreen} />
+     
       {answers.some(item=>item == "") ? (
         <Button btnText={">"} onClick={nextScreen} />
       ) : (
-        <button type="submit">test</button>
+        <button type="submit">Next</button>
       )}
     </form>
   );

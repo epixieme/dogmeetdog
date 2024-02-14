@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./dashboardHeader.css";
+
 
 export default function DashboardHeader() {
   const activeStyles = {
@@ -8,10 +8,10 @@ export default function DashboardHeader() {
   };
 
   return (
-    <header className="nav">
-      <nav className="nav-links">
-        <Link to="/login">Dashboard</Link>
-        <Link to="/login/reviews">Reviews</Link>
+    <header className="nav-menu-container">
+      <nav className={ "nav-links-container"}>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/reviews">Reviews</Link>
       </nav>
     </header>
   );

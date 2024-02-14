@@ -8,7 +8,6 @@ import "./signUp.css";
 import ALL_AGES from "graphql/queries/allAges/ALL_AGES";
 import { ErrorMessage, Loader } from "@shared";
 
-
 // add these arrays to mongodb
 const fieldType = [
   "text",
@@ -20,6 +19,8 @@ const fieldType = [
   "password",
 ];
 
+// need to chnage this so email and password are not stored to local storage
+
 const questionText = [
   "whats your dogs name?",
   "whats your dogs Breed?",
@@ -30,9 +31,11 @@ const questionText = [
   "confirm your Password",
 ];
 
-export default function Questions(initialAnswer = []) {
+export default function Questions(
+  initialAnswer = []
+) {
   const { currentScreen, nextScreen, previousScreen } =
-  useQuestionHook(questionText);
+    useQuestionHook(questionText);
 
   const { data, loading, error } = useQuery(ALL_AGES);
   const [addDog] = useMutation(ADD_DOG);
@@ -42,50 +45,49 @@ export default function Questions(initialAnswer = []) {
 
   // save current screen index to local storage to handle refresh
 
-  const getAnswers = window.localStorage.getItem("answers") as string;
-
   const [answers, setAnswers] = useState<string[]>(
-    Array(questionText.length).fill("")
+    Array(questionText.length).fill("") || initialAnswer
   );
 
+  // The useEffect hook is used here to perform side effects in functional components. 
+  //In this case, the effect is triggered when the component mounts. 
+  //It retrieves any previously stored answers from the local storage. 
+  //If there are stored answers, it updates the component state (answers) to reflect the stored data. 
+  //This ensures that if the user refreshes the page or navigates away and returns, their previous answers are restored.
 
   useEffect(() => {
     const storedAnswers = JSON.parse(localStorage.getItem("answers") as string);
     if (storedAnswers) {
+
+      // SET TO STATE
       setAnswers(storedAnswers);
     }
   }, []);
 
-
   // const [loggedin, setLoggedIn] = useState<boolean>(false);
-
 
   // change below to a hook
 
-  const handleAnswerChange = (
-    index: number,
-    value: string
-  ) => {
+  const handleAnswerChange = (index: number, value: string) => {
     const newAnswers = [...answers];
-    newAnswers[index] = value
+    newAnswers[index] = value;
     setAnswers(newAnswers);
     localStorage.setItem("answers", JSON.stringify(newAnswers));
-
   };
 
   const handleSubmit = (e: any) => {
-    const [name, breed, age, personality, email, password, confirmPassword] = answers;
-
+    const [name, breed, age, personality, email, password, confirmPassword] =
+      answers;
     e.preventDefault();
     addDog({
       variables: {
-        name: name,
-        breed: breed,
-        age: age,
-        personality: personality,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword,
+        name,
+        breed,
+        age,
+        personality,
+        email,
+        password,
+        confirmPassword,
       },
     });
     // setLoggedIn(true);
@@ -104,7 +106,9 @@ export default function Questions(initialAnswer = []) {
     <div className="questionText">
       <Question
         questionText={questionText[currentScreen]}
-        onChange={(event) => handleAnswerChange(currentScreen, event.target.value)}
+        onChange={(event) =>
+          handleAnswerChange(currentScreen, event.target.value)
+        }
         value={answers[currentScreen] || ""}
         fieldType={fieldType[currentScreen]}
         onSubmit={handleSubmit}

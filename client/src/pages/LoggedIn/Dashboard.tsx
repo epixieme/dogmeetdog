@@ -28,29 +28,29 @@ export default function Dashboard({}: any) {
     return <ErrorMessage error={error.message} />;
   }
 
-  const dogElements = data.allDogs.map((dog: Dog) => (
-    <div key={dog.id} className="dog-card">
-      {/* <Link to={`/dogs/${dog.id}`}> */}
-      <img src={dog.imageUrl} alt={dog.name} />
-      <div className="dog-info">
-        <div>{dog.description}</div>
-        <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
-      </div>
-      <i className={`dog-likes ${dog.likes}`}>{dog.likes}</i>
-      {/* </Link> */}
-    </div>
-  ));
+  // const dogElements = data.allDogs.map((dog: Dog) => (
+  //   <div key={dog.id} className="dog-card">
+  //     {/* <Link to={`/dogs/${dog.id}`}> */}
+  //     <img src={dog.imageUrl} alt={dog.name} />
+  //     <div className="dog-info">
+  //       <div>{dog.description}</div>
+  //       <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
+  //     </div>
+  //     <i className={`dog-likes ${dog.likes}`}>{dog.likes}</i>
+  //     {/* </Link> */}
+  //   </div>
+  // ));
 
   const result = useQuery(FIND_DOG_BY_NAME, {
     variables: { nameToSearch },
     skip: !nameToSearch,
   });
 
-  if (nameToSearch && result.data) {
-    return (
-      <Dog dog={result.data.findDog} onClose={() => setNameToSearch(null)} />
-    );
-  }
+  // if (nameToSearch && result.data) {
+  //   return (
+  //     <Dog dog={result.data.findDog} onClose={() => setNameToSearch(null)} />
+  //   );
+  // }
   return (
     <div className="dog-card">
       {/* <h2>Persons</h2>
@@ -62,6 +62,7 @@ export default function Dashboard({}: any) {
           </button>
         </div>
       ))} */}
+      <h1>hello</h1>
     </div>
   );
 }

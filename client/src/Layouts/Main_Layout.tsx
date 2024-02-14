@@ -6,7 +6,7 @@ export default function Main_Layout() {
   return (
     <>
       <Header />
-      <main className="">
+      <main className="layout-wrapper">
         <Outlet />
       </main>
       <Footer />
