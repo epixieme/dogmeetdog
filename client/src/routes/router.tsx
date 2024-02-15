@@ -20,7 +20,7 @@ import AuthRequired from "features/auth/components/AuthRequired";
 import { useState } from "react";
 
 //nested routes
-const [authenticated, setAuthenticated] = useState(true);
+const authenticated = true;
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,8 +32,8 @@ const router = createBrowserRouter(
       <Route path="dogs" element={<DisplayDogs />} />
       <Route path="about" element={<About />} />
       <Route path="questions" element={<QuestionPage />} />
-      <Route path="login" element={<Login setAuthenticated={setAuthenticated}/>} />
-      <Route element={<AuthRequired authenticated={authenticated} />}>
+      <Route path="login" element={<Login/>} />
+      <Route element={<AuthRequired/>}>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="reviews" element={<Reviews />} />
         {/* </Route> */}
