@@ -49,8 +49,6 @@ const typeDefs = `
     username: String!
   }
 
-
-
   type Mutation {
     addDog(
       name: String!

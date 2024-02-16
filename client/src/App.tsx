@@ -1,5 +1,4 @@
 import { RouterProvider } from "react-router-dom";
-import router from "./routes/router";
 import { useCookies } from "react-cookie";
 import { setContext } from "@apollo/client/link/context";
 
@@ -10,7 +9,11 @@ import {
   createHttpLink,
 } from "@apollo/client";
 
+import useRouter from "./routes/useRouter";
+
 function App() {
+  const router = useRouter();
+
   const httpLink = createHttpLink({
     uri: "http://localhost:4000/graphql",
   });
@@ -33,9 +36,11 @@ function App() {
   });
 
   return (
+   
     <ApolloProvider client={client}>
       <RouterProvider router={router} />
     </ApolloProvider>
+  
   );
 }
 

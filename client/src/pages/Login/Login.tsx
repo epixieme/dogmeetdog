@@ -1,41 +1,56 @@
 import React from "react"
-import { useNavigate } from "react-router-dom"
-
+import { useDispatch } from 'react-redux';
+import { login } from "./state/authSlice";
 export default function Login() {
+    const dispatch = useDispatch();
     const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
 
-    function handleSubmit(e: { preventDefault: () => void }) {
-        e.preventDefault()
-        console.log(loginFormData)
-    }
 
-    function handleChange(e: { target: { name: any; value: any } }) {
-        const { name, value } = e.target
-        setLoginFormData(prev => ({
-            ...prev,
-            [name]: value
-        }))
-    }
+function handleEmailChange(event){
+    event.preventDefault();
+    const newLoginFormData = {...loginFormData}
+    newLoginFormData.email = event?.target.value
+    setLoginFormData(newLoginFormData)
+
+}
+
+function handlePasswordChange(event){
+
+    const newLoginFormData = {...loginFormData}
+
+    newLoginFormData.password = event?.target.value
+
+    setLoginFormData(newLoginFormData)
+
+}
+
+function handleLogin(){
+    // user data here 
+
+      // if ( loginFormData === email and password in db)
+    // then dispatch login
+    dispatch(login({username: 'user123', email: 'user@example.com'}));
+}
 
     return (
         <div className="login-container">
             <h1>Sign in to your account</h1>
-            <form onSubmit={handleSubmit} className="login-form">
+            <form onSubmit={handleLogin} className="login-form">
                 <input
                     name="email"
-                    onChange={handleChange}
+                    onChange={handleEmailChange}
                     type="email"
                     placeholder="Email address"
                     value={loginFormData.email}
                 />
                 <input
                     name="password"
-                    onChange={handleChange}
+                    onChange={handlePasswordChange}
                     type="password"
                     placeholder="Password"
                     value={loginFormData.password}
                 />
-                <button>Log in</button>
+                <button type='submit'>Log in</button>
             </form>
         </div>
     )
