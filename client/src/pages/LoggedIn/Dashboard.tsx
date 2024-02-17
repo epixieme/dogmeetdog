@@ -15,9 +15,10 @@ interface Dog {
 }
 
 export default function Dashboard({}: any) {
+  const { data, loading, error } = useQuery(ALL_DOGS);
   const [nameToSearch, setNameToSearch] = useState(null);
 
-  const { data, loading, error } = useQuery(ALL_DOGS);
+
 
   if (loading) {
     console.log("loading");
@@ -41,10 +42,10 @@ export default function Dashboard({}: any) {
   //   </div>
   // ));
 
-  const result = useQuery(FIND_DOG_BY_NAME, {
-    variables: { nameToSearch },
-    skip: !nameToSearch,
-  });
+  // const result = useQuery(FIND_DOG_BY_NAME, {
+  //   variables: { nameToSearch },
+  //   skip: !nameToSearch,
+  // });
 
   // if (nameToSearch && result.data) {
   //   return (

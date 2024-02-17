@@ -18,6 +18,7 @@ import Login from "../pages/Login/Login";
 import QuestionPage from "../pages/SignUp/QuestionPage";
 import AuthRequired from "features/auth/components/AuthRequired";
 import { useSelector } from "react-redux";
+import AccountModal from "pages/LoggedIn/AccountModal";
 
 //nested routes
 
@@ -38,6 +39,7 @@ export default function useRouter() {
         <Route element={<AuthRequired />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="reviews" element={<Reviews />} />
+          <Route path="myaccount" element={<AccountModal />} />
           {/* </Route> */}
         </Route>
         <Route path="*" element={<NotFound />} />

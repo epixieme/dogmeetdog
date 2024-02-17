@@ -12,6 +12,8 @@ export default function DashboardHeader() {
       <nav className={ "nav-links-container"}>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/reviews">Reviews</Link>
+        <Link to="/myaccount">My Account</Link>
+        {/* // pop up modal and then logout and users details */}
       </nav>
     </header>
   );
