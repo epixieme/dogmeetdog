@@ -11,7 +11,6 @@ import Home from "../pages/LoggedOut/Home";
 import About from "../pages/LoggedOut/About/About";
 import DisplayDogs from "../pages/LoggedOut/Dogs/DisplayDogs";
 import NotFound from "../pages/Shared/NotFound";
-// import DogDetails from "../pages/LoggedOut/Dogs/DogDetails";
 import Dashboard from "../pages/LoggedIn/Dashboard";
 import Reviews from "../pages/LoggedIn/Reviews";
 import Login from "../pages/Login/Login";
@@ -40,7 +39,6 @@ export default function useRouter() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="myaccount" element={<AccountModal />} />
-          {/* </Route> */}
         </Route>
         <Route path="*" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/login" />} />

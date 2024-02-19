@@ -1,15 +1,33 @@
+import { useDispatch } from "react-redux";
+import { logout } from "pages/Login/state/authSlice";
+import { useState } from "react";
 
-import { useDispatch } from 'react-redux';
-import { logout } from 'pages/Login/state/authSlice';
-import { useState } from 'react';
+export default function AccountModal() {
+  const dispatch = useDispatch();
 
-export default function AccountModal(){
-    const dispatch = useDispatch();
-    const [showModal, setShowModal]= useState(false)
-return (
-   <div className='modal'>
-    <button onClick={()=>dispatch(logout())}>logout</button>
-   </div>
+  return (
 
-)
+    <>
+ <div className="modal">
+    {/* <Profile></Profile> */}
+    {/* <Dogs></Dogs> */}
+    {/* Matches */}
+      {/* <favourites></favourites> */}
+      {/* <Messages/> */}
+      {/* <Events></Events>
+      <FAQs></FAQs> */}
+      <h3>Edit profile</h3>
+      <h3>Dashboard</h3>
+      <h3>Notification</h3>
+      <h3>Messages</h3>
+      <h3>Matches</h3>
+      <h3>settings</h3>
+      <h3>help</h3>
+      <button onClick={() => dispatch(logout())}>logout</button>
+
+      {/* https://dribbble.com/shots/18221203-Cherish-Web-App-Dashboard-Design */}
+
+    </div>
+    </>
+  );
 }

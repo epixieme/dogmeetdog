@@ -12,15 +12,26 @@ const { v1: uuid } = require("uuid");
 const { GraphQLError } = require("graphql");
 const Dog = require("../model/Dog");
 const Age = require("../model/Age");
+const User = require("../model/User")
 mongoose.set("strictQuery", false);
 
 const SECRET_KEY = process.env.SECRET_KEY as unknown as string;
 //mock user data - this will be the data on pose
-const users = [
-  { id: "1", username: "user1", password: "password1" },
-  { id: "2", username: "user2", password: "password2" },
-];
+// const users = [
+//   { id: "1", username: "user1@user.com", password: "password1" },
+//   { id: "2", username: "user2", password: "password2" },
+// ];
 const typeDefs = `
+
+type User {
+  username: String!
+  friends: [Dog!]!
+  id: ID!
+}
+
+type Token {
+  value: String!
+}
 
   type Dog {
     id: ID
@@ -42,6 +53,7 @@ const typeDefs = `
     currentUser: User
     allDogs: [Dog!]!
     allAges: [Age!]!
+    me: User
   }
 
   type User {
@@ -50,6 +62,9 @@ const typeDefs = `
   }
 
   type Mutation {
+    addAsFriend(
+      name: String!
+    ): User
     addDog(
       name: String!
       breed:String!
@@ -60,15 +75,23 @@ const typeDefs = `
     addAge(
       age: Int! 
     ): Age
+  
+      createUser(
+        username: String!
+      ): User
 
-    login(
-      username: String!, 
-      password: String!
-      ): String
+      login(
+        username: String!
+        password: String!
+      ): Token
   }
 `;
-
+interface JwtPayloadType {
+  id: string
+  error:any
+}
 const resolvers = {
+  
   Query: {
     allDogs: async (_root: any, _args: any) => Dog.find({}),
     allAges: async (_root: any, _args: any) => Age.find({}),
@@ -83,56 +106,134 @@ const resolvers = {
     },
   },
   Mutation: {
-    addDog: async (_root: any, args: any) => {
-      const dog = new Dog({ ...args });
-      return dog.save();
+    addAsFriend: async (_root:any, args:any, { currentUser }:any) => {
+      const isFriend = (dog:any) => 
+        currentUser.friends.map((f: { _id: { toString: () => any; }; }) => f._id.toString()).includes(dog._id.toString())
+  
+      if (!currentUser) {
+        throw new GraphQLError('wrong credentials', {
+          extensions: { code: 'BAD_USER_INPUT' }
+        }) 
+      }
+  
+      const dog = await Dog.findOne({ name: args.name })
+      if ( !isFriend(dog) ) {
+        currentUser.friends = currentUser.friends.concat(dog)
+      }
+  
+      await currentUser.save()
+  
+      return currentUser
     },
+    addDog: async (_root:any, args:any, context:any) => {
+      const dog = new Dog({ ...args })
+      const currentUser = context.currentUser
+
+      if (!currentUser) {
+        throw new GraphQLError('not authenticated', {
+          extensions: {
+            code: 'BAD_USER_INPUT',
+          }
+        })
+      }
+
+      try {
+        await dog.save()
+        currentUser.friends = currentUser.friends.concat(dog)
+        await currentUser.save()
+      } catch (error) {
+        throw new GraphQLError('Saving user failed', {
+          extensions: {
+            code: 'BAD_USER_INPUT',
+            invalidArgs: args.name,
+            error
+          }
+        })
+      }
+      
+      return dog
+    },
+    
     addAge: async (_root: any, args: any) => {
       const age = new Age({ ...args });
       return age.save();
     },
-    login: (
-      parent: any,
-      { username, password }: { username: string; password: string },
-      context: any
-    ) => {
-      // Validate user credentials (you should use a proper authentication mechanism)
-      const user = users.find(
-        (user) => user.username === username && user.password === password
-      );
 
-      if (user) {
-        // Generate a JWT token
-        const token = jwt.sign({ userId: user.id }, SECRET_KEY, {
-          expiresIn: "1h",
-        });
-
-        // Set token in response header
-        context.res.cookie("token", token, { httpOnly: true });
-        return token;
-      } else {
-        throw new Error("Invalid username or password");
-      }
+    createUser: async (_root:any, args:any) => {
+      const user = new User({ username: args.username })
+      return user.save()
+        .catch((error: any) => {
+          throw new GraphQLError('Creating the user failed', {
+            extensions: {
+              code: 'BAD_USER_INPUT',
+              invalidArgs: args.username,
+              error
+            }
+          })
+        })
     },
+    login: async (_root:any, args:any) => {
+      const user = await User.findOne({ username: args.username })
+  
+      if ( !user || args.password !== 'secret' ) {
+        throw new GraphQLError('wrong credentials', {
+          extensions: {
+            code: 'BAD_USER_INPUT'
+          }
+        })        
+      }
+  
+      const userForToken = {
+        username: user.username,
+        id: user._id,
+      }
+  
+      return { value: jwt.sign(userForToken, SECRET_KEY) }
+    },
+    // login: (
+    //   parent: any,
+    //   { username, password }: { username: string; password: string },
+    //   context: any
+    // ) => {
+    //   // Validate user credentials (you should use a proper authentication mechanism)
+    //   const user = users.find(
+    //     (user) => user.username === username && user.password === password
+    //   );
+
+    //   if (user) {
+    //     // Generate a JWT token
+    //     const token = jwt.sign({ userId: user.id }, SECRET_KEY, {
+    //       expiresIn: "1h",
+    //     });
+
+    //     // Set token in response header
+    //     context.res.cookie("token", token, { httpOnly: true });
+    //     return token;
+    //   } else {
+    //     throw new Error("Invalid username or password");
+    //   }
+    // },
+
+
   },
 };
+
+
+
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req, res }: any) => {
-    // Get token from request cookies
-    const token = req.cookies.token || "";
-
-    try {
-      // Verify token
-      const decoded: any = jwt.verify(token, SECRET_KEY);
-      // Attach user data to the context
-      const user = users.find((user) => user.id === decoded.userId);
-      return { user, req, res };
-    } catch (error) {
-      // Token verification failed, user is not authenticated
-      return { req, res };
+  context: async ({ req, res}:any) => {
+    const auth = req ? req.headers.authorization : null
+   
+    if (auth && auth.startsWith('Bearer ')) {
+      const decodedToken = jwt.verify(
+        auth.substring(7), SECRET_KEY
+      ) as JwtPayloadType
+      const currentUser = await User
+        .findById(decodedToken.id).populate('friends')
+      return { currentUser }
     }
   },
 });
