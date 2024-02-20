@@ -53,7 +53,6 @@ type Token {
     currentUser: User
     allDogs: [Dog!]!
     allAges: [Age!]!
-    me: User
   }
 
   type User {
@@ -78,6 +77,8 @@ type Token {
   
       createUser(
         username: String!
+        password: String!
+        
       ): User
 
       login(
@@ -96,14 +97,9 @@ const resolvers = {
     allDogs: async (_root: any, _args: any) => Dog.find({}),
     allAges: async (_root: any, _args: any) => Age.find({}),
     hello: () => "Hello world!",
-    currentUser: (parent: any, args: any, context: any) => {
-      // Check if user is authenticated
-      if (context.user) {
-        return context.user;
-      } else {
-        return null;
-      }
-    },
+    currentUser: (_root:any, args:any, context:any) => {
+      return context.currentUser
+    }
   },
   Mutation: {
     addAsFriend: async (_root:any, args:any, { currentUser }:any) => {
@@ -160,7 +156,7 @@ const resolvers = {
     },
 
     createUser: async (_root:any, args:any) => {
-      const user = new User({ username: args.username })
+      const user = new User({ username: args.username, password:args.password })
       return user.save()
         .catch((error: any) => {
           throw new GraphQLError('Creating the user failed', {
@@ -190,6 +186,7 @@ const resolvers = {
   
       return { value: jwt.sign(userForToken, SECRET_KEY) }
     },
+   
     // login: (
     //   parent: any,
     //   { username, password }: { username: string; password: string },
