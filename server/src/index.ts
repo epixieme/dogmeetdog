@@ -81,7 +81,7 @@ type Token {
         
       ): User
 
-      login(
+      loginUser(
         username: String!
         password: String!
       ): Token
@@ -168,10 +168,10 @@ const resolvers = {
           })
         })
     },
-    login: async (_root:any, args:any) => {
+    loginUser: async (_root:any, args:any) => {
       const user = await User.findOne({ username: args.username })
   
-      if ( !user || args.password !== 'secret' ) {
+      if ( !user || args.password !== 'secret') {
         throw new GraphQLError('wrong credentials', {
           extensions: {
             code: 'BAD_USER_INPUT'
