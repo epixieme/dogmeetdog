@@ -49,14 +49,14 @@ useEffect(() => {
     }
     }
 
-  function handleEmailChange(event) {
+  function handleEmailChange(event:{ target: { value: string; }; }) {
     event.preventDefault();
     const newLoginFormData = { ...loginFormData };
     newLoginFormData.email = event?.target.value;
     setLoginFormData(newLoginFormData);
   }
 
-  function handlePasswordChange(event) {
+  function handlePasswordChange(event: { target: { value: string; }; }) {
     const newLoginFormData = { ...loginFormData };
     newLoginFormData.password = event?.target.value;
     setLoginFormData(newLoginFormData);
