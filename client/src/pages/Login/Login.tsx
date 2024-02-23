@@ -36,8 +36,10 @@ useEffect(() => {
     }
   }, [result.data])
 
-  async function handleLogin(e) {
-    e.preventDefault()
+  async function handleLogin(event:{
+    preventDefault(): unknown; target: { value: string; }; 
+}) {
+    event.preventDefault()
     const {email, password} = loginFormData
 
     try {
@@ -49,7 +51,9 @@ useEffect(() => {
     }
     }
 
-  function handleEmailChange(event:{ target: { value: string; }; }) {
+  function handleEmailChange(event:{
+    preventDefault(): unknown; target: { value: string; }; 
+}) {
     event.preventDefault();
     const newLoginFormData = { ...loginFormData };
     newLoginFormData.email = event?.target.value;
