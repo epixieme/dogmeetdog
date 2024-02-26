@@ -18,11 +18,12 @@ import QuestionPage from "../pages/SignUp/QuestionPage";
 import AuthRequired from "features/auth/components/AuthRequired";
 import { useSelector } from "react-redux";
 import AccountModal from "pages/LoggedIn/AccountModal";
+import { RootState } from "store/store";
 
 //nested routes
 
 export default function useRouter() {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state:RootState) => state.auth.isAuthenticated);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -36,7 +37,7 @@ export default function useRouter() {
         <Route path="questions" element={<QuestionPage />} />
         <Route path="login" element={<Login />} />
         <Route element={<AuthRequired />}>
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} isAuthenticated={isAuthenticated}/>
           <Route path="reviews" element={<Reviews />} />
           <Route path="myaccount" element={<AccountModal />} />
         </Route>
