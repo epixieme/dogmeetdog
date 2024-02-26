@@ -1,5 +1,4 @@
 import { RouterProvider } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import { setContext } from "@apollo/client/link/context";
 
 import {
@@ -18,14 +17,12 @@ function App() {
     uri: "http://localhost:4000/graphql",
   });
 
-  const [cookies] = useCookies(["token"]);
-
   const authLink = setContext((_, { headers }) => {
-    const token = cookies.token || "";
+    const token = localStorage.getItem("dogUser-user-token");
     return {
       headers: {
         ...headers,
-        authorization: token ? `Bearer ${token}` : "",
+        authorization: token ? `Bearer ${token}` : null,
       },
     };
   });
@@ -36,11 +33,9 @@ function App() {
   });
 
   return (
-   
     <ApolloProvider client={client}>
       <RouterProvider router={router} />
     </ApolloProvider>
-  
   );
 }
 

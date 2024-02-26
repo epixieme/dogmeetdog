@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import { Outlet, Navigate } from "react-router-dom"
+import { Outlet, Navigate } from "react-router-dom";
+import { RootState } from "store/store";
 
 export default function AuthRequired() {
-    
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-   
-    if (!isAuthenticated) {
-        return <Navigate to="/login" />
-    }
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
-    return <Outlet />
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  return <Outlet />;
 }

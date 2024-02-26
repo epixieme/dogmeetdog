@@ -24,7 +24,7 @@ const SECRET_KEY = process.env.SECRET_KEY as unknown as string;
 const typeDefs = `
 
 type User {
-  username: String!
+  email: String!
   friends: [Dog!]!
   id: ID!
 }
@@ -57,7 +57,7 @@ type Token {
 
   type User {
     id: ID!
-    username: String!
+    email: String!
   }
 
   type Mutation {
@@ -76,13 +76,13 @@ type Token {
     ): Age
   
       createUser(
-        username: String!
+       email: String!
         password: String!
         
       ): User
 
       loginUser(
-        username: String!
+        email: String!
         password: String!
       ): Token
   }
@@ -156,20 +156,20 @@ const resolvers = {
     },
 
     createUser: async (_root:any, args:any) => {
-      const user = new User({ username: args.username, password:args.password })
+      const user = new User({ email: args.email, password:args.password })
       return user.save()
         .catch((error: any) => {
           throw new GraphQLError('Creating the user failed', {
             extensions: {
               code: 'BAD_USER_INPUT',
-              invalidArgs: args.username,
+              invalidArgs: args.email,
               error
             }
           })
         })
     },
     loginUser: async (_root:any, args:any) => {
-      const user = await User.findOne({ username: args.username })
+      const user = await User.findOne({ email: args.email })
   
       if ( !user || args.password !== 'secret') {
         throw new GraphQLError('wrong credentials', {
@@ -180,7 +180,7 @@ const resolvers = {
       }
   
       const userForToken = {
-        username: user.username,
+        email: user.email,
         id: user._id,
       }
   
