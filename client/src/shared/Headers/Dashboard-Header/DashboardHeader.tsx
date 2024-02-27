@@ -2,6 +2,7 @@ import { Button } from "@shared";
 import AccountModal from "pages/LoggedIn/AccountModal";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import './dashboardHeader.css'
 
 
 export default function DashboardHeader() {

@@ -1,7 +1,0 @@
-{
-  "references": [{
-    "path": "./client/src"
-}, {
-    "path": "./server/src"
-}]
-}

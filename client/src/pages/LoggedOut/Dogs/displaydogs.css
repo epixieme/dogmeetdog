@@ -1,0 +1,22 @@
+.dogs-container{
+    background-color: #2C2C2C;
+    color:white
+  }
+  .dog-list-container {
+    padding-inline: 23px
+  }
+  
+  .dog-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 34px;
+    padding: 20px;
+  
+  }
+  
+  .dog-list-container button {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  

@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 // @ts-ignore
 import useWindowWidth  from '../../../hooks/useWindowWidth'
 
+import './header.css'
+
 export default function Header() {
   const activeStyles = {
     textDecoration: "underline",

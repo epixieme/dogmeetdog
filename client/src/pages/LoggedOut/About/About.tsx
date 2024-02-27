@@ -1,6 +1,6 @@
 import { Button } from '@shared';
 import backgroundImage from './assets/about-hero-image.jpg'
-
+import './about.css'
 export default function About() {
   return (
     <section className="about-container">

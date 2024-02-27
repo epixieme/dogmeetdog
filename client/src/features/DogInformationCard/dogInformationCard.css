@@ -1,0 +1,41 @@
+.dog-card {
+    margin-bottom: 30px
+  }
+  
+  .dog-card a {
+    color:white;
+    text-decoration: none;
+  }
+  
+  .dog-card img {
+    max-width: 100%;
+    border-radius: 5px;
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+  }
+
+  .dog-likes {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    padding: 6px 26px;
+    font-style: normal;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    background-color: #115E59;
+    color: white
+  }
+  
+  .dog-likes:hover {
+    color: #FFEAD0;
+  }
+  
+  .dog-likes:focus {
+    outline: none;
+  }
+  
+  
+  
+  

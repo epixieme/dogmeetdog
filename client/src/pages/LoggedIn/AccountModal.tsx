@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { logout } from "pages/Login/state/authSlice";
+import { logout } from "features/auth/state/authSlice";
 import { useState } from "react";
 
 export default function AccountModal() {

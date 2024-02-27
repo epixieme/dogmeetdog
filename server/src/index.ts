@@ -1,14 +1,11 @@
 const { ApolloServer, gql } = require("apollo-server-express");
-const { startStandaloneServer } = require("@apollo/server/standalone");
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
-// let mongoose = require('mongoose')
 import mongoose from "mongoose";
 const express = require("express");
 require("dotenv").config();
 require("./config");
-
-const { v1: uuid } = require("uuid");
+const bcrypt = require('bcrypt');
 const { GraphQLError } = require("graphql");
 const Dog = require("../model/Dog");
 const Age = require("../model/Age");
@@ -16,11 +13,7 @@ const User = require("../model/User")
 mongoose.set("strictQuery", false);
 
 const SECRET_KEY = process.env.SECRET_KEY as unknown as string;
-//mock user data - this will be the data on pose
-// const users = [
-//   { id: "1", username: "user1@user.com", password: "password1" },
-//   { id: "2", username: "user2", password: "password2" },
-// ];
+
 const typeDefs = `
 
 type User {
@@ -156,8 +149,10 @@ const resolvers = {
     },
 
     createUser: async (_root:any, args:any) => {
-      const user = new User({ email: args.email, password:args.password })
-      return user.save()
+      const hashedPassword = await bcrypt.hash(args.password, 10);
+      const user = new User({ email: args.email, password:hashedPassword})
+      await user.save()
+      return user
         .catch((error: any) => {
           throw new GraphQLError('Creating the user failed', {
             extensions: {
@@ -170,7 +165,9 @@ const resolvers = {
     },
     loginUser: async (_root:any, args:any) => {
       const user = await User.findOne({ email: args.email })
-  
+        console.log(user)
+
+  // if not user or user token
       if ( !user || args.password !== 'secret') {
         throw new GraphQLError('wrong credentials', {
           extensions: {
