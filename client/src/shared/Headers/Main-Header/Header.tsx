@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-// @ts-ignore
-import useWindowWidth  from '../../../hooks/useWindowWidth'
 
-import './header.css'
+import { useWindowWidth } from "hooks";
+
+import "./header.css";
 
 export default function Header() {
   const activeStyles = {
@@ -14,7 +14,7 @@ export default function Header() {
     color: "white",
   };
 
-  const screenWidth = useWindowWidth()
+  const screenWidth = useWindowWidth();
 
   return (
     <header className="nav-menu-container">
@@ -22,12 +22,13 @@ export default function Header() {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
+        stroke="#282828"
       >
-        <polygon fill="#2C2C2C" points="0,100 100,0 100,100" />
+        <polygon fill="#282828" points="0,100 100,0 100,100" stroke="#282828"/>
       </svg>
 
       <Link className="logo" to="/">
-        <h1>DogMeetDog</h1>
+        <h2>DogMeetDog</h2>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="1em"
@@ -38,36 +39,34 @@ export default function Header() {
         <p>Find the perfect play date for your Dog.</p>
       </Link>
 
-      <nav className={// @ts-ignore 
-      screenWidth > 800 ? "nav-links-container" : "hidden"}>
-      <NavLink
-          to="/meetdogs"
-          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-        >
-          Meet the Dogs
-        </NavLink>
-        <NavLink
-          to="/about"
-          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-        >
-          About
-        </NavLink>
-        <NavLink
-          to="/dogs"
-          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-        >
-          Our Dogs
-        </NavLink>
-        <NavLink
-          to="/login"
-          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-        >
-          Login
-        </NavLink>
-      </nav>
+      {screenWidth > 800 && (
+        <nav className="nav-links-container">
+          <NavLink
+            to="/meetdogs"
+            style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
+          >
+            Meet the Dogs
+          </NavLink>
+          <NavLink
+            to="/about"
+            style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/dogs"
+            style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
+          >
+            Our Dogs
+          </NavLink>
+          <NavLink
+            to="/login"
+            style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
+          >
+            Login
+          </NavLink>
+        </nav>
+      )}
     </header>
   );
 }
-
-
-

@@ -1,8 +1,20 @@
+/* Roboto Black */
+/* @font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Black.ttf") format("truetype");
+  font-weight: 900; /* Black weight is typically 900 */
+  /* font-style: normal;
+}  */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 }
+
+/* font-family: "Open Sans", sans-serif;
+/* line-height: 1.5; */
+/* font-weight: 400; */ 
 
 html {
   font-size: 100%;
@@ -13,7 +25,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   min-height: 100vh;
-  background:white
+  /* background:white */
 }
 
 a {
@@ -86,7 +98,7 @@ body {
   justify-content: center;
   gap:20px;
   color:white;
-  background: #2C2C2C;
+  /* background: #2C2C2C; */
   
 }
 
@@ -131,7 +143,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
-  background: #2C2C2C;
+  /* background: #2C2C2C; */
 }
 
 
@@ -287,32 +299,7 @@ body {
   margin:0
 }
 
-.dog-detail-container{
-  display: flex;
-  justify-content: center;
-  background-color: #2C2C2C;
- 
 
-  
-  }
-.dog-detail{
-  margin-top:40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width:400px;
-  color: white;
-}
-
-
-.dog-detail-container img{
-  border-radius: 20px;
-  object-fit: cover;
-  width:400px;
-  border:white 2px solid
- 
-}
 
 @media screen and (min-width: 800px) {
 

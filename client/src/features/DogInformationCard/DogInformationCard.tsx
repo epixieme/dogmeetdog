@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom"
+
 interface DogProps{
-    onClose:()=>void
+    onClose?:()=>void
     dog: any
 }
 
 const DogInformationCard = ({ dog, onClose }:DogProps) => {
     return (
       <div key={dog.id} className="dog-card">
+         <Link to={`/dogs/${dog.id}`}>
         <h2>{dog.name}</h2>
         <img src={dog.imageUrl} alt={dog.name} />
             <div className="dog-info">
@@ -16,6 +19,7 @@ const DogInformationCard = ({ dog, onClose }:DogProps) => {
             <i className={`dog-likes ${dog.likes}`}>
               {dog.likes}
             </i>
+            </Link>
         <button onClick={onClose}>close</button>
       </div>
     )

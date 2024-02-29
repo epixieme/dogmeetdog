@@ -1,18 +1,11 @@
-import { Link } from "react-router-dom";
-
 //absolute imports
-
 import { ErrorMessage, Loader } from "shared";
-// import { getDogs } from "client/src/api";
 import { DogCardList } from "features";
 import { ALL_DOGS } from "graphql/queries";
 import { useQuery } from "@apollo/client";
 
-
-
 export default function DisplayDogs() {
   const { data, loading, error } = useQuery(ALL_DOGS);
-
 
   if (loading) {
     console.log("loading");
@@ -22,7 +15,7 @@ export default function DisplayDogs() {
   if (error) {
     return <ErrorMessage error={error.message} />;
   }
-  console.log(data.allDogs)
+  console.log(data.allDogs);
   return (
     <section className="dogs-container" id="dogAnchor">
       <div className="dog-list">

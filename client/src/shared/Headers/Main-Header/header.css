@@ -1,107 +1,127 @@
-
 .nav-menu-container {
-    display: flex;
-    align-items: flex-start;
-    padding: 2rem 2.5rem;
-    background: #2C2C2C;
-    height: 5vh;
-    font-size: 1rem;
-    gap: 1rem;
-    color: white;
-    position: relative;
-    height: 40vh;
-    background: linear-gradient(0deg, rgba(15,115,85,0.8), rgba(15,115,85,0.9)),
+  display: flex;
+  align-items: flex-start;
+  padding: 2rem 2.5rem;
+  font-size: 1rem;
+  gap: 1rem;
+  color: white;
+  position: relative;
+  height: 40vh;
+  background: linear-gradient(
+      0deg,
+      rgba(15, 115, 85, 0.8),
+      rgba(15, 115, 85, 0.9)
+    ),
     url("./assets/images/nav-background-img.jpg") no-repeat center center;
-    background-size: 100%;
-    background-position: cover;
-  
-  
-  }
-  
-  
-  .nav-menu-container > svg {
-    position: absolute;
-    bottom: 0;
-    left:0;
-    width: 100%;
-    height: 10vw;
-  
-    /* set height to pixels if you want angle to change with screen width */
-  }
-  .nav-menu-container .logo {
-    color: white;
-    font-weight: 900;
-    font-size: 1rem;
-    text-shadow:1px 1px 2px pink;
-  }
-  
-  .nav-links-container {
-    /* padding-top: 1rem; */
-  
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    gap: 2.5em;
-  
-  }
-  
-  .nav-links-container a {
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 10px;
-    color:white;
-  
-  }
-  
-  .nav-links-container a:hover {
-    color:white;
-    text-decoration: underline;
-  }
+ background-size:100vh 100vw 
+}
+
+.nav-menu-container > svg {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 10vw;
+  stroke: none;
   
 
+  /* set height to pixels if you want angle to change with screen width */
+}
+.nav-menu-container .logo {
+  color: white;
+  font-weight: 900;
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px pink;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  text-align:center;
+}
+
+.logo > p {
+ 
+  text-shadow: 1px 1px 1px #000;
+}
+
+
+.logo > h2 {
+
+  text-shadow: 1px 1px 1px #000;
+
+}
+
+.nav-menu-container .logo > svg {
+  fill: white;
+  height:50px;
+  width: 50px;
+}
+
+
+.nav-links-container {
+  /* padding-top: 1rem; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+}
+
+.nav-links-container a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 10px;
+  color: white;
+}
+
+.nav-links-container a:hover {
+  color: white;
+  text-decoration: underline;
+}
 
 @media screen and (min-width: 800px) {
-    .nav-menu-container .logo > h1 {
-      font-size: 1.5rem;
-      margin:0;
-      text-shadow: 1px 1px 1px #000; 
-    }
-  
-    .logo > p {
-    
-      font-size: 1rem;
-      text-shadow: 1px 1px 1px #000; 
-    }
-    .logo svg {
-      height:100px;
-      fill:white;
-      
-    }
-  
-    .logo{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      margin-right: 30%;
-      width:15%;
-      text-align: center;
-    }
-  
-    .nav-links-container a {
-      font-size: 1rem;
-      text-shadow: 1px 1px 1px #000; 
-    }
-  
-    .nav-menu-container {
-      /* justify-content: space-between;
-      padding: 20px 50px; */
-    }
-  
-    .nav-links-container {
-      display: flex;
-      gap: 10em;
-     
-    }
-  
+  .nav-menu-container {
+    height: 20vh;
+    background-size:cover;
+    justify-content: space-between;
+   
   }
+
+  .nav-menu-container svg {
+    height: 10vh;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    word-break: break-word;
+   
+  }
+
+  .logo > p {
+    font-size: 1rem;
+    text-shadow: 1px 1px 1px #000;
+  }
+
+
+  .logo > h2 {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 1px #000;
+    margin-top: 0;
+  }
+  .logo svg {
+    height: 50px;
+    fill: white;
+  }
+
+  
+  .nav-links-container a {
+    font-size: 1rem;
+    text-shadow: 1px 1px 1px #000;
+  }
+
+  .nav-links-container {
+    display: flex;
+    gap: 10em;
+  }
+}
