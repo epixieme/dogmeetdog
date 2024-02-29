@@ -1,4 +1,4 @@
-import { Button } from "@shared";
+
 import {
   ReactElement,
   JSXElementConstructor,
@@ -6,6 +6,9 @@ import {
   ReactPortal,
 } from "react";
 
+import './question.css'
+
+import { Button } from "@shared";
 interface Props {
   questionText?: string;
   onChange?: (e: any) => void;
@@ -32,7 +35,7 @@ export default function Question({
 }: Props) {
   return (
     <form className="question1-container" onSubmit={onSubmit}>
-      <label>{questionText}:</label>
+      <label className='question-labels'>{questionText}:</label>
       {fieldType === "text" ||
       fieldType === "email" ||
       fieldType === "password" ? (
@@ -55,7 +58,7 @@ export default function Question({
             )}
         </select>
       )}
-
+<div className="question-buttons">
       <Button btnText={"<"} onClick={previousScreen} />
      
       {answers.some(item=>item == "") ? (
@@ -63,6 +66,7 @@ export default function Question({
       ) : (
         <button type="submit">Next</button>
       )}
+      </div>
     </form>
   );
 }

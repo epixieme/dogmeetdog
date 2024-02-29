@@ -1,9 +1,9 @@
 .questionText{
     display:flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    
+    color:white;
     width:100vw;
     height:80vh;
     border: 1px solid red;
