@@ -9,8 +9,12 @@
 }
 
 .home-container {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   color: white;
-  padding: 20px 10px;
+  padding-inline: 30px;
+  padding-bottom: 20px;
   background-image: url(./assets/images/dogs-hero-image.png);
   background-repeat: no-repeat;
   background-size: auto auto;
@@ -46,6 +50,7 @@
   animation: drop 1s 1;
   line-height: 24px;
   padding-inline: 20px;
+  text-align: center;
 }
 
 .home-container .btnLink button {
@@ -55,7 +60,6 @@
   background-color: #e71a88;
   border: 2px solid white;
   box-shadow: 0 0 0 0px white, 0 0 0 2px #f26700;
-  width: 100%;
   margin-top: 27px;
   padding-block: 0.75rem;
   padding-inline: 3rem;
@@ -88,7 +92,7 @@
     flex-direction: column;
     align-items: center;
     background-repeat: no-repeat;
-    background-position: center bottom;
+    background-position: center bottom -5px;
     background-size: stretch;
     height: 60vh;
     margin: 0;
@@ -96,6 +100,12 @@
   }
 
   .home-container .btnLink {
-    width: 25%;
+    /* width: 25%; */
   }
+
+  .home-container .btnLink button {
+  width:100%;
+ 
+  }
+  
 }
