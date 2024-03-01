@@ -19,7 +19,7 @@ export default function DisplayDogs() {
   return (
     <section className="dogs-container" id="dogAnchor">
       <div className="dog-list">
-        <h1>Explore our dogs</h1>
+        <h1>Meet some of our dogs</h1>
         <DogCardList dogs={data.allDogs} />
       </div>
     </section>

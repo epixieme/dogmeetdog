@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-
+import './dogInformationCard.css'
 interface DogProps{
     onClose?:()=>void
     dog: any
@@ -15,7 +15,6 @@ const DogInformationCard = ({ dog, onClose }:DogProps) => {
             <div>{dog.description}</div>
               <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
             </div>
-           
             <i className={`dog-likes ${dog.likes}`}>
               {dog.likes}
             </i>

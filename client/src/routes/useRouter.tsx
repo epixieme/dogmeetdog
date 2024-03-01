@@ -12,13 +12,11 @@ import About from "../pages/LoggedOut/About/About";
 import DisplayDogs from "../pages/LoggedOut/Dogs/DisplayDogs";
 import NotFound from "shared/NotFound";
 import Dashboard from "pages/LoggedIn/DashBoard/Dashboard";
-import Login from "../pages/LoginPage/LoginPage";
 import QuestionPage from "../pages/SignUp/QuestionPage";
 import AuthRequired from "features/auth/components/AuthRequired";
 import { useSelector } from "react-redux";
 import AccountModal from "pages/LoggedIn/AccountModal";
 import { RootState } from "store/store";
-import { useEffect } from "react";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import Reviews from "pages/LoggedIn/Reviews";
 
