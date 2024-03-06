@@ -29,16 +29,14 @@ export default function LoginForm({ setError, setToken }: Props) {
   const { email, password } = loginFormData;
 
   useEffect(() => {
-
     // result from loginUser when handleLogin is triggered and graphql mutation is called
     if (data) {
-
-        // get token
+      // get token
       const token = data.loginUser.value;
 
       // set token to state and local storage
       setToken(token);
-      
+
       localStorage.setItem("dogUser-user-token", token);
       //then set isAuthenticated to true to show the internal authorised screens and then navigate to dashboard
       dispatch(login({ email, password }));
@@ -52,7 +50,7 @@ export default function LoginForm({ setError, setToken }: Props) {
   }) {
     event.preventDefault();
     try {
-        //graphql mutation credentials to get token value
+      //graphql mutation credentials to get token value
       loginUser({
         variables: {
           email,
@@ -64,9 +62,8 @@ export default function LoginForm({ setError, setToken }: Props) {
     }
   }
 
-  if (loading) return 'Submitting...';
+  if (loading) return "Submitting...";
   if (error) return `Submission error! ${error.graphQLErrors[0].message}`;
-  
 
   function handleEmailChange(event: {
     preventDefault(): unknown;
@@ -87,7 +84,7 @@ export default function LoginForm({ setError, setToken }: Props) {
   return (
     <div className="login-container">
       <h1>Sign in to your account</h1>
-      <form onSubmit={handleLogin} className="login-form">
+      <form onSubmit={() => handleLogin} className="login-form">
         <input
           name="email"
           onChange={handleEmailChange}
