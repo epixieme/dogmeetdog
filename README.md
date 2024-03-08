@@ -15,10 +15,10 @@ To run it please install node and then install all dependencies by running the f
 
   <h2>About</h2>
 
-<p>Dog Meet Dog is a full stack application created with created with Vite React, React Router 6.18, React Query, GraphQL and Socket.io.</p>
+<p>Dog Meet Dog is a full stack application created with Vite React, React Router 6.18, React Query, GraphQL, and Socket.io.</p>
 
 
-  <p>This application is currently in development and the figma files can be found here:</p>
+  <p>This application is currently in development and the Figma files can be found here:</p>
 https://www.figma.com/file/pYXdTp9SYz2y0spCLOWRm6/dogmeetsdog?node-id=0%3A1&t=N0UoRX0n5TdpJ30n-0
 
 
@@ -26,7 +26,7 @@ https://www.figma.com/file/pYXdTp9SYz2y0spCLOWRm6/dogmeetsdog?node-id=0%3A1&t=N0
 <section>
   <h2>Features</h2>
   <ul>
-    <li>Ability to register and create an account and to be able to login and authenticate using google OAuth 2.0 </li>
+    <li>Ability to register and create an account and to be able to log in and authenticate using JWT </li>
   </ul>
   </section>
 
