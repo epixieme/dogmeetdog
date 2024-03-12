@@ -3,7 +3,6 @@ interface Props {
   questionText?: string;
   onChange?: (e: any) => void;
   value?: string;
-  answers: string[];
   fieldType: any;
   ageData: any;
 }

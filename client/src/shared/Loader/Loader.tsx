@@ -1,17 +1,14 @@
-
 interface LoadingProps {
-  loading:string
+  loading: string;
 }
 
-export default function Loader({loading}: LoadingProps) {
-
+export default function Loader({ loading }: LoadingProps) {
   return (
-
     <div className="loader">
-    <div className="one"></div>
-    <div className="two"></div>
-    <div className="three"></div>
-    <h2>{loading}</h2>
+      <div className="one"></div>
+      <div className="two"></div>
+      <div className="three"></div>
+      <h2>{loading}</h2>
     </div>
 
     /* // <section className="Loader-container">

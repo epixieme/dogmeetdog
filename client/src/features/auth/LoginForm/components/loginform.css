@@ -1,0 +1,11 @@
+.login-container {
+  color: white;
+  display: flex;
+  gap: 40px;
+  border: 1px solid red;
+  width: 100%;
+}
+
+.input {
+  width: 200px;
+}

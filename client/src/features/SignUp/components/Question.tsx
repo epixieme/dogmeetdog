@@ -23,18 +23,20 @@ export default function Question({
   fieldType,
   ageData,
   questionText,
+  value,
+  onChange,
 }: Props) {
   return (
     <form className="question1-container" onSubmit={onSubmit}>
       <DynamicForm
-        answers={answers}
         fieldType={fieldType}
         ageData={ageData}
         questionText={questionText}
+        value={value}
+        onChange={onChange}
       />
       <div className="question-buttons">
         <Button btnText={"<"} onClick={previousScreen} />
-
         {answers.some((item) => item == "") ? (
           <Button btnText={">"} onClick={nextScreen} />
         ) : (

@@ -5,13 +5,16 @@ import { login } from "features/auth/state/authSlice";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, useNavigate } from "react-router-dom";
-
+import { ErrorMessage, Loader } from "@shared";
+import "./loginform.css";
 interface Props {
   setToken: (args: any) => void;
-  setError: (args: any) => void;
+  setErrorMsg: (args: any) => void;
+  setLoader: (args: any) => void;
 }
 
-export default function LoginForm({ setError, setToken }: Props) {
+export default function LoginForm({ setErrorMsg, setToken, setLoader }: Props) {
+  const [loginUser, { data, loading, error }] = useMutation(AUTH);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,86 +23,70 @@ export default function LoginForm({ setError, setToken }: Props) {
     password: "",
   });
 
-  const [loginUser, { data, loading, error }] = useMutation(AUTH, {
-    // onError: (error) => {
-    //   setError(error.graphQLErrors[0].message);
-    // },
-  });
-
   const { email, password } = loginFormData;
 
   useEffect(() => {
-    // result from loginUser when handleLogin is triggered and graphql mutation is called
+    if (loading) setLoader("Submitting...");
+    if (error) setErrorMsg(`Submission error! ${error.message}`);
+  }, [loading, error, setLoader, setErrorMsg]);
+
+  useEffect(() => {
     if (data) {
-      // get token
       const token = data.loginUser.value;
-
-      // set token to state and local storage
       setToken(token);
-
       localStorage.setItem("dogUser-user-token", token);
-      //then set isAuthenticated to true to show the internal authorised screens and then navigate to dashboard
       dispatch(login({ email, password }));
       navigate("/dashboard");
     }
-  }, [data]);
+  }, [data, dispatch, email, password, navigate, setToken]);
 
-  async function handleLogin(event: {
-    preventDefault(): unknown;
-    target: { value: string };
-  }) {
+  async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!email || !password) {
+      setErrorMsg("Email and password are required.");
+      return;
+    }
     try {
-      //graphql mutation credentials to get token value
-      loginUser({
+      await loginUser({
         variables: {
           email,
           password,
         },
       });
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
 
-  if (loading) return "Submitting...";
-  if (error) return `Submission error! ${error.graphQLErrors[0].message}`;
-
-  function handleEmailChange(event: {
-    preventDefault(): unknown;
-    target: { value: string };
-  }) {
-    event.preventDefault();
-    const newLoginFormData = { ...loginFormData };
-    newLoginFormData.email = event?.target.value;
-    setLoginFormData(newLoginFormData);
+  function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setLoginFormData({ ...loginFormData, email: event.target.value });
   }
 
-  function handlePasswordChange(event: { target: { value: string } }) {
-    const newLoginFormData = { ...loginFormData };
-    newLoginFormData.password = event?.target.value;
-    setLoginFormData(newLoginFormData);
+  function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setLoginFormData({ ...loginFormData, password: event.target.value });
   }
 
   return (
     <div className="login-container">
       <h1>Sign in to your account</h1>
-      <form onSubmit={() => handleLogin} className="login-form">
+      <form onSubmit={handleLogin} className="login-form">
         <input
           name="email"
           onChange={handleEmailChange}
           type="email"
           placeholder="Email address"
-          value={loginFormData.email}
+          value={email}
         />
         <input
           name="password"
           onChange={handlePasswordChange}
           type="password"
           placeholder="Password"
-          value={loginFormData.password}
+          value={password}
         />
-        <button type="submit">Log in</button>
+        <button type="submit" disabled={loading}>
+          Log in
+        </button>
       </form>
     </div>
   );
