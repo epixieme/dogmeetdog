@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-
+import "./button.css";
 interface buttonProps {
   btnText: string;
   route?: any;
   onClick?: () => void;
-  type?: 'submit' | 'reset' | 'button' | undefined;
+  type?: "submit" | "reset" | "button" | undefined;
 }
 
 export default function Button({ btnText, route, onClick, type }: buttonProps) {

@@ -20,8 +20,8 @@
 
 input {
   min-width: 40%;
-  height: 30px;
-  border-radius: 20px;
+  height: 35px;
+  border-radius: 5px;
 }
 /* @media screen {
     .question1-container{

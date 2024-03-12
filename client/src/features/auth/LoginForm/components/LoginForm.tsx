@@ -5,7 +5,7 @@ import { login } from "features/auth/state/authSlice";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, useNavigate } from "react-router-dom";
-import { ErrorMessage, Loader } from "@shared";
+import { Button, ErrorMessage, Loader } from "@shared";
 import "./loginform.css";
 interface Props {
   setToken: (args: any) => void;
@@ -84,9 +84,11 @@ export default function LoginForm({ setErrorMsg, setToken, setLoader }: Props) {
           placeholder="Password"
           value={password}
         />
-        <button type="submit" disabled={loading}>
+
+        <Button btnText={"Login"} />
+        {/* <button type="submit" disabled={loading}>
           Log in
-        </button>
+        </button> */}
       </form>
     </div>
   );
