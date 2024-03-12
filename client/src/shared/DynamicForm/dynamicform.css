@@ -1,0 +1,31 @@
+.question1-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.question-labels {
+  color: white;
+}
+.drop-down-menu {
+  width: 200px;
+}
+
+.question-buttons {
+  display: flex;
+  width: 30%;
+  justify-content: center;
+  gap: 2rem;
+}
+
+input {
+  min-width: 40%;
+  height: 30px;
+  border-radius: 20px;
+}
+/* @media screen {
+    .question1-container{
+        display: flex;
+    
+    } 
+} */
