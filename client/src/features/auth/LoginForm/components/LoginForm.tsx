@@ -85,10 +85,10 @@ export default function LoginForm({ setErrorMsg, setToken, setLoader }: Props) {
           value={password}
         />
 
-        <Button btnText={"Login"} />
-        {/* <button type="submit" disabled={loading}>
+        {/* <Button btnText={"Login"} /> */}
+        <button type="submit" disabled={loading}>
           Log in
-        </button> */}
+        </button>
       </form>
     </div>
   );

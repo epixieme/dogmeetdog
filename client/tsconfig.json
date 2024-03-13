@@ -34,6 +34,6 @@
   "noUnusedParameters": true,
   "noFallthroughCasesInSwitch": true
 },
-"include": ["./**/*.ts", "./**/*.tsx", "server/src/index.ts"],
+"include": ["./**/*.ts", "./**/*.tsx", "server/src/index.ts", "app.test.old"],
 "references": [{ "path": "./tsconfig.node.json" }]
 }
