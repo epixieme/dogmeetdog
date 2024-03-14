@@ -1,14 +1,11 @@
 import { render, fireEvent, waitFor } from "@testing-library/react";
-import { describe, it, expect, test, vi } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import LoginForm from "./LoginForm";
-import LoginPage from "pages/LoginPage/LoginPage";
-import { MockedProvider, MockedResponse } from "@apollo/client/testing";
+import { MockedProvider } from "@apollo/client/testing";
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "store/store";
 import AUTH from "graphql/mutations/AUTH";
-import React from "react";
-import { gql } from "@apollo/client";
 
 // Mocked mutation data
 const mockedData = {
