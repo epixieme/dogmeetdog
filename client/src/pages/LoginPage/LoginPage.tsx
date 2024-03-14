@@ -28,8 +28,8 @@ export default function LoginPage() {
 
       <LoginForm
         setErrorMsg={notify}
-        setToken={() => token}
         setLoader={setLoadingMessage}
+        setToken={setToken}
       />
       {errorMessage && <ErrorMessage error={errorMessage} />}
     </div>

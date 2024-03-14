@@ -2,22 +2,24 @@ import { useMutation, useQuery } from "@apollo/client";
 import AUTH from "graphql/mutations/AUTH";
 import CURRENT_USER from "graphql/queries/CURRENT_USER";
 import { login } from "features/auth/state/authSlice";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, ErrorMessage, Loader } from "@shared";
 import "./loginform.css";
 interface Props {
-  setToken: (args: any) => void;
   setErrorMsg: (args: any) => void;
   setLoader: (args: any) => void;
+  setToken: (args: any) => void;
 }
 
-export default function LoginForm({ setErrorMsg, setToken, setLoader }: Props) {
+export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
   const [loginUser, { data, loading, error }] = useMutation(AUTH);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // const [token, setToken] = useState(null);
   const [loginFormData, setLoginFormData] = React.useState({
     email: "",
     password: "",

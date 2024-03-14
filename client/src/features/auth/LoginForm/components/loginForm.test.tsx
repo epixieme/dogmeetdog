@@ -1,16 +1,41 @@
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, test, vi } from "vitest";
 import LoginForm from "./LoginForm";
-import { MockedProvider } from "@apollo/client/testing";
+import LoginPage from "pages/LoginPage/LoginPage";
+import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "store/store";
+import AUTH from "graphql/mutations/AUTH";
+import React from "react";
+import { gql } from "@apollo/client";
+
+// Mocked mutation data
+const mockedData = {
+  loginUser: {
+    value: "mocked-token",
+  },
+};
+
+// Mocked mutation
+const mocks = [
+  {
+    request: {
+      query: AUTH,
+      variables: {
+        email: "darwin@darwin.com",
+        password: "secret",
+      },
+    },
+    result: { data: mockedData },
+  },
+];
 
 describe("LoginForm component", () => {
   it("renders correctly", async () => {
     const { getByText, getByPlaceholderText } = render(
       <Provider store={store}>
-        <MockedProvider mocks={[]}>
+        <MockedProvider mocks={mocks}>
           <MemoryRouter>
             <LoginForm />
           </MemoryRouter>
@@ -26,20 +51,17 @@ describe("LoginForm component", () => {
     });
   });
   it("submits form with valid data", async () => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhcndpbkBkYXJ3aW4uY29tIiwiaWQiOiI2NWRjOGNjYWUyMzIyNTlmN2VlMjlkYmEiLCJpYXQiOjE3MTAzNDM2OTd9.KVS63db9DqasAgIBRBadV5JeV14rgkkOEswPNSGw-Yo";
     const setToken = vi.fn();
     const setErrorMsg = vi.fn();
     const setLoader = vi.fn();
-
     const { getByPlaceholderText, getByText } = render(
       <Provider store={store}>
-        <MockedProvider mocks={[]}>
+        <MockedProvider mocks={mocks} addTypename={false}>
           <MemoryRouter>
             <LoginForm
-              setToken={setToken}
-              setErrorMsg={setErrorMsg}
-              setLoader={setLoader}
+              setToken={setToken} // Mock setToken function
+              setErrorMsg={setErrorMsg} // Mock setErrorMsg function
+              setLoader={setLoader} // Mock setLoader function
             />
           </MemoryRouter>
         </MockedProvider>
@@ -47,20 +69,21 @@ describe("LoginForm component", () => {
     );
 
     fireEvent.change(getByPlaceholderText("Email address"), {
-      target: { value: "test@example.com" },
+      target: { value: "darwin@darwin.com" },
     });
     fireEvent.change(getByPlaceholderText("Password"), {
-      target: { value: "password123" },
+      target: { value: "secret" },
     });
-    fireEvent.submit(getByText("Log in"));
+    fireEvent.click(getByText("Log in")); // Use fireEvent.click instead of fireEvent.submit
 
     await waitFor(() => {
-      // expect(setToken).toHaveBeenCalledWith(expect.any(token));
-      // expect(localStorage.setItem).toHaveBeenCalledWith(
-      //   "dogUser-user-token",
-      //   expect.any(token)
-      // );
-      expect(setErrorMsg).not.toHaveBeenCalled();
+      expect(mocks[0].request.variables.email).toBe("darwin@darwin.com");
+      expect(mocks[0].request.variables.password).toBe("secret");
+    });
+
+    // Assert that the token is set (assuming setToken function is called upon successful login)
+    await waitFor(() => {
+      expect(setToken).toHaveBeenCalledWith("mocked-token");
     });
   });
 });
