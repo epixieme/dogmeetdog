@@ -34,7 +34,6 @@ describe("DogCardList component", () => {
     // Assert that each dog card contains the correct information
     dogs.forEach((dog, index) => {
       expect(dogCards[index]).toHaveTextContent(dog.name);
-      console.log(dog.breed);
       expect(dogCards[index]).toHaveTextContent(dog.breed);
     });
   });
