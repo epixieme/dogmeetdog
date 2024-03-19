@@ -26,7 +26,7 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
   });
 
   const { email, password } = loginFormData;
-
+  // needs to be in a useEffect or will get a render error
   useEffect(() => {
     if (loading) setLoader("Submitting...");
     if (error) setErrorMsg(`Submission error! ${error.message}`);
@@ -48,6 +48,7 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
       setErrorMsg("Email and password are required.");
       return;
     }
+
     try {
       await loginUser({
         variables: {
@@ -57,6 +58,7 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
       });
     } catch (error) {
       console.log(error);
+      setErrorMsg("There was an error, please try again.");
     }
   }
 

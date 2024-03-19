@@ -37,4 +37,26 @@ describe("DashboardHeader", () => {
       "/myaccount"
     );
   });
+
+  test("When links are clicked they route to the relevant component", () => {
+    render(
+      <Router>
+        <DashboardHeader />
+      </Router>
+    );
+
+    // Check if the navigation links navigate to the correct routes
+    expect(screen.getByText("Dashboard").closest("a")).toHaveAttribute(
+      "href",
+      "/dashboard"
+    );
+    expect(screen.getByText("Reviews").closest("a")).toHaveAttribute(
+      "href",
+      "/reviews"
+    );
+    expect(screen.getByText("My Account").closest("a")).toHaveAttribute(
+      "href",
+      "/myaccount"
+    );
+  });
 });

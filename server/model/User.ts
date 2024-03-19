@@ -19,15 +19,15 @@ const schema = new mongoose.Schema({
   ],
 });
 
-schema.methods.comparePassword = async function (candidatePassword: any) {
-  try {
-    // Use bcrypt to compare provided password with hashed password
-    return await bcrypt.compare(candidatePassword, this.password);
-  } catch (error) {
-    // Handle error, e.g., log or throw
-    console.error("Error comparing passwords:", error);
-    throw error;
-  }
-};
+// schema.methods.comparePassword = async function (candidatePassword: any) {
+//   try {
+//     // Use bcrypt to compare provided password with hashed password
+//     return await bcrypt.compare(candidatePassword, this.password);
+//   } catch (error) {
+//     // Handle error, e.g., log or throw
+//     console.error("Error comparing passwords:", error);
+//     throw error;
+//   }
+// };
 
 module.exports = mongoose.model("User", schema);

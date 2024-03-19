@@ -150,10 +150,11 @@ const resolvers = {
     },
 
     createUser: async (_root: any, args: any) => {
-      const hashedPassword = await bcrypt.hash(args.password, 10);
-      const user = new User({ email: args.email, password: hashedPassword });
-      await user.save();
-      return user.catch((error: any) => {
+      const user = new User({
+        email: args.email,
+        password: bcrypt.hashSync(args.password, bcrypt.genSaltSync(10)),
+      });
+      return user.save().catch((error: any) => {
         throw new GraphQLError("Creating the user failed", {
           extensions: {
             code: "BAD_USER_INPUT",
@@ -163,50 +164,25 @@ const resolvers = {
         });
       });
     },
+
     loginUser: async (_root: any, args: any) => {
       const user = await User.findOne({ email: args.email });
-      console.log(user);
-
-      // if not user or user token
-      if (!user || !(await user.comparePassword(args.password))) {
-        throw new GraphQLError("wrong credentials", {
-          extensions: {
-            code: "BAD_USER_INPUT",
-          },
-        });
-      }
 
       const userForToken = {
         email: user.email,
         id: user._id,
       };
 
-      return { value: jwt.sign(userForToken, SECRET_KEY), expiresIn: "1h" };
+      if (user && bcrypt.compareSync(args.password, user?.password as string)) {
+        return { value: jwt.sign(userForToken, SECRET_KEY) };
+      } else if (!user || args.password !== user.password) {
+        throw new GraphQLError("wrong credentials", {
+          extensions: {
+            code: "BAD_USER_INPUT",
+          },
+        });
+      }
     },
-
-    // login: (
-    //   parent: any,
-    //   { username, password }: { username: string; password: string },
-    //   context: any
-    // ) => {
-    //   // Validate user credentials (you should use a proper authentication mechanism)
-    //   const user = users.find(
-    //     (user) => user.username === username && user.password === password
-    //   );
-
-    //   if (user) {
-    //     // Generate a JWT token
-    //     const token = jwt.sign({ userId: user.id }, SECRET_KEY, {
-    //       expiresIn: "1h",
-    //     });
-
-    //     // Set token in response header
-    //     context.res.cookie("token", token, { httpOnly: true });
-    //     return token;
-    //   } else {
-    //     throw new Error("Invalid username or password");
-    //   }
-    // },
   },
 };
 
