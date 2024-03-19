@@ -174,7 +174,9 @@ const resolvers = {
       };
 
       if (user && bcrypt.compareSync(args.password, user?.password as string)) {
-        return { value: jwt.sign(userForToken, SECRET_KEY) };
+        return {
+          value: jwt.sign(userForToken, SECRET_KEY, { expiresIn: "2h" }),
+        };
       } else if (!user || args.password !== user.password) {
         throw new GraphQLError("wrong credentials", {
           extensions: {
