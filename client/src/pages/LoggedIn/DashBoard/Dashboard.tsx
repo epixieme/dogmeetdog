@@ -4,7 +4,7 @@ import { useState } from "react";
 import { DogInformationCard } from "@features";
 import { ALL_DOGS, FIND_DOG_BY_NAME } from "@queries";
 import { ErrorMessage, Loader } from "@shared";
-
+import CURRENT_USER from "graphql/queries/CURRENT_USER";
 
 interface Dog {
   id: number;
@@ -15,10 +15,14 @@ interface Dog {
 }
 
 export default function Dashboard({}: any) {
-  const { data, loading, error } = useQuery(ALL_DOGS);
+  const { data, loading, error } = useQuery(CURRENT_USER);
+
+  // const result = useQuery(FIND_DOG_BY_NAME, {
+  //   variables: { nameToSearch },
+  //   skip: !nameToSearch,
+  // })
+  // const { data, loading, error } = useQuery(ALL_DOGS);
   const [nameToSearch, setNameToSearch] = useState(null);
-
-
 
   if (loading) {
     console.log("loading");
@@ -52,6 +56,9 @@ export default function Dashboard({}: any) {
   //     <Dog dog={result.data.findDog} onClose={() => setNameToSearch(null)} />
   //   );
   // }
+
+  console.log(data.email);
+
   return (
     <div className="dog-card">
       {/* <h2>Persons</h2>
@@ -64,6 +71,7 @@ export default function Dashboard({}: any) {
         </div>
       ))} */}
       <h1>hello</h1>
+      <h1>{data.currentUser.email}</h1>
     </div>
   );
 }
