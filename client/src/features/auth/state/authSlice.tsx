@@ -10,12 +10,10 @@ export const authSlice = createSlice({
     login: (state, action) => {
       state.isAuthenticated = true;
       state.user = action.payload;
-      localStorage.setItem("isAuthenticated", "true");
     },
     logout: (state) => {
       state.isAuthenticated = false;
       state.user = null;
-      localStorage.setItem("isAuthenticated", "false");
     },
   },
 });
