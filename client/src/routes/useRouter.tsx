@@ -4,7 +4,7 @@ import {
   Navigate,
   Route,
 } from "react-router-dom";
-
+import { RootState } from "store/types";
 import Main_Layout from "../Layouts/Main_Layout";
 import Login_Layout from "../Layouts/Login_Layout";
 import Home from "pages/HomePage/Home";
@@ -16,7 +16,7 @@ import QuestionPage from "../pages/SignUp/QuestionPage";
 import AuthRequired from "features/auth/components/AuthRequired";
 import { useSelector } from "react-redux";
 import AccountModal from "pages/LoggedIn/AccountModal";
-import { RootState } from "store/store";
+
 import LoginPage from "../pages/LoginPage/LoginPage";
 import Reviews from "pages/LoggedIn/Reviews";
 
@@ -26,11 +26,6 @@ export default function useRouter() {
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
-
-  // const isAuthenticatedLocalStorage = localStorage.getItem("isAuthenticated");
-  // useEffect(() => {
-  //   localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
-  // }, [isAuthenticated]);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
