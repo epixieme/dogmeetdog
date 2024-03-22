@@ -17,7 +17,7 @@ const DogInformationCard = ({ dog, onClose }: DogProps) => {
         </div>
         <i className={`dog-likes ${dog.likes}`}>{dog.likes}</i>
       </Link>
-      <button onClick={onClose}>close</button>
+      {/* <button onClick={onClose}>close</button> */}
     </div>
   );
 };

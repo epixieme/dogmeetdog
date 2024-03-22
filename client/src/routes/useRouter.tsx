@@ -23,13 +23,14 @@ import Reviews from "pages/LoggedIn/Reviews";
 //nested routes
 
 export default function useRouter() {
-  const isAuthenticated = useSelector((state:RootState) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
 
   // const isAuthenticatedLocalStorage = localStorage.getItem("isAuthenticated");
   // useEffect(() => {
   //   localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
   // }, [isAuthenticated]);
-  
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -38,7 +39,7 @@ export default function useRouter() {
         element={isAuthenticated ? <Login_Layout /> : <Main_Layout />}
       >
         <Route index element={<Home />} />
-        <Route path="dogs" element={<DisplayDogs />} />
+        <Route path="meetdogs" element={<DisplayDogs />} />
         <Route path="about" element={<About />} />
         <Route path="questions" element={<QuestionPage />} />
         <Route path="login" element={<LoginPage />} />

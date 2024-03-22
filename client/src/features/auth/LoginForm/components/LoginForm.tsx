@@ -3,10 +3,11 @@ import AUTH from "graphql/mutations/AUTH";
 import CURRENT_USER from "graphql/queries/CURRENT_USER";
 import { login } from "features/auth/state/authSlice";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, ErrorMessage, Loader } from "@shared";
 import "./loginform.css";
+import { RootState } from "store/store";
 interface Props {
   setErrorMsg: (args: any) => void;
   setLoader: (args: any) => void;
@@ -15,6 +16,9 @@ interface Props {
 
 export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
   const [loginUser, { data, loading, error }] = useMutation(AUTH);
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,9 +42,10 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
       setToken(token);
       localStorage.setItem("dogUser-user-token", token);
       dispatch(login({ email, password }));
+      localStorage.setItem("isLoggedIn", isAuthenticated.toString());
       navigate("/dashboard");
     }
-  }, [data, dispatch, email, password, navigate, setToken]);
+  }, [data, dispatch, email, password, navigate, setToken, isAuthenticated]);
 
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

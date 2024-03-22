@@ -24,7 +24,7 @@ export default function Header() {
         preserveAspectRatio="none"
         stroke="#282828"
       >
-        <polygon fill="#282828" points="0,100 100,0 100,100" stroke="#282828"/>
+        <polygon fill="#282828" points="0,100 100,0 100,100" stroke="#282828" />
       </svg>
 
       <Link className="logo" to="/">
@@ -53,12 +53,12 @@ export default function Header() {
           >
             About
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/dogs"
             style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
           >
             Our Dogs
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/login"
             style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}

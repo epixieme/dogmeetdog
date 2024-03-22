@@ -1,15 +1,19 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "features/auth/state/authSlice";
 import { useState } from "react";
 import { useApolloClient } from "@apollo/client";
+import { RootState } from "store/store";
 
 export default function AccountModal() {
   const client = useApolloClient();
   const dispatch = useDispatch();
-
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem("dogUser-user-token");
+    localStorage.setItem("isLoggedIn", isAuthenticated.toString());
     client.resetStore(); // Reset the Apollo Client store after logout
   };
 
