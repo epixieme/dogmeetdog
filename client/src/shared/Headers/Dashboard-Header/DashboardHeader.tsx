@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
 import "./dashboardHeader.css";
 import { useApolloClient } from "@apollo/client";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "store/types";
+import { useDispatch } from "react-redux";
+
 import { logout } from "features/auth/state/authSlice";
+import { useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 export default function DashboardHeader() {
+  const navigate = useNavigate();
   const client = useApolloClient();
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated
-  );
-  const handleLogout = () => {
-    dispatch(logout());
+
+  const handleLogout = async () => {
+    await dispatch(logout());
+    // Remove token from localStorage
     localStorage.removeItem("dogUser-user-token");
-    localStorage.setItem("isLoggedIn", isAuthenticated.toString());
-    client.resetStore(); // Reset the Apollo Client store after logout
+    // Reset the Apollo Client store after logout
+    client.resetStore();
+    // Navigate to the home page
+    navigate("/");
   };
 
   return (
@@ -25,7 +28,7 @@ export default function DashboardHeader() {
           <HomeIcon />
           Dashboard
         </Link>
-        <Link to="/dashboard">Manage Profile</Link>
+        <Link to="/manage-account">Manage Profile</Link>
         <Link to="/dashboard">Notification</Link>
         <Link to="/dashboard">Messages</Link>
         <Link to="/dashboard">Matches</Link>
