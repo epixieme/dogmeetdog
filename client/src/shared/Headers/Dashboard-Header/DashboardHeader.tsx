@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 import { logout } from "features/auth/state/authSlice";
 import { useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 export default function DashboardHeader() {
   const navigate = useNavigate();
   const client = useApolloClient();
@@ -28,12 +31,18 @@ export default function DashboardHeader() {
           <HomeIcon />
           Dashboard
         </Link>
-        <Link to="/manage-account">Manage Profile</Link>
+        <Link to="/manage-account">
+          <ManageAccountsIcon />
+          Manage Profile
+        </Link>
         <Link to="/dashboard">Notification</Link>
         <Link to="/dashboard">Messages</Link>
-        <Link to="/dashboard">Matches</Link>
-        <Link to="/dashboard">Settings</Link>
-        <Link to="/dashboard">Help</Link>
+        <Link to="/matches">
+          <FavoriteIcon />
+          Matches
+        </Link>
+        <Link to="/settings">Settings</Link>
+        <Link to="/help">Help</Link>
         <button onClick={handleLogout}>logout</button>
 
         {/* // pop up modal and then logout and users details */}
