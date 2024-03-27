@@ -2,12 +2,10 @@ import { Link } from "react-router-dom";
 import "./dashboardHeader.css";
 import { useApolloClient } from "@apollo/client";
 import { useDispatch } from "react-redux";
-
 import { logout } from "features/auth/state/authSlice";
 import { useNavigate } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import DmdNavIcons from "shared/dmdIcons/DmdNavIcons";
+import { pink } from "@mui/material/colors";
 
 export default function DashboardHeader() {
   const navigate = useNavigate();
@@ -27,25 +25,33 @@ export default function DashboardHeader() {
   return (
     <header className="dash-navigation-menu-container">
       <nav className={"dash-navigation-links-container"}>
-        <Link to="/dashboard">
-          <HomeIcon />
-          Dashboard
+        <Link to="/dashboard" className="nav-link">
+          <DmdNavIcons source="Home" themeType="outlined" />
+          <span>Dashboard</span>
         </Link>
-        <Link to="/manage-account">
-          <ManageAccountsIcon />
+        <Link to="/manage-account" className="nav-link">
+          <DmdNavIcons source="ManageAccounts" themeType="outlined" />
           Manage Profile
         </Link>
-        <Link to="/dashboard">Notification</Link>
-        <Link to="/dashboard">Messages</Link>
-        <Link to="/matches">
-          <FavoriteIcon />
+        <Link to="/dashboard" className="nav-link">
+          <DmdNavIcons source="Notifications" themeType="outlined" />
+          Notifications
+        </Link>
+        <Link to="/dashboard" className="nav-link">
+          <DmdNavIcons source="Forum" themeType="outlined" />
+          Messages
+        </Link>
+        <Link to="/matches" className="nav-link">
+          <DmdNavIcons source="Favorite" themeType="outlined" />
           Matches
         </Link>
-        <Link to="/settings">Settings</Link>
-        <Link to="/help">Help</Link>
+        <Link to="/settings" className="nav-link">
+          Settings
+        </Link>
+        <Link to="/help" className="nav-link">
+          Help
+        </Link>
         <button onClick={handleLogout}>logout</button>
-
-        {/* // pop up modal and then logout and users details */}
       </nav>
     </header>
   );
