@@ -36,6 +36,18 @@ describe("DashboardHeader", () => {
       "href",
       "/myaccount"
     );
+    expect(screen.getByText("Dashboard").closest("a")).toHaveAttribute(
+      "href",
+      "/dashboard"
+    );
+    expect(screen.getByText("Reviews").closest("a")).toHaveAttribute(
+      "href",
+      "/reviews"
+    );
+    expect(screen.getByText("My Account").closest("a")).toHaveAttribute(
+      "href",
+      "/myaccount"
+    );
   });
 
   test("When links are clicked they route to the relevant component", () => {

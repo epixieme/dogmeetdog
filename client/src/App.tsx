@@ -9,6 +9,9 @@ import {
 } from "@apollo/client";
 
 import useRouter from "./routes/useRouter";
+import React, { useState, useEffect } from "react";
+import { Server } from "socket.io";
+const socket = io("http://localhost:4000");
 
 function App() {
   const router = useRouter();

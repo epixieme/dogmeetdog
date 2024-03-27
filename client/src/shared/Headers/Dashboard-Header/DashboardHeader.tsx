@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { logout } from "features/auth/state/authSlice";
 import { useNavigate } from "react-router-dom";
 import DmdNavIcons from "shared/dmdIcons/DmdNavIcons";
-import { pink } from "@mui/material/colors";
 
 export default function DashboardHeader() {
   const navigate = useNavigate();
