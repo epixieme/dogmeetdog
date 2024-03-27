@@ -11,11 +11,10 @@ require("./config");
 import jwt from "jsonwebtoken";
 mongoose.set("strictQuery", false);
 const User = require("../model/User");
-
 const cors = require("cors");
 const http = require("http");
-const io = require("socket.io");
-
+const { WebSocketServer } = require("ws");
+const { useServer } = require("graphql-ws/lib/use/ws");
 const typeDefs = require("./graphQL/schema");
 const resolvers = require("./graphQL/resolvers");
 
@@ -28,10 +27,27 @@ interface JwtPayloadType {
 const start = async () => {
   const app = express();
   const httpServer = http.createServer(app);
-
+  const wsServer = new WebSocketServer({
+    server: httpServer,
+    path: "/",
+  });
+  const schema = makeExecutableSchema({ typeDefs, resolvers });
+  const serverCleanup = useServer({ schema }, wsServer);
   const server = new ApolloServer({
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-    schema: makeExecutableSchema({ typeDefs, resolvers }),
+    plugins: [
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+      {
+        async serverWillStart() {
+          return {
+            async drainServer() {
+              await serverCleanup.dispose();
+            },
+          };
+        },
+      },
+    ],
+    schema,
+
     context: async ({ req, res }: any) => {
       const auth = req ? req.headers.authorization : null;
 

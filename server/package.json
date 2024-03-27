@@ -34,6 +34,9 @@
   "@emotion/styled": "^11.11.0",
  
    
+  "@graphql-tools/schema": "^10.0.3",
+ 
+   
   "@mui/icons-material": "^5.15.14",
  
    
@@ -61,6 +64,9 @@
   "graphql": "^16.8.1",
  
    
+  "graphql-ws": "^5.15.0",
+ 
+   
   "jsonwebtoken": "^9.0.2",
  
    
@@ -70,7 +76,10 @@
   "react-cookie": "^7.0.2",
  
    
-  "socket.io": "^4.7.5"
+  "socket.io": "^4.7.5",
+ 
+   
+  "ws": "^8.16.0"
  
   },
  
