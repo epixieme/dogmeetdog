@@ -1,4 +1,5 @@
 import "./dynamicform.css";
+import dogPhoto from "../../assets/images/dog-profile.png";
 interface Props {
   questionText?: string;
   onChange?: (e: any) => void;
@@ -16,7 +17,14 @@ export default function DynamicForm({
 }: Props) {
   return (
     <>
-      <label className="question-labels">{questionText}:</label>
+      <div className="ai-assistant-container">
+        <img
+          className="dog-ai-assistant-image"
+          src={dogPhoto}
+          alt="Picture of wufus the dog"
+        />
+        <label className="question-labels">{questionText}:</label>
+      </div>
       {fieldType === "text" ||
       fieldType === "email" ||
       fieldType === "password" ? (

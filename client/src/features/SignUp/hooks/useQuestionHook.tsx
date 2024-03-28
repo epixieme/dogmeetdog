@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 
 export default function useQuestionHook(questionText: string[]) {
+  const getCurrentScreenIndex = window.localStorage.getItem(
+    "currentIndex"
+  ) as string;
+  const [currentScreen, setCurrentScreen] = useState(
+    JSON.parse(getCurrentScreenIndex) ?? 0
+  );
 
-  const getCurrentScreenIndex = window.localStorage.getItem("currentIndex") as string;
-  const [currentScreen, setCurrentScreen] = useState(JSON.parse(getCurrentScreenIndex) ?? 0);
-console.log(currentScreen)
- useEffect(()=>{
-  window.localStorage.setItem("currentIndex", JSON.stringify(currentScreen));
- })
+  useEffect(() => {
+    window.localStorage.setItem("currentIndex", JSON.stringify(currentScreen));
+  });
 
   function nextScreen() {
     if (currentScreen < questionText.length - 1) {

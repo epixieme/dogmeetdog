@@ -1,12 +1,35 @@
 .question1-container {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   gap: 10px;
+}
+
+.ai-assistant-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  /* border: 1px solid white; */
 }
 .question-labels {
   color: white;
+  /* padding: 10px 20px;
+  background: #e71a88;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; */
 }
+
+.dog-ai-assistant-image {
+  max-width: 40%;
+  max-height: 40%;
+  border: white 2px solid;
+  border-radius: 50%;
+}
+
 .drop-down-menu {
   width: 200px;
 }
@@ -19,7 +42,7 @@
 }
 
 input {
-  min-width: 40%;
+  max-width: 40%;
   height: 35px;
   border-radius: 5px;
 }

@@ -22,7 +22,7 @@ const fieldType = [
 // need to chnage this so email and password are not stored to local storage
 
 const questionText = [
-  "whats your dogs name?",
+  "Hello There, I'm Woofus. Lets start with your dogs name?",
   "whats your dogs Breed?",
   "whats your dogs age?",
   "whats your dogs personality?",
@@ -31,9 +31,7 @@ const questionText = [
   "confirm your Password",
 ];
 
-export default function Questions(
-  initialAnswer = []
-) {
+export default function Questions(initialAnswer = []) {
   const { currentScreen, nextScreen, previousScreen } =
     useQuestionHook(questionText);
 
@@ -49,16 +47,15 @@ export default function Questions(
     Array(questionText.length).fill("") || initialAnswer
   );
 
-  // The useEffect hook is used here to perform side effects in functional components. 
-  //In this case, the effect is triggered when the component mounts. 
-  //It retrieves any previously stored answers from the local storage. 
-  //If there are stored answers, it updates the component state (answers) to reflect the stored data. 
+  // The useEffect hook is used here to perform side effects in functional components.
+  //In this case, the effect is triggered when the component mounts.
+  //It retrieves any previously stored answers from the local storage.
+  //If there are stored answers, it updates the component state (answers) to reflect the stored data.
   //This ensures that if the user refreshes the page or navigates away and returns, their previous answers are restored.
 
   useEffect(() => {
     const storedAnswers = JSON.parse(localStorage.getItem("answers") as string);
     if (storedAnswers) {
-
       // SET TO STATE
       setAnswers(storedAnswers);
     }
