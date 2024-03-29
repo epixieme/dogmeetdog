@@ -9,6 +9,16 @@
   padding-top: 60px;
 }
 
+@keyframes zoom {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(10);
+  }
+}
+
 .ai-assistant-container {
   display: flex;
   justify-content: center;
@@ -18,6 +28,8 @@
 }
 .question-labels {
   color: white;
+  /* animation: zoom 3s ease; */
+
   /* padding: 10px 20px;
   background: #e71a88;
   border-top-left-radius: 20px;

@@ -1,11 +1,14 @@
 import "./dynamicform.css";
 import dogPhoto from "../../assets/images/dog-profile.png";
+
 interface Props {
   questionText?: string;
   onChange?: (e: any) => void;
   value?: string;
   fieldType: any;
   ageData: any;
+  animated: any;
+  style: any;
 }
 
 export default function DynamicForm({
@@ -14,17 +17,19 @@ export default function DynamicForm({
   value,
   fieldType,
   ageData,
+  animated,
+  style,
 }: Props) {
   return (
     <>
-      <div className="ai-assistant-container">
+      <animated.div className="ai-assistant-container" style={style}>
         <img
           className="dog-ai-assistant-image"
           src={dogPhoto}
           alt="Picture of wufus the dog"
         />
         <label className="question-labels">{questionText}:</label>
-      </div>
+      </animated.div>
       {fieldType === "text" ||
       fieldType === "email" ||
       fieldType === "password" ? (
