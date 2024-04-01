@@ -3,6 +3,7 @@ import "./question.css";
 import { Button } from "@shared";
 import DynamicForm from "shared/DynamicForm/DynamicForm";
 import { useSpring, animated } from "@react-spring/web";
+import { Opacity } from "@mui/icons-material";
 
 interface Props {
   questionText?: string;
@@ -28,12 +29,12 @@ const Question: React.FC<Props> = ({
   onChange,
 }: Props) => {
   // State variable to track whether the button has been clicked
-  const [buttonClicked, setButtonClicked] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(true);
 
   // Define the spring animation
-  const { y } = useSpring({
-    from: { y: 0 },
-    to: { y: buttonClicked ? 200 : 0 }, // Apply animation when button is clicked
+  const { opacity } = useSpring({
+    opacity: buttonClicked ? 1 : 0, // Apply animation when button is clicked
+    config: { duration: 500 }, // Set animation duration
   });
 
   // Function to handle the click event
@@ -56,7 +57,7 @@ const Question: React.FC<Props> = ({
         value={value}
         onChange={onChange}
         animated={animated}
-        style={{ transform: y.to((y) => `translateY(${y}px)`) }} // Apply animation style
+        style={{ opacity }} // Apply animation style
       />
       <div className="question-buttons">
         <Button btnText={"<"} onClick={previousScreen} />
