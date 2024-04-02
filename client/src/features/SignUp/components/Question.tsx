@@ -33,8 +33,8 @@ const Question: React.FC<Props> = ({
 
   // Define the spring animation
   const { opacity } = useSpring({
-    opacity: buttonClicked ? 1 : 0, // Apply animation when button is clicked
-    config: { duration: 500 }, // Set animation duration
+    opacity: buttonClicked && 0, // Apply animation when button is clicked
+    config: { duration: 1000 }, // Set animation duration
     onRest: () => {
       // Reset the buttonClicked state after the animation completes
       setButtonClicked(false);
@@ -55,15 +55,16 @@ const Question: React.FC<Props> = ({
 
   return (
     <form className="question1-container" onSubmit={onSubmit}>
-      <DynamicForm
-        fieldType={fieldType}
-        ageData={ageData}
-        questionText={questionText}
-        value={value}
-        onChange={onChange}
-        animated={animated}
-        style={{ opacity }} // Apply animation style
-      />
+      <animated.div style={{ opacity }}>
+        <DynamicForm
+          fieldType={fieldType}
+          ageData={ageData}
+          questionText={questionText}
+          value={value}
+          onChange={onChange}
+          // Apply animation style
+        />
+      </animated.div>
       <div className="question-buttons">
         <Button btnText={"<"} onClick={previousScreen} />
         {answers.some((item) => item === "") ? (

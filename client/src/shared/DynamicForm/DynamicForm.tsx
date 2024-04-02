@@ -7,7 +7,6 @@ interface Props {
   value?: string;
   fieldType: any;
   ageData: any;
-  animated: any;
   style: any;
 }
 
@@ -17,12 +16,12 @@ export default function DynamicForm({
   value,
   fieldType,
   ageData,
-  animated,
+
   style,
 }: Props) {
   return (
     <>
-      <animated.div className="ai-assistant-container" style={style}>
+      <div className="ai-assistant-container" style={style}>
         <img
           className="dog-ai-assistant-image"
           src={dogPhoto}
@@ -44,7 +43,7 @@ export default function DynamicForm({
               ageData.map((age: any) => <option>{age}</option>)}
           </select>
         )}
-      </animated.div>
+      </div>
     </>
   );
 }

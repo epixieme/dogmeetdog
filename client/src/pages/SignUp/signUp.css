@@ -1,10 +1,9 @@
-.questionText{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color:white;
-    width:100vw;
-    height:80vh;
-    border: 1px solid red;
+.questionText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100vw;
+  height: 80vh;
 }
