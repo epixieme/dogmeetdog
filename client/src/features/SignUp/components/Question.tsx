@@ -29,24 +29,29 @@ const Question: React.FC<Props> = ({
   onChange,
 }: Props) => {
   // State variable to track whether the button has been clicked
-  const [buttonClicked, setButtonClicked] = useState(true);
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   // Define the spring animation
   const { opacity } = useSpring({
     opacity: buttonClicked ? 1 : 0, // Apply animation when button is clicked
     config: { duration: 500 }, // Set animation duration
+    onRest: () => {
+      // Reset the buttonClicked state after the animation completes
+      setButtonClicked(false);
+    },
   });
 
   // Function to handle the click event
   const handleClick = () => {
     // Update the state to indicate that the button has been clicked
+
     nextScreen();
     setButtonClicked(true);
   };
 
-  useEffect(() => {
-    setButtonClicked(false);
-  }, [buttonClicked]);
+  // useEffect(() => {
+  //   setButtonClicked(false);
+  // }, [buttonClicked]);
 
   return (
     <form className="question1-container" onSubmit={onSubmit}>

@@ -29,21 +29,22 @@ export default function DynamicForm({
           alt="Picture of wufus the dog"
         />
         <label className="question-labels">{questionText}:</label>
+
+        {fieldType === "text" ||
+        fieldType === "email" ||
+        fieldType === "password" ? (
+          <input type={fieldType} onChange={onChange} value={value}></input>
+        ) : (
+          <select
+            defaultValue={"Select"}
+            onChange={onChange}
+            className="drop-down-menu"
+          >
+            {questionText?.includes("age") &&
+              ageData.map((age: any) => <option>{age}</option>)}
+          </select>
+        )}
       </animated.div>
-      {fieldType === "text" ||
-      fieldType === "email" ||
-      fieldType === "password" ? (
-        <input type={fieldType} onChange={onChange} value={value}></input>
-      ) : (
-        <select
-          defaultValue={"Select"}
-          onChange={onChange}
-          className="drop-down-menu"
-        >
-          {questionText?.includes("age") &&
-            ageData.map((age: any) => <option>{age}</option>)}
-        </select>
-      )}
     </>
   );
 }
