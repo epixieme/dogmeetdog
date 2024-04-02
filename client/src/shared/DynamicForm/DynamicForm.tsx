@@ -7,7 +7,7 @@ interface Props {
   value?: string;
   fieldType: any;
   ageData: any;
-  style: any;
+  style?: any;
 }
 
 export default function DynamicForm({
