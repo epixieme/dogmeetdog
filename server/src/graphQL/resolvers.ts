@@ -1,6 +1,7 @@
 const { GraphQLError } = require("graphql");
 const Dog = require("../../model/Dog");
 const Age = require("../../model/Age");
+const Breed = require("../../model/Breed");
 const User = require("../../model/User");
 const bcrypt = require("bcrypt");
 import jwt from "jsonwebtoken";
@@ -11,7 +12,7 @@ const resolvers = {
   Query: {
     allDogs: async (_root: any, _args: any) => Dog.find({}),
     allAges: async (_root: any, _args: any) => Age.find({}),
-    hello: () => "Hello world!",
+    allBreeds: async (_root: any, _args: any) => Breed.find({}),
     currentUser: (_root: any, args: any, context: any) => {
       return context.currentUser;
     },
@@ -72,6 +73,39 @@ const resolvers = {
       return age.save();
     },
 
+    addBreed: async (_root: any, args: any) => {
+      const breed = new Breed({ ...args });
+      return breed.save();
+    },
+    addDogDetails: async (_: any, { breeds = [], ages = [] }: any) => {
+      try {
+        // Save breeds to MongoDB
+        const savedBreeds = await Promise.all(
+          breeds.map(async (breed: any) => {
+            const newBreed = new Breed(breed);
+            return await newBreed.save();
+          })
+        );
+
+        // Save ages to MongoDB
+        const savedAges = await Promise.all(
+          ages.map(async (age: any) => {
+            const newAge = new Age(age);
+            return await newAge.save();
+          })
+        );
+
+        // Return the saved dog details
+        return {
+          id: "1", // Assuming some default ID or generate one as per your requirement
+          breeds: savedBreeds,
+          ages: savedAges,
+        };
+      } catch (error) {
+        console.error("Error adding dog details:", error);
+        throw new Error("Failed to add dog details");
+      }
+    },
     createUser: async (_root: any, args: any) => {
       const user = new User({
         email: args.email,

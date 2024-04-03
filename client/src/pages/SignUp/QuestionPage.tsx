@@ -6,6 +6,8 @@ import ADD_DOG from "graphql/mutations/ADD_DOG";
 
 import "./signUp.css";
 import ALL_AGES from "graphql/queries/allAges/ALL_AGES";
+import ALL_BREEDS from "graphql/queries/allBreeds/ALL_BREEDS";
+
 import { ErrorMessage, Loader } from "@shared";
 
 // add these arrays to mongodb
@@ -23,12 +25,12 @@ const fieldType = [
 
 const questionText = [
   "Hello There, I'm Woofus. Lets start with your dogs name?",
-  "whats your dogs Breed?",
+  "whats your dogs breed?",
   "whats your dogs age?",
   "whats your dogs personality?",
-  "Enter your Email Address",
-  "Enter your Password",
-  "confirm your Password",
+  "Enter your email address",
+  "Enter your password",
+  "confirm your password",
 ];
 
 export default function Questions(initialAnswer = []) {
@@ -36,6 +38,14 @@ export default function Questions(initialAnswer = []) {
     useQuestionHook(questionText);
 
   const { data, loading, error } = useQuery(ALL_AGES);
+  const {
+    data: breedData,
+    loading: breedLoader,
+    error: breedError,
+  } = useQuery(ALL_BREEDS);
+  console.log(data);
+
+  // need to call all ages and breeds, combine query into one
   const [addDog] = useMutation(ADD_DOG);
 
   // post answers and create a graph query
@@ -91,12 +101,12 @@ export default function Questions(initialAnswer = []) {
     localStorage.clear();
   };
 
-  if (loading) {
+  if (loading || breedLoader) {
     return <Loader loading={"Loading"} />;
   }
 
-  if (error) {
-    return <ErrorMessage error={error.message} />;
+  if (error || breedError) {
+    return <ErrorMessage error={error?.message} />;
   }
 
   return (
@@ -113,6 +123,9 @@ export default function Questions(initialAnswer = []) {
         previousScreen={previousScreen}
         nextScreen={nextScreen}
         ageData={data?.allAges.map((item: { age: number }) => item.age)}
+        breedData={breedData?.allBreeds.map(
+          (item: { breed: number }) => item.breed
+        )}
       />
     </div>
   );

@@ -20,45 +20,71 @@ type Token {
   }
 
   type Age {
-    id: ID
-    age: String
+    id: ID!
+    age: String!
    
   }
- 
+
+  type Breed {
+    id: ID!
+    breed: String!
+  }
+
+  input BreedInput {
+    id: ID!
+    breed: String!
+  }
+
+  input AgeInput {
+    id: ID!
+    age: String!
+  }
+  type DogDetails{
+    id:ID!
+    ages:[Age!]!
+    breeds:[Breed!]!
+
+  }
+
   type Query {
     hello: String
     currentUser: User
     allDogs: [Dog!]!
     allAges: [Age!]!
+    allBreeds: [Breed!]!
+    dogDetails:[DogDetails!]!
   }
 
   type User {
     id: ID!
     email: String!
   }
- 
 
   type Mutation {
     addAsFriend(
       name: String!
     ): User
+
     addDog(
       name: String!
       breed:String!
       age:Int!
       personality: String!
-      
     ): Dog
+
     addAge(
       age: Int! 
     ): Age
-  
-      createUser(
-       email: String!
-        password: String!
-        
-      ): User
+    addBreed(
+      breed: String! 
+    ): Breed
 
+    addDogDetails(breeds: [BreedInput], ages: [AgeInput]): DogDetails
+  createUser(
+    email: String!
+    password: String!
+      ): User
+      
       loginUser(
         email: String!
         password: String!

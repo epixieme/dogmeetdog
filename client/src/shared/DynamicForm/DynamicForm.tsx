@@ -7,7 +7,9 @@ interface Props {
   value?: string;
   fieldType: any;
   ageData: any;
+  breedData: any;
   style?: any;
+  altImageText: string;
 }
 
 export default function DynamicForm({
@@ -16,7 +18,8 @@ export default function DynamicForm({
   value,
   fieldType,
   ageData,
-
+  breedData,
+  altImageText,
   style,
 }: Props) {
   return (
@@ -25,7 +28,7 @@ export default function DynamicForm({
         <img
           className="dog-ai-assistant-image"
           src={dogPhoto}
-          alt="Picture of wufus the dog"
+          alt={altImageText}
         />
         <label className="question-labels">{questionText}:</label>
 
@@ -39,8 +42,12 @@ export default function DynamicForm({
             onChange={onChange}
             className="drop-down-menu"
           >
+            {/* if question label includles age? */}
             {questionText?.includes("age") &&
               ageData.map((age: any) => <option>{age}</option>)}
+
+            {questionText?.includes("breed") &&
+              breedData.map((breed: any) => <option>{breed}</option>)}
           </select>
         )}
       </div>

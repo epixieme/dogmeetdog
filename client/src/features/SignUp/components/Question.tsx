@@ -15,6 +15,7 @@ interface Props {
   nextScreen: () => void;
   fieldType: any;
   ageData: any;
+  breedData: string[];
 }
 
 const Question: React.FC<Props> = ({
@@ -24,6 +25,7 @@ const Question: React.FC<Props> = ({
   nextScreen,
   fieldType,
   ageData,
+  breedData,
   questionText,
   value,
   onChange,
@@ -55,10 +57,11 @@ const Question: React.FC<Props> = ({
           <DynamicForm
             fieldType={fieldType}
             ageData={ageData}
+            breedData={breedData}
             questionText={questionText}
             value={value}
             onChange={onChange}
-            // Apply animation style
+            altImageText={"Ai Assistant Text"} // Apply animation style
           />
         )}
       </animated.div>

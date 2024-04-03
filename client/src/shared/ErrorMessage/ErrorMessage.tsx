@@ -1,7 +1,7 @@
 import "./errorMessage.css";
 
 interface errorProps {
-  error: string;
+  error: string | undefined;
 }
 
 const ErrorMessage: React.FC<errorProps> = ({ error }) => {
