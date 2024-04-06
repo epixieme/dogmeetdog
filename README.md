@@ -28,6 +28,7 @@ https://www.figma.com/file/pYXdTp9SYz2y0spCLOWRm6/dogmeetsdog?node-id=0%3A1&t=N0
     <li>Ability to register and create an account and to be able to log in and authenticate using JWT </li>
   </ul>
   </section>
+  
 
   
 
