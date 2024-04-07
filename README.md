@@ -20,7 +20,6 @@ To run it please install node and then install all dependencies by running the f
   <p>This application is currently in development and the Figma files can be found here:</p>
 https://www.figma.com/file/pYXdTp9SYz2y0spCLOWRm6/dogmeetsdog?node-id=0%3A1&t=N0UoRX0n5TdpJ30n-0
 
-
 </section>
 <section>
   <h2>Features</h2>
