@@ -47,7 +47,6 @@ type Token {
   }
 
   type Query {
-    hello: String
     currentUser: User
     allDogs: [Dog!]!
     allAges: [Age!]!
