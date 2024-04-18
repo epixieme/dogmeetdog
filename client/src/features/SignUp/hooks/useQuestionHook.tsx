@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useQuestionHook(questionText: string[]) {
+export default function useQuestionHook(questionText: string) {
   const getCurrentScreenIndex = window.localStorage.getItem(
     "currentIndex"
   ) as string;

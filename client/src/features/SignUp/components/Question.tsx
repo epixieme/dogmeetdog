@@ -3,7 +3,6 @@ import "./question.css";
 import { Button } from "@shared";
 import DynamicForm from "shared/DynamicForm/DynamicForm";
 import { useSpring, animated } from "@react-spring/web";
-import { Opacity } from "@mui/icons-material";
 
 interface Props {
   questionText?: string;
@@ -36,7 +35,7 @@ const Question: React.FC<Props> = ({
   // Define the spring animation
   const { opacity } = useSpring({
     opacity: buttonClicked ? 0 : 1, // Apply animation when button is clicked
-    config: { duration: 1000 }, // Set animation duration
+    config: { duration: 500 }, // Set animation duration
     onRest: () => {
       // Reset the buttonClicked state after the animation completes
       setButtonClicked(false);

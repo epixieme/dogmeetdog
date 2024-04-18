@@ -22,7 +22,7 @@ const fieldType = [
 ];
 
 // need to chnage this so email and password are not stored to local storage
-
+//the below needs to be added to the database
 const questionText = [
   "Hello There, I'm Woofus. Lets start with your dogs name?",
   "whats your dogs breed?",

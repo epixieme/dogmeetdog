@@ -22,6 +22,16 @@ export default function DynamicForm({
   altImageText,
   style,
 }: Props) {
+  // const questionText ={
+  //   name:"Hello There, I'm Woofus. Lets start with your dogs name?",
+  //   breed:"whats your dogs breed?",
+  //   age: "whats your dogs age?",
+  //   personality:  "whats your dogs personality?",
+  //   email:"Enter your email address",
+  //   password:"Enter your password",
+  //   confirmPassword: "confirm your password",
+  // }
+
   return (
     <>
       <div className="ai-assistant-container" style={style}>
