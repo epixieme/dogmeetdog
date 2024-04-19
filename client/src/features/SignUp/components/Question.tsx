@@ -15,6 +15,7 @@ interface Props {
   fieldType: any;
   ageData: any;
   breedData: string[];
+  dropDownType: string;
 }
 
 const Question: React.FC<Props> = ({
@@ -26,6 +27,7 @@ const Question: React.FC<Props> = ({
   ageData,
   breedData,
   questionText,
+  dropDownType,
   value,
   onChange,
 }: Props) => {
@@ -58,6 +60,7 @@ const Question: React.FC<Props> = ({
             ageData={ageData}
             breedData={breedData}
             questionText={questionText}
+            dropDownType={dropDownType}
             value={value}
             onChange={onChange}
             altImageText={"Ai Assistant Text"} // Apply animation style

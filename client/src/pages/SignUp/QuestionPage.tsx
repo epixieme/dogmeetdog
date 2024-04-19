@@ -21,7 +21,17 @@ const fieldType = [
   "password",
 ];
 
-// need to chnage this so email and password are not stored to local storage
+const dropDownType = [
+  "",
+  "breedData",
+  "ageData",
+  "personalityData",
+  "",
+  "",
+  "",
+];
+
+// need to change this so email and password are not stored to local storage
 //the below needs to be added to the database
 const questionText = [
   "Hello There, I'm Woofus. Lets start with your dogs name?",
@@ -37,31 +47,25 @@ export default function Questions(initialAnswer = []) {
   const { currentScreen, nextScreen, previousScreen } =
     useQuestionHook(questionText);
 
-  const { data, loading, error } = useQuery(ALL_AGES);
+  const {
+    data: ageData,
+    loading: ageLoader,
+    error: ageError,
+  } = useQuery(ALL_AGES);
   const {
     data: breedData,
     loading: breedLoader,
     error: breedError,
   } = useQuery(ALL_BREEDS);
-  console.log(data);
 
   // need to call all ages and breeds, combine query into one
   const [addDog] = useMutation(ADD_DOG);
-
   // post answers and create a graph query
   // animate inputs and text
-
-  // save current screen index to local storage to handle refresh
 
   const [answers, setAnswers] = useState<string[]>(
     Array(questionText.length).fill("") || initialAnswer
   );
-
-  // The useEffect hook is used here to perform side effects in functional components.
-  //In this case, the effect is triggered when the component mounts.
-  //It retrieves any previously stored answers from the local storage.
-  //If there are stored answers, it updates the component state (answers) to reflect the stored data.
-  //This ensures that if the user refreshes the page or navigates away and returns, their previous answers are restored.
 
   useEffect(() => {
     const storedAnswers = JSON.parse(localStorage.getItem("answers") as string);
@@ -70,8 +74,6 @@ export default function Questions(initialAnswer = []) {
       setAnswers(storedAnswers);
     }
   }, []);
-
-  // const [loggedin, setLoggedIn] = useState<boolean>(false);
 
   // change below to a hook
 
@@ -97,17 +99,16 @@ export default function Questions(initialAnswer = []) {
         confirmPassword,
       },
     });
-    // setLoggedIn(true);
     localStorage.clear();
   };
 
-  if (loading || breedLoader) {
+  if (ageLoader || breedLoader) {
     return <Loader loading={"Loading"} />;
   }
 
-  if (error || breedError) {
-    return <ErrorMessage error={error?.message} />;
-  }
+  if (ageError) return <ErrorMessage error={ageError?.message} />;
+
+  if (breedError) return <ErrorMessage error={breedError?.message} />;
 
   return (
     <div className="questionText">
@@ -118,13 +119,14 @@ export default function Questions(initialAnswer = []) {
         }
         value={answers[currentScreen] || ""}
         fieldType={fieldType[currentScreen]}
+        dropDownType={dropDownType[currentScreen]} //needs to be
         onSubmit={handleSubmit}
         answers={answers}
         previousScreen={previousScreen}
         nextScreen={nextScreen}
-        ageData={data?.allAges.map((item: { age: number }) => item.age)}
+        ageData={ageData?.allAges.map((item: { age: number }) => item.age)}
         breedData={breedData?.allBreeds.map(
-          (item: { breed: number }) => item.breed
+          (item: { breed: string }) => item.breed
         )}
       />
     </div>

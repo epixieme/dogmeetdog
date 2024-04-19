@@ -10,6 +10,7 @@ interface Props {
   breedData: any;
   style?: any;
   altImageText: string;
+  dropDownType: string;
 }
 
 export default function DynamicForm({
@@ -21,17 +22,15 @@ export default function DynamicForm({
   breedData,
   altImageText,
   style,
+  dropDownType,
 }: Props) {
-  // const questionText ={
-  //   name:"Hello There, I'm Woofus. Lets start with your dogs name?",
-  //   breed:"whats your dogs breed?",
-  //   age: "whats your dogs age?",
-  //   personality:  "whats your dogs personality?",
-  //   email:"Enter your email address",
-  //   password:"Enter your password",
-  //   confirmPassword: "confirm your password",
-  // }
+  const propsObj = {
+    breedData: breedData,
+    ageData: ageData,
+    // personalityData:personalityData
+  };
 
+  console.log(dropDownType);
   return (
     <>
       <div className="ai-assistant-container" style={style}>
@@ -52,15 +51,16 @@ export default function DynamicForm({
             onChange={onChange}
             className="drop-down-menu"
           >
-            {/* if question label includles age? */}
-            {questionText?.includes("age") &&
-              ageData.map((age: any) => <option>{age}</option>)}
-
-            {questionText?.includes("breed") &&
-              breedData.map((breed: any) => <option>{breed}</option>)}
+            {propsObj[dropDownType] &&
+              propsObj[dropDownType]?.map((item: string | number) => (
+                <option>{item}</option>
+              ))}
           </select>
         )}
       </div>
     </>
   );
 }
+// need to do it so that
+//1. an array for dropdowntypes
+//2. can use this to choose which endoint to fetch  so dropdowntype && endpoint
