@@ -6,11 +6,17 @@ interface Props {
   onChange?: (e: any) => void;
   value?: string;
   fieldType: any;
-  ageData: any;
-  breedData: any;
+  ageData: number[];
+  breedData: string[];
   style?: any;
   altImageText: string;
-  dropDownType: string;
+  dropDownType: any;
+}
+
+interface DropDownData {
+  breedData: string[];
+  ageData: number[];
+  // Add more properties if needed
 }
 
 export default function DynamicForm({
@@ -24,13 +30,15 @@ export default function DynamicForm({
   style,
   dropDownType,
 }: Props) {
-  const propsObj = {
+  // Create object to dynamically select data when on the correct form type
+  const dropDownData: DropDownData = {
     breedData: breedData,
     ageData: ageData,
     // personalityData:personalityData
   };
 
-  console.log(dropDownType);
+  const dropDownContent = dropDownData[dropDownType as keyof DropDownData];
+
   return (
     <>
       <div className="ai-assistant-container" style={style}>
@@ -51,8 +59,8 @@ export default function DynamicForm({
             onChange={onChange}
             className="drop-down-menu"
           >
-            {propsObj[dropDownType] &&
-              propsObj[dropDownType]?.map((item: string | number) => (
+            {dropDownContent &&
+              dropDownContent?.map((item: string | number) => (
                 <option>{item}</option>
               ))}
           </select>
