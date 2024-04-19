@@ -7,6 +7,7 @@ import ADD_DOG from "graphql/mutations/ADD_DOG";
 import "./signUp.css";
 import ALL_AGES from "graphql/queries/allAges/ALL_AGES";
 import ALL_BREEDS from "graphql/queries/allBreeds/ALL_BREEDS";
+import ALL_PERSONALITY_TYPES from "graphql/queries/allPersonalityTypes/ALL_PERSONALITY_TYPES";
 
 import { ErrorMessage, Loader } from "@shared";
 
@@ -58,6 +59,12 @@ export default function Questions(initialAnswer = []) {
     error: breedError,
   } = useQuery(ALL_BREEDS);
 
+  const {
+    data: personalityData,
+    loading: personalityLoader,
+    error: personalityError,
+  } = useQuery(ALL_PERSONALITY_TYPES);
+
   // need to call all ages and breeds, combine query into one
   const [addDog] = useMutation(ADD_DOG);
   // post answers and create a graph query
@@ -102,13 +109,15 @@ export default function Questions(initialAnswer = []) {
     localStorage.clear();
   };
 
-  if (ageLoader || breedLoader) {
+  if (ageLoader || breedLoader || personalityLoader) {
     return <Loader loading={"Loading"} />;
   }
 
   if (ageError) return <ErrorMessage error={ageError?.message} />;
 
   if (breedError) return <ErrorMessage error={breedError?.message} />;
+  if (personalityError)
+    return <ErrorMessage error={personalityError?.message} />;
 
   return (
     <div className="questionText">
@@ -127,6 +136,9 @@ export default function Questions(initialAnswer = []) {
         ageData={ageData?.allAges.map((item: { age: number }) => item.age)}
         breedData={breedData?.allBreeds.map(
           (item: { breed: string }) => item.breed
+        )}
+        personalityData={personalityData?.allPersonalityTypes.map(
+          (item: { personality: string }) => item.personality
         )}
       />
     </div>

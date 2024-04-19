@@ -16,18 +16,21 @@ type Token {
     breed:String
     age:String
     personality: String
-   
   }
 
   type Age {
     id: ID!
     age: String!
-   
   }
 
   type Breed {
     id: ID!
     breed: String!
+  }
+
+  type Personality {
+    id:ID!
+    personality: String!
   }
 
   input BreedInput {
@@ -39,11 +42,11 @@ type Token {
     id: ID!
     age: String!
   }
+
   type DogDetails{
     id:ID!
     ages:[Age!]!
     breeds:[Breed!]!
-
   }
 
   type Query {
@@ -51,6 +54,7 @@ type Token {
     allDogs: [Dog!]!
     allAges: [Age!]!
     allBreeds: [Breed!]!
+    allPersonalityTypes: [Personality!]!
     dogDetails:[DogDetails!]!
   }
 
@@ -74,9 +78,14 @@ type Token {
     addAge(
       age: Int! 
     ): Age
+
     addBreed(
       breed: String! 
     ): Breed
+
+    addPersonality(
+      personality:String!
+    ): Personality
 
     addDogDetails(breeds: [BreedInput], ages: [AgeInput]): DogDetails
   createUser(

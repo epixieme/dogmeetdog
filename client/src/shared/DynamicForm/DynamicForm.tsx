@@ -5,12 +5,13 @@ interface Props {
   questionText?: string;
   onChange?: (e: any) => void;
   value?: string;
-  fieldType: any;
+  fieldType: string;
   ageData: number[];
   breedData: string[];
+  personalityData: string[];
   style?: any;
   altImageText: string;
-  dropDownType: any;
+  dropDownType: string;
 }
 
 interface DropDownData {
@@ -26,6 +27,7 @@ export default function DynamicForm({
   fieldType,
   ageData,
   breedData,
+  personalityData,
   altImageText,
   style,
   dropDownType,
@@ -34,7 +36,7 @@ export default function DynamicForm({
   const dropDownData: DropDownData = {
     breedData: breedData,
     ageData: ageData,
-    // personalityData:personalityData
+    personalityData: personalityData,
   };
 
   const dropDownContent = dropDownData[dropDownType as keyof DropDownData];

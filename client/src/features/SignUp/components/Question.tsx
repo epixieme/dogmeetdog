@@ -14,6 +14,7 @@ interface Props {
   nextScreen: () => void;
   fieldType: any;
   ageData: any;
+  personalityData: string[];
   breedData: string[];
   dropDownType: string;
 }
@@ -26,6 +27,7 @@ const Question: React.FC<Props> = ({
   fieldType,
   ageData,
   breedData,
+  personalityData,
   questionText,
   dropDownType,
   value,
@@ -33,7 +35,6 @@ const Question: React.FC<Props> = ({
 }: Props) => {
   // State variable to track whether the button has been clicked
   const [buttonClicked, setButtonClicked] = useState(false);
-
   // Define the spring animation
   const { opacity } = useSpring({
     opacity: buttonClicked ? 0 : 1, // Apply animation when button is clicked
@@ -59,6 +60,7 @@ const Question: React.FC<Props> = ({
             fieldType={fieldType}
             ageData={ageData}
             breedData={breedData}
+            personalityData={personalityData}
             questionText={questionText}
             dropDownType={dropDownType}
             value={value}

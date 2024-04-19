@@ -2,6 +2,7 @@ const { GraphQLError } = require("graphql");
 const Dog = require("../../model/Dog");
 const Age = require("../../model/Age");
 const Breed = require("../../model/Breed");
+const Personality = require("../../model/Personality");
 const User = require("../../model/User");
 const bcrypt = require("bcrypt");
 import jwt from "jsonwebtoken";
@@ -13,6 +14,7 @@ const resolvers = {
     allDogs: async (_root: any, _args: any) => Dog.find({}),
     allAges: async (_root: any, _args: any) => Age.find({}),
     allBreeds: async (_root: any, _args: any) => Breed.find({}),
+    allPersonalityTypes: async (_root: any, _args: any) => Personality.find({}),
     currentUser: (_root: any, args: any, context: any) => {
       return context.currentUser;
     },
@@ -76,6 +78,10 @@ const resolvers = {
     addBreed: async (_root: any, args: any) => {
       const breed = new Breed({ ...args });
       return breed.save();
+    },
+    addPersonality: async (_root: any, args: any) => {
+      const personality = new Personality({ ...args });
+      return personality.save();
     },
     addDogDetails: async (_: any, { breeds = [], ages = [] }: any) => {
       try {
