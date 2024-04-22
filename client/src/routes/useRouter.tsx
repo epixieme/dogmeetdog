@@ -38,6 +38,7 @@ export default function useRouter() {
         <Route path="login" element={<LoginPage />} />
         <Route element={<AuthRequired isAuthenticated={isAuthenticated} />}>
           <Route path="manage-account" element={<ManageAccountPage />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Route>
         <Route path="*" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/login" />} />

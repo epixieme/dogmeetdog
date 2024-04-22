@@ -1,18 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
-
-import { DogInformationCard } from "@features";
-import { ALL_DOGS, FIND_DOG_BY_NAME } from "@queries";
 import { ErrorMessage, Loader } from "@shared";
 import CURRENT_USER from "graphql/queries/CURRENT_USER";
-
-interface Dog {
-  id: number;
-  name: string;
-  imageUrl: string;
-  likes: string;
-  description: string;
-}
+import "./dashboard.css";
 
 export default function Dashboard({}: any) {
   const { data, loading, error } = useQuery(CURRENT_USER);
@@ -22,16 +12,16 @@ export default function Dashboard({}: any) {
   //   skip: !nameToSearch,
   // })
   // const { data, loading, error } = useQuery(ALL_DOGS);
-  const [nameToSearch, setNameToSearch] = useState(null);
+  // const [nameToSearch, setNameToSearch] = useState(null);
 
-  if (loading) {
-    console.log("loading");
-    return <Loader loading={"Loading"} />;
-  }
+  // if (loading) {
+  //   console.log("loading");
+  //   return <Loader loading={"Loading"} />;
+  // }
 
-  if (error) {
-    return <ErrorMessage error={error.message} />;
-  }
+  // if (error) {
+  //   return <ErrorMessage error={error.message} />;
+  // }
 
   // const dogElements = data.allDogs.map((dog: Dog) => (
   //   <div key={dog.id} className="dog-card">
@@ -57,10 +47,10 @@ export default function Dashboard({}: any) {
   //   );
   // }
 
-  console.log(data.email);
+  // console.log(data.email);
 
   return (
-    <div className="dog-card">
+    <div className="">
       {/* <h2>Persons</h2>
       {data.allDogs.map((p: any) => (
         <div key={p.name}>
@@ -71,7 +61,7 @@ export default function Dashboard({}: any) {
         </div>
       ))} */}
       <h1>hello</h1>
-      <h1>{data.currentUser.email}</h1>
+      <h1>{data.currentUser.name}</h1>
     </div>
   );
 }

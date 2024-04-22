@@ -56,9 +56,7 @@ const start = async () => {
           auth.substring(7),
           SECRET_KEY
         ) as JwtPayloadType;
-        const currentUser = await User.findById(decodedToken.id).populate(
-          "friends"
-        );
+        const currentUser = await User.findById(decodedToken.id);
         return { currentUser };
       }
     },
