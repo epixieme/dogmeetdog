@@ -55,7 +55,12 @@ export default function DynamicForm({
         {fieldType === "text" ||
         fieldType === "email" ||
         fieldType === "password" ? (
-          <input type={fieldType} onChange={onChange} value={value}></input>
+          <input
+            type={fieldType}
+            onChange={onChange}
+            value={value}
+            placeholder={fieldType}
+          ></input>
         ) : (
           <select
             required
