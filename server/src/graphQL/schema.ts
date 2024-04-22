@@ -14,13 +14,13 @@ type Token {
     id: ID
     name: String
     breed:String
-    age:String
+    age:Int
     personality: String
   }
 
   type Age {
     id: ID!
-    age: String!
+    age: Int!
   }
 
   type Breed {
@@ -60,6 +60,10 @@ type Token {
 
   type User {
     id: ID!
+    name: String!
+    breed:String!
+    age:Int!
+    personality: String!
     email: String!
   }
 
@@ -88,14 +92,20 @@ type Token {
     ): Personality
 
     addDogDetails(breeds: [BreedInput], ages: [AgeInput]): DogDetails
-  createUser(
-    email: String!
-    password: String!
+
+    createUser(
+      name: String!
+      breed:String!
+      age:String!
+      personality: String!
+      email: String!
+      password: String!
+      confirmPassword: String!
       ): User
       
-      loginUser(
-        email: String!
-        password: String!
+    loginUser(
+      email: String!
+      password: String!
       ): Token
   }
 `;

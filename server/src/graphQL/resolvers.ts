@@ -43,20 +43,20 @@ const resolvers = {
     },
     addDog: async (_root: any, args: any, context: any) => {
       const dog = new Dog({ ...args });
-      const currentUser = context.currentUser;
+      // const currentUser = context.currentUser;
 
-      if (!currentUser) {
-        throw new GraphQLError("not authenticated", {
-          extensions: {
-            code: "BAD_USER_INPUT",
-          },
-        });
-      }
+      // if (!currentUser) {
+      //   throw new GraphQLError("not authenticated", {
+      //     extensions: {
+      //       code: "BAD_USER_INPUT",
+      //     },
+      //   });
+      // }
 
       try {
         await dog.save();
-        currentUser.friends = currentUser.friends.concat(dog);
-        await currentUser.save();
+        // currentUser.friends = currentUser.friends.concat(dog);
+        // await currentUser.save();
       } catch (error) {
         throw new GraphQLError("Saving user failed", {
           extensions: {
@@ -113,18 +113,34 @@ const resolvers = {
       }
     },
     createUser: async (_root: any, args: any) => {
+      // const [name, breed, age, personality, email ] = args;
       const user = new User({
+        name: args.name,
+        breed: args.breed,
+        age: args.age,
+        personality: args.personality,
         email: args.email,
         password: bcrypt.hashSync(args.password, bcrypt.genSaltSync(10)),
       });
       return user.save().catch((error: any) => {
-        throw new GraphQLError("Creating the user failed", {
-          extensions: {
-            code: "BAD_USER_INPUT",
-            invalidArgs: args.email,
-            error,
-          },
-        });
+        if (error.code === 11000 && error.keyPattern.email) {
+          // If there's a duplicate email error
+          throw new GraphQLError("Email already exists", {
+            extensions: {
+              code: "DUPLICATE_EMAIL",
+              invalidArgs: args.email,
+              error, // Original error object for more context
+            },
+          });
+        } else {
+          throw new GraphQLError("Creating the user failed", {
+            extensions: {
+              code: "BAD_USER_INPUT",
+              invalidArgs: args.email,
+              error,
+            },
+          });
+        }
       });
     },
 

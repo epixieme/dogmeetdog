@@ -17,6 +17,7 @@ interface Props {
 interface DropDownData {
   breedData: string[];
   ageData: number[];
+  personalityData: string[];
   // Add more properties if needed
 }
 
@@ -57,6 +58,7 @@ export default function DynamicForm({
           <input type={fieldType} onChange={onChange} value={value}></input>
         ) : (
           <select
+            required
             defaultValue={"Select"}
             onChange={onChange}
             className="drop-down-menu"

@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import useQuestionHook from "../../features/SignUp/hooks/useQuestionHook";
 import { Question } from "@features";
-import ADD_DOG from "graphql/mutations/ADD_DOG";
+import CREATE_USER from "graphql/mutations/CREATE_USER";
 
 import "./signUp.css";
 import ALL_AGES from "graphql/queries/allAges/ALL_AGES";
@@ -10,6 +10,7 @@ import ALL_BREEDS from "graphql/queries/allBreeds/ALL_BREEDS";
 import ALL_PERSONALITY_TYPES from "graphql/queries/allPersonalityTypes/ALL_PERSONALITY_TYPES";
 
 import { ErrorMessage, Loader } from "@shared";
+import { useNavigate } from "react-router";
 
 // add these arrays to mongodb
 const fieldType = [
@@ -39,12 +40,15 @@ const questionText = [
   "whats your dogs breed?",
   "whats your dogs age?",
   "whats your dogs personality?",
+
+  // these to be moved to an email a sign up email and password screen. may need to merge createuser and adddog queries
   "Enter your email address",
   "Enter your password",
   "confirm your password",
 ];
 
 export default function Questions(initialAnswer = []) {
+  const navigate = useNavigate();
   const { currentScreen, nextScreen, previousScreen } =
     useQuestionHook(questionText);
 
@@ -66,7 +70,7 @@ export default function Questions(initialAnswer = []) {
   } = useQuery(ALL_PERSONALITY_TYPES);
 
   // need to call all ages and breeds, combine query into one
-  const [addDog] = useMutation(ADD_DOG);
+  const [createUser] = useMutation(CREATE_USER);
   // post answers and create a graph query
   // animate inputs and text
 
@@ -95,7 +99,7 @@ export default function Questions(initialAnswer = []) {
     const [name, breed, age, personality, email, password, confirmPassword] =
       answers;
     e.preventDefault();
-    addDog({
+    createUser({
       variables: {
         name,
         breed,
@@ -107,6 +111,7 @@ export default function Questions(initialAnswer = []) {
       },
     });
     localStorage.clear();
+    navigate("/login");
   };
 
   if (ageLoader || breedLoader || personalityLoader) {

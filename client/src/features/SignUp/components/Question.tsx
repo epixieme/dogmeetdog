@@ -51,6 +51,7 @@ const Question: React.FC<Props> = ({
     setButtonClicked(true);
     nextScreen();
   };
+  console.log("answers", answers);
 
   return (
     <form className="question1-container" onSubmit={onSubmit}>
@@ -71,7 +72,9 @@ const Question: React.FC<Props> = ({
       </animated.div>
       <div className="question-buttons">
         <Button btnText={"<"} onClick={previousScreen} />
-        {answers.some((item) => item === "") ? (
+
+        {/* if some fields are no complete */}
+        {answers.some((isNotComplete) => isNotComplete === "") ? (
           <Button btnText={">"} onClick={handleClick} />
         ) : (
           <button type="submit">Next</button>
