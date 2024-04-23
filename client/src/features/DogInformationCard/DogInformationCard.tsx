@@ -25,17 +25,14 @@ const DogInformationCard = ({ dog, onClose }: DogProps) => {
 
   return (
     <div key={dog.id} className="dog-card" data-testid="dog-information-card">
-      <Link to={`/dogs/${dog.id}`}>
+      {/* <Link to={`/dogs/${dog.id}`}> */}
+      <div className="dog-card-contents">
         <img src={dogs} />
-        <h2>{dog.name}</h2>
-        <img src={dog.imageUrl} alt={dog.name} />
-        <div className="dog-info">
-          <div>{dog.breed}</div>
-          <h3>{dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
-        </div>
-        <i className={`dog-likes ${dog.likes}`}>{dog.likes}</i>
-      </Link>
-      {/* <button onClick={onClose}>close</button> */}
+        <h3>Name: {dog.name[0].toUpperCase() + dog.name.substring(1)}</h3>
+
+        <i>Breed: {dog.breed}</i>
+        <i>Personality: {dog.personality}</i>
+      </div>
     </div>
   );
 };

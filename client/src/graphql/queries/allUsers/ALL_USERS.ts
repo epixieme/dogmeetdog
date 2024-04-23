@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-const ALL_DOGS = gql`
-  query AllDogs {
-    allDogs {
+const ALL_USERS = gql`
+  query AllUsers {
+    allUsers {
       id
       name
       breed
@@ -11,4 +11,4 @@ const ALL_DOGS = gql`
     }
   }
 `;
-export default ALL_DOGS;
+export default ALL_USERS;

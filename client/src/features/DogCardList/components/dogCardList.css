@@ -1,56 +1,56 @@
+.dog-card-container {
+  color: white;
+}
 
 .dog-card {
-    margin-bottom: 30px
-  }
-  
-  .dog-card a {
-    color:white;
-    text-decoration: none;
-  }
-  
-  .dog-card img {
-    max-width: 100%;
-    border-radius: 5px;
-    width: 20rem;
-    height: 20rem;
-    object-fit: cover;
-  }
+  margin-bottom: 30px;
+}
 
-  .dog-likes {
-    display: flex;
-    align-items: center;
-    height: 34px;
-    padding: 6px 26px;
-    font-style: normal;
-    font-weight: 500;
-    border: none;
-    border-radius: 5px;
-    background-color: #115E59;
-    color: white
-  }
-  
-  .dog-likes:hover {
-    color: #FFEAD0;
-  }
-  
-  .dog-likes:focus {
-    outline: none;
-  }
+.dog-card a {
+  color: white;
+  text-decoration: none;
+}
 
+.dog-card img {
+  max-width: 100%;
+  border-radius: 5px;
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.dog-likes {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  padding: 6px 26px;
+  font-style: normal;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  background-color: #115e59;
+  color: white;
+}
+
+.dog-likes:hover {
+  color: #ffead0;
+}
+
+.dog-likes:focus {
+  outline: none;
+}
 
 @media screen and (min-width: 800px) {
+  .dog-condition {
+    display: flex;
+    align-items: center;
+  }
 
-    .dog-condition {
-      display: flex;
-      align-items: center;
-    }
-  
-    .dog-card-container {
-      display: grid;
-      grid-template-columns: repeat(4, 300px);
-      justify-content: center;
-      gap: 20px;
-      padding-inline: 20px;
-      /* place-items: center; */
-    }
-}  
+  .dog-card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    justify-content: center;
+    gap: 20px;
+    padding-inline: 20px;
+  }
+}

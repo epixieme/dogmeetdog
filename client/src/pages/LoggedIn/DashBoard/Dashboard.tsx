@@ -61,7 +61,7 @@ export default function Dashboard({}: any) {
         </div>
       ))} */}
       <h1>hello</h1>
-      <h1>{data.currentUser.name}</h1>
+      <h1>{data && data.currentUser.name}</h1>
     </div>
   );
 }
