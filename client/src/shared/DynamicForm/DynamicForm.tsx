@@ -18,7 +18,6 @@ interface DropDownData {
   breedData: string[];
   ageData: number[];
   personalityData: string[];
-  // Add more properties if needed
 }
 
 export default function DynamicForm({
@@ -33,7 +32,6 @@ export default function DynamicForm({
   style,
   dropDownType,
 }: Props) {
-  // Create object to dynamically select data when on the correct form type
   const dropDownData: DropDownData = {
     breedData: breedData,
     ageData: ageData,
@@ -78,6 +76,3 @@ export default function DynamicForm({
     </>
   );
 }
-// need to do it so that
-//1. an array for dropdowntypes
-//2. can use this to choose which endoint to fetch  so dropdowntype && endpoint
