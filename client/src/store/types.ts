@@ -8,6 +8,9 @@ export interface OriginalRootState {
     isAuthenticated: boolean;
     // Other auth-related properties
   };
+  postcode: {
+    postcode: string;
+  };
   // Add other slices of state as needed
 }
 

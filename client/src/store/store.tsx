@@ -6,10 +6,11 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // Defaults to localStorage for web
 
 import authReducer from "features/auth/state/authSlice";
-
+import postcodeReducer from "features/Nearby/state/postcodeSlice";
 // Combine your reducers
 const rootReducer = combineReducers({
   auth: authReducer,
+  postcode: postcodeReducer,
 });
 
 // Configure Redux Persist options
@@ -28,4 +29,4 @@ export const store = configureStore({
 });
 
 // Create the persisted store
-export const persistor = persistStore(store);
+export const persister = persistStore(store);
