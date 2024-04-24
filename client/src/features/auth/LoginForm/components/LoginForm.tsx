@@ -1,11 +1,9 @@
 import { useMutation } from "@apollo/client";
 import AUTH from "graphql/mutations/AUTH";
-
 import { login } from "features/auth/state/authSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import "./loginform.css";
 import { RootState } from "store/types";
 
@@ -43,7 +41,7 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
       localStorage.setItem("dogUser-user-token", token);
       dispatch(login({ email, password }));
       localStorage.setItem("isLoggedIn", isAuthenticated.toString());
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     }
   }, [data, dispatch, email, password, navigate, setToken, isAuthenticated]);
 
@@ -95,7 +93,7 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
         />
 
         <button type="submit" disabled={loading}>
-          Log in
+          Log In
         </button>
       </form>
     </div>

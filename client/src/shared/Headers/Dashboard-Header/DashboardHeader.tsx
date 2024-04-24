@@ -36,6 +36,10 @@ export default function DashboardHeader() {
           <DmdNavIcons source="Notifications" themeType="outlined" />
           Notifications
         </Link>
+        <Link to="/nearby" className="nav-link">
+          <DmdNavIcons source="Notifications" themeType="outlined" />
+          Nearby
+        </Link>
         <Link to="/dashboard" className="nav-link">
           <DmdNavIcons source="Forum" themeType="outlined" />
           Messages

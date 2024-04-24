@@ -15,6 +15,7 @@ import AuthRequired from "features/auth/components/AuthRequired";
 import { useSelector } from "react-redux";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import Dashboard_Layout from "../Layouts/Dashboard_Layout";
+import Nearby from "pages/Nearby/Nearby";
 import Home_Layout from "../Layouts/Home_Layout";
 import ManageAccountPage from "pages/LoggedIn/DashBoard/ManageAccountPage";
 
@@ -38,6 +39,7 @@ export default function useRouter() {
         <Route path="login" element={<LoginPage />} />
         <Route element={<AuthRequired isAuthenticated={isAuthenticated} />}>
           <Route path="manage-account" element={<ManageAccountPage />} />
+          <Route path="nearby" element={<Nearby />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Route>
         <Route path="*" element={<NotFound />} />
