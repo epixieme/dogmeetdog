@@ -22,9 +22,9 @@ export default function Header() {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        stroke="#282828"
+        stroke="#2c2c2c"
       >
-        <polygon fill="#282828" points="0,100 100,0 100,100" stroke="#282828" />
+        <polygon fill="#2c2c2c" points="0,100 100,0 100,100" stroke="#2c2c2c" />
       </svg>
 
       <Link className="logo" to="/">

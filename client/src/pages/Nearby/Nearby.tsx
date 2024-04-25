@@ -6,11 +6,11 @@ import "./nearby.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/types";
 import { setPostcode } from "features/Nearby/state/postcodeSlice";
+import MapScroll from "features/Nearby/state/components/MapScroll";
 
 export default function Nearby() {
   const dispatch = useDispatch();
   const postcode = useSelector((state: RootState) => state.postcode);
-  console.log("pcode", postcode);
   const [coords, setCoords] = useState<LatLngExpression | null>(null);
   // Function to convert a postcode to coordinates using OpenStreetMap's Nominatim API
   async function getCoordinatesFromPostcode(postcode: string) {
@@ -32,7 +32,7 @@ export default function Nearby() {
         }
       } else {
         console.error(
-          "Error fetching data from Nominatim:",
+          "Error fetching data from Nominatim API:",
           response.statusText
         );
       }
@@ -62,7 +62,7 @@ export default function Nearby() {
   }, [postcode.postcode]);
 
   if (!coords) {
-    return <Loader loading={"... Loading Map"} />; // Render a loading message while fetching
+    return <Loader loading={"... Loading Map"} />;
   }
 
   // set this to your location that you enter when you sign up or on resetting the location to the new one in the input field or on mobile use current location
@@ -89,6 +89,7 @@ export default function Nearby() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <MapScroll center={coords} zoom={zoom} />
           <Marker position={coords}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
