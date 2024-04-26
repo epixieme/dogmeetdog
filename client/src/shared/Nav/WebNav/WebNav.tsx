@@ -18,12 +18,6 @@ export default function WebNav({ activeStyles, inactiveStyles }: Props) {
       >
         About
       </NavLink>
-      {/* <NavLink
-                to="/dogs"
-                style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-              >
-                Our Dogs
-              </NavLink> */}
       <NavLink
         to="/login"
         style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}

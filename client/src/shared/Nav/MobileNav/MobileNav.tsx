@@ -15,18 +15,7 @@ export default function MobileNav({
     <>
       <nav className="nav-links-mobile-container">
         <div className="nav-links">
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyItems: "flex-start",
-              paddingTop: 20,
-              paddingLeft: 30,
-            }}
-            onClick={onClick}
-          >
-            X
-          </div>
+          {/* <div onClick={onClick}>X</div> */}
           <NavLink
             to="/meetdogs"
             style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
@@ -39,12 +28,6 @@ export default function MobileNav({
           >
             About
           </NavLink>
-          {/* <NavLink
-              to="/dogs"
-              style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-            >
-              Our Dogs
-            </NavLink> */}
           <NavLink
             to="/login"
             style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}

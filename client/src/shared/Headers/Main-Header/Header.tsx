@@ -20,13 +20,9 @@ export default function Header() {
 
   const screenWidth = useWindowWidth();
   const [showMenu, setShowMenu] = useState(false);
-  console.log(showMenu);
+
   return (
     <header className="nav-menu-container">
-      {screenWidth < 700 && (
-        <BurgerMenu onClick={() => setShowMenu((prevState) => !prevState)} />
-      )}
-
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
@@ -35,7 +31,11 @@ export default function Header() {
       >
         <polygon fill="#2c2c2c" points="0,100 100,0 100,100" stroke="#2c2c2c" />
       </svg>
-
+      {screenWidth < 700 && (
+        <div style={{ backgroundColor: "white", width: "100%" }}>
+          <BurgerMenu onClick={() => setShowMenu((prevState) => !prevState)} />
+        </div>
+      )}
       <Link className="logo" to="/">
         <h2>DogMeetDog</h2>
         <svg
@@ -47,6 +47,7 @@ export default function Header() {
         </svg>
         <p>Find the perfect play date for your Dog.</p>
       </Link>
+
       {screenWidth < 700 && showMenu && (
         <MobileNav
           activeStyles={activeStyles}
