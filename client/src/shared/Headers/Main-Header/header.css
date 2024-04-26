@@ -75,6 +75,7 @@
 @media screen and (min-width: 800px) {
   .nav-menu-container {
     height: 20vh;
+    flex-direction: row;
     background-size: cover;
     justify-content: space-between;
   }
