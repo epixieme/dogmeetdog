@@ -13,7 +13,7 @@
       rgba(15, 115, 85, 0.9)
     ),
     url("./assets/images/nav-background-img.jpg") no-repeat center center;
- background-size:100vh 100vw 
+  background-size: 100vh 100vw;
 }
 
 .nav-menu-container > svg {
@@ -23,7 +23,6 @@
   width: 100%;
   height: 10vw;
   stroke: none;
-  
 
   /* set height to pixels if you want angle to change with screen width */
 }
@@ -34,35 +33,29 @@
   text-shadow: 1px 1px 2px pink;
   display: flex;
   flex-direction: column;
-  align-items:center;
-  text-align:center;
+  align-items: center;
+  text-align: center;
 }
 
 .logo > p {
- 
   text-shadow: 1px 1px 1px #000;
 }
 
-
 .logo > h2 {
-
   text-shadow: 1px 1px 1px #000;
-
 }
 
 .nav-menu-container .logo > svg {
   fill: white;
-  height:50px;
+  height: 50px;
   width: 50px;
 }
-
 
 .nav-links-container {
   /* padding-top: 1rem; */
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-
 }
 
 .nav-links-container a {
@@ -80,9 +73,8 @@
 @media screen and (min-width: 800px) {
   .nav-menu-container {
     height: 20vh;
-    background-size:cover;
+    background-size: cover;
     justify-content: space-between;
-   
   }
 
   .nav-menu-container svg {
@@ -95,14 +87,12 @@
     align-items: center;
     justify-content: flex-start;
     word-break: break-word;
-   
   }
 
   .logo > p {
     font-size: 1rem;
     text-shadow: 1px 1px 1px #000;
   }
-
 
   .logo > h2 {
     font-size: 1.2rem;
@@ -114,7 +104,6 @@
     fill: white;
   }
 
-  
   .nav-links-container a {
     font-size: 1rem;
     text-shadow: 1px 1px 1px #000;

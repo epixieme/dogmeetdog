@@ -3,6 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import { useWindowWidth } from "hooks";
 
 import "./header.css";
+import BurgerMenu from "shared/Nav/BurgerMenu/BurgerMenu";
+import { useState } from "react";
+import MobileNav from "shared/Nav/MobileNav/MobileNav";
+import WebNav from "shared/Nav/WebNav/WebNav";
 
 export default function Header() {
   const activeStyles = {
@@ -15,9 +19,14 @@ export default function Header() {
   };
 
   const screenWidth = useWindowWidth();
-
+  const [showMenu, setShowMenu] = useState(false);
+  console.log(showMenu);
   return (
     <header className="nav-menu-container">
+      {screenWidth < 700 && (
+        <BurgerMenu onClick={() => setShowMenu((prevState) => !prevState)} />
+      )}
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
@@ -38,34 +47,15 @@ export default function Header() {
         </svg>
         <p>Find the perfect play date for your Dog.</p>
       </Link>
-
+      {screenWidth < 700 && showMenu && (
+        <MobileNav
+          activeStyles={activeStyles}
+          inactiveStyles={inactiveStyles}
+          onClick={() => setShowMenu(false)}
+        />
+      )}
       {screenWidth > 800 && (
-        <nav className="nav-links-container">
-          <NavLink
-            to="/meetdogs"
-            style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-          >
-            Meet the Dogs
-          </NavLink>
-          <NavLink
-            to="/about"
-            style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-          >
-            About
-          </NavLink>
-          {/* <NavLink
-            to="/dogs"
-            style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-          >
-            Our Dogs
-          </NavLink> */}
-          <NavLink
-            to="/login"
-            style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-          >
-            Login
-          </NavLink>
-        </nav>
+        <WebNav activeStyles={activeStyles} inactiveStyles={inactiveStyles} />
       )}
     </header>
   );

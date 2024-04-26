@@ -1,0 +1,9 @@
+.burger-container {
+  /* background: pink; */
+}
+.burger-menu {
+  background-color: black;
+  height: 5px;
+  width: 30px;
+  margin-bottom: 2px;
+}
