@@ -1,6 +1,6 @@
 .nav-menu-container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   justify-content: flex-start;
   padding: 2rem 2.5rem;
