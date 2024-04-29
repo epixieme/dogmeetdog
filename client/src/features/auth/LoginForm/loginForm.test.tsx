@@ -1,6 +1,6 @@
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import LoginForm from "./LoginForm";
+import LoginForm from "./components/LoginForm";
 import { MockedProvider } from "@apollo/client/testing";
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";

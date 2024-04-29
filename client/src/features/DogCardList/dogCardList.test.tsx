@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import DogCardList from "./DogCardList";
+import DogCardList from "./components/DogCardList";
 import { MemoryRouter } from "react-router";
 
 describe("DogCardList component", () => {

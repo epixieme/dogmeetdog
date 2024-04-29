@@ -84,14 +84,6 @@
     height: 10vh;
   }
 
-  .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    word-break: break-word;
-  }
-
   .logo > p {
     font-size: 1rem;
     text-shadow: 1px 1px 1px #000;

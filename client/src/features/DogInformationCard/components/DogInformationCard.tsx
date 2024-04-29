@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./dogInformationCard.css";
+import "../styles/dogInformationCard.css";
 import { useEffect, useState } from "react";
 interface DogProps {
   onClose?: () => void;

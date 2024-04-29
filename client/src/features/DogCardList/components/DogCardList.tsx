@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { DogInformationCard } from "@features";
-import "./dogCardList.css";
+import DogInformationCard from "features/DogInformationCard/components/DogInformationCard";
+import "../styles/dogCardList.css";
 
 interface User {
   dogs: String[];

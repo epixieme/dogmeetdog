@@ -4,7 +4,7 @@ import { login } from "features/auth/state/authSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./loginform.css";
+import "../styles/loginform.css";
 import { RootState } from "store/types";
 
 interface Props {
