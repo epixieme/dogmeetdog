@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/question.css";
 import { Button } from "@shared";
-import DynamicForm from "shared/DynamicForm/DynamicForm";
+import DynamicForm from "shared/DynamicForm/components/DynamicForm";
 import { useSpring, animated } from "@react-spring/web";
 
 interface Props {

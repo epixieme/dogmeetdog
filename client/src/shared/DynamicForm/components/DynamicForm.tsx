@@ -1,5 +1,5 @@
-import "./dynamicform.css";
-import dogPhoto from "../../assets/images/dog-profile.png";
+import "../styles/dynamicform.css";
+import dogPhoto from "../../../assets/images/dog-profile.png";
 
 interface Props {
   questionText?: string;

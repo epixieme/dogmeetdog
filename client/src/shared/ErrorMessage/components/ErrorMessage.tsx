@@ -1,4 +1,4 @@
-import "./errorMessage.css";
+import "../styles/errorMessage.css";
 
 interface errorProps {
   error: string | undefined;

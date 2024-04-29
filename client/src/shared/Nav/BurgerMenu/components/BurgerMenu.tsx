@@ -1,4 +1,4 @@
-import "./burgerMenu.css";
+import "../styles/burgerMenu.css";
 interface Props {
   onClick: () => void;
 }

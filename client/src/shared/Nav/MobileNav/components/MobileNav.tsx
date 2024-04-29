@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "./mobileNav.css";
+import "../styles/mobileNav.css";
 interface Props {
   activeStyles: {};
   inactiveStyles: {};

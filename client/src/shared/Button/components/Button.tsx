@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./button.css";
+import "../styles/button.css";
 interface buttonProps {
   btnText: string;
   route?: any;

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useWindowWidth } from "hooks";
 
 import "./header.css";
-import BurgerMenu from "shared/Nav/BurgerMenu/BurgerMenu";
+import BurgerMenu from "shared/Nav/BurgerMenu/components/BurgerMenu";
 import { useState } from "react";
-import MobileNav from "shared/Nav/MobileNav/MobileNav";
-import WebNav from "shared/Nav/WebNav/WebNav";
+import MobileNav from "shared/Nav/MobileNav/components/MobileNav";
+import WebNav from "shared/Nav/WebNav/components/WebNav";
 
 export default function Header() {
   const activeStyles = {
