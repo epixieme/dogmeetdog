@@ -1,6 +1,6 @@
 import { Button } from "@shared";
 import "../styles/home.css";
-import Typography from "shared/typography/Typography";
+
 export default function HomePage() {
   return (
     <>
@@ -11,9 +11,6 @@ export default function HomePage() {
           route="/questions"
           disabled={undefined}
         />
-        <Typography variant={"h1"} children={undefined} className={""}>
-          Test
-        </Typography>
       </section>
     </>
   );
