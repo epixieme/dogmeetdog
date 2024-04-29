@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { ErrorMessage, Loader } from "@shared";
 import CURRENT_USER from "graphql/queries/CURRENT_USER";
-import "./dashboard.css";
+import "../styles/dashboard.css";
 
 export default function Dashboard({}: any) {
   const { data, loading, error } = useQuery(CURRENT_USER);

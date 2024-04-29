@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import useQuestionHook from "../../features/SignUp/hooks/useQuestionHook";
+import useQuestionHook from "../../../features/SignUp/hooks/useQuestionHook";
 import { Question } from "@features";
 import CREATE_USER from "graphql/mutations/CREATE_USER";
 

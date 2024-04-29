@@ -5,19 +5,19 @@ import {
   Route,
 } from "react-router-dom";
 import { RootState } from "store/types";
-import Home from "pages/HomePage/Home";
+import Home from "pages/LoggedOut/HomePage/page/Home";
 import About from "../pages/LoggedOut/About/About";
 import DisplayDogs from "../pages/LoggedOut/Dogs/DisplayDogs";
 import NotFound from "shared/NotFound";
-import Dashboard from "pages/LoggedIn/DashBoard/Dashboard";
-import QuestionPage from "../pages/SignUp/QuestionPage";
+import Dashboard from "pages/LoggedIn/DashBoard/page/Dashboard";
+import QuestionPage from "../pages/LoggedOut/SignUp/QuestionPage";
 import AuthRequired from "features/auth/components/AuthRequired";
 import { useSelector } from "react-redux";
-import LoginPage from "../pages/LoginPage/LoginPage";
-import Dashboard_Layout from "../Layouts/Dashboard_Layout";
-import Nearby from "pages/Nearby/Nearby";
-import Home_Layout from "../Layouts/Home_Layout";
-import ManageAccountPage from "pages/LoggedIn/DashBoard/ManageAccountPage";
+import LoginPage from "../pages/LoggedOut/LoginPage/page/LoginPage";
+import Dashboard_Layout from "Layouts/Dashboard/components/Dashboard_Layout";
+import Nearby from "pages/LoggedIn/Nearby/page/Nearby";
+import Home_Layout from "Layouts/Landing/components/Home_Layout";
+import ManageAccountPage from "pages/LoggedIn/ManageAccount/page/ManageAccountPage";
 
 //nested routes
 

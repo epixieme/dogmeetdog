@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useApolloClient } from "@apollo/client";
 import LoginForm from "features/auth/LoginForm/components/LoginForm";
 import { ErrorMessage, Loader } from "@shared";
-import "./loginPage.css";
+import "../styles/loginPage.css";
 export default function LoginPage() {
   const client = useApolloClient();
   const [errorMessage, setErrorMessage] = useState(null);

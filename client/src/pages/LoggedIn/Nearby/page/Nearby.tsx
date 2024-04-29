@@ -2,7 +2,7 @@ import { Loader } from "@shared";
 import { LatLngExpression } from "leaflet";
 import { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
-import "./nearby.css";
+import "../styles/nearby.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/types";
 import { setPostcode } from "features/Nearby/state/postcodeSlice";
