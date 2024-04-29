@@ -1,4 +1,4 @@
-import "../styles/dynamicform.css";
+import "../styles/dynamicForm.css";
 import dogPhoto from "../../../assets/images/dog-profile.png";
 
 interface Props {
@@ -9,7 +9,6 @@ interface Props {
   ageData: number[];
   breedData: string[];
   personalityData: string[];
-  style?: any;
   altImageText: string;
   dropDownType: string;
 }
@@ -29,7 +28,6 @@ export default function DynamicForm({
   breedData,
   personalityData,
   altImageText,
-  style,
   dropDownType,
 }: Props) {
   const dropDownData: DropDownData = {
@@ -41,38 +39,36 @@ export default function DynamicForm({
   const dropDownContent = dropDownData[dropDownType as keyof DropDownData];
 
   return (
-    <>
-      <div className="ai-assistant-container" style={style}>
-        <img
-          className="dog-ai-assistant-image"
-          src={dogPhoto}
-          alt={altImageText}
-        />
-        <label className="question-labels">{questionText}:</label>
+    <div className="ai-assistant-container">
+      <img
+        className="dog-ai-assistant-image"
+        src={dogPhoto}
+        alt={altImageText}
+      />
+      <label className="question-labels">{questionText}:</label>
 
-        {fieldType === "text" ||
-        fieldType === "email" ||
-        fieldType === "password" ? (
-          <input
-            type={fieldType}
-            onChange={onChange}
-            value={value}
-            placeholder={fieldType}
-          ></input>
-        ) : (
-          <select
-            required
-            defaultValue={"Select"}
-            onChange={onChange}
-            className="drop-down-menu"
-          >
-            {dropDownContent &&
-              dropDownContent?.map((item: string | number) => (
-                <option>{item}</option>
-              ))}
-          </select>
-        )}
-      </div>
-    </>
+      {fieldType === "text" ||
+      fieldType === "email" ||
+      fieldType === "password" ? (
+        <input
+          type={fieldType}
+          onChange={onChange}
+          value={value}
+          placeholder={fieldType}
+        ></input>
+      ) : (
+        <select
+          required
+          defaultValue={"Select"}
+          onChange={onChange}
+          className="drop-down-menu"
+        >
+          {dropDownContent &&
+            dropDownContent?.map((item: string | number) => (
+              <option>{item}</option>
+            ))}
+        </select>
+      )}
+    </div>
   );
 }

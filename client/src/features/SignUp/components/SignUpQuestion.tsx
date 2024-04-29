@@ -19,7 +19,7 @@ interface Props {
   dropDownType: string;
 }
 
-const Question: React.FC<Props> = ({
+const SignUpQuestion: React.FC<Props> = ({
   onSubmit,
   answers,
   previousScreen,
@@ -84,4 +84,4 @@ const Question: React.FC<Props> = ({
   );
 };
 
-export default Question;
+export default SignUpQuestion;

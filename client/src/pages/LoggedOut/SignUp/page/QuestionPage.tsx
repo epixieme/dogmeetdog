@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import useQuestionHook from "../../../../features/SignUp/hooks/useQuestionHook";
-import { Question } from "@features";
+
 import CREATE_USER from "graphql/mutations/CREATE_USER";
 
 import "../styles/signUp.css";
@@ -11,6 +11,7 @@ import ALL_PERSONALITY_TYPES from "graphql/queries/allPersonalityTypes/ALL_PERSO
 
 import { ErrorMessage, Loader } from "@shared";
 import { useNavigate } from "react-router";
+import SignUpQuestion from "features/SignUp/components/SignUpQuestion";
 
 // add these arrays to mongodb
 const fieldType = [
@@ -126,7 +127,7 @@ export default function Questions(initialAnswer = []) {
 
   return (
     <div className="questionText">
-      <Question
+      <SignUpQuestion
         questionText={questionText[currentScreen]}
         onChange={(event) =>
           handleAnswerChange(currentScreen, event.target.value)

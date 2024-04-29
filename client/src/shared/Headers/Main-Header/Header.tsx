@@ -22,7 +22,10 @@ export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className="nav-menu-container">
+    <header
+      className="nav-menu-container"
+      onClick={() => showMenu && setShowMenu(false)}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
