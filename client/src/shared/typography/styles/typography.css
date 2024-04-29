@@ -1,3 +1,15 @@
 .h1-variant {
   color: white;
+  text-align: center;
+}
+
+.h2-variant {
+  color: white;
+  font-size: 24px;
+}
+
+.body-variant {
+  font-size: 1rem;
+  padding-top: 10px;
+  line-height: 22px;
 }

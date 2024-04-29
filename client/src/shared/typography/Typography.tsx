@@ -8,6 +8,8 @@ const typographyMap: TypographyComponentType = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
+  h4: "h4",
+  body: "p",
 };
 interface TypographyProps {
   variant: keyof typeof typographyMap; // Ensures variant is one of the keys in typographyMap

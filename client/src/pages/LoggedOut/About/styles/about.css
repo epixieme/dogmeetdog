@@ -1,6 +1,6 @@
 .about-hero-img {
   margin-top: 40px;
-  max-width: 90%;
+  max-width: 80%;
   border-radius: 20px;
 }
 .about-container {
@@ -21,14 +21,15 @@
 }
 
 .about-call-to-action {
-  background-color: #c3ca95;
+  background-color: #3d7f61;
   border: 4px solid #3a673a;
   color: white;
   padding-inline: 32px;
   padding-bottom: 32px;
   margin-inline: 27px;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin-bottom: 20px;
 }
 
 .about-call-to-action h2 {
@@ -66,6 +67,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-inline: 100px;
   }
 
   .about-content {
@@ -85,6 +87,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 80%;
   }
 }
