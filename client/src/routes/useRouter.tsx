@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import { RootState } from "store/types";
-import Home from "pages/LoggedOut/HomePage/page/Home";
+import HomePage from "pages/LoggedOut/HomePage/page/HomePage";
 import About from "pages/LoggedOut/About/page/About";
 import DisplayDogs from "pages/LoggedOut/Dogs/page/DisplayDogs";
 import NotFound from "shared/NotFound";
@@ -32,7 +32,7 @@ export default function useRouter() {
         path="/"
         element={isAuthenticated ? <Dashboard_Layout /> : <Home_Layout />}
       >
-        <Route index element={isAuthenticated ? <Dashboard /> : <Home />} />
+        <Route index element={isAuthenticated ? <Dashboard /> : <HomePage />} />
         <Route path="meetdogs" element={<DisplayDogs />} />
         <Route path="about" element={<About />} />
         <Route path="questions" element={<QuestionPage />} />

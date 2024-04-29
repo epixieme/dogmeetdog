@@ -1,3 +1,4 @@
+import "../styles/loader.css";
 interface LoadingProps {
   loading: string;
 }

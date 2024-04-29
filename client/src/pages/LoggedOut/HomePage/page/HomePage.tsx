@@ -1,6 +1,6 @@
 import { Button } from "@shared";
 import "../styles/home.css";
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <section className="home-container">
