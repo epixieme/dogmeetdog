@@ -6,11 +6,11 @@ import {
 } from "react-router-dom";
 import { RootState } from "store/types";
 import Home from "pages/LoggedOut/HomePage/page/Home";
-import About from "../pages/LoggedOut/About/About";
-import DisplayDogs from "../pages/LoggedOut/Dogs/DisplayDogs";
+import About from "pages/LoggedOut/About/page/About";
+import DisplayDogs from "pages/LoggedOut/Dogs/page/DisplayDogs";
 import NotFound from "shared/NotFound";
 import Dashboard from "pages/LoggedIn/DashBoard/page/Dashboard";
-import QuestionPage from "../pages/LoggedOut/SignUp/QuestionPage";
+import QuestionPage from "../pages/LoggedOut/SignUp/page/QuestionPage";
 import AuthRequired from "features/auth/components/AuthRequired";
 import { useSelector } from "react-redux";
 import LoginPage from "../pages/LoggedOut/LoginPage/page/LoginPage";

@@ -3,7 +3,7 @@ import { ErrorMessage, Loader } from "shared";
 import { DogCardList } from "features";
 import ALL_USERS from "graphql/queries/allUsers/ALL_USERS";
 import { useQuery } from "@apollo/client";
-import "./displaydogs.css";
+import "../styles/displaydogs.css";
 
 export default function DisplayDogs() {
   const { data, loading, error } = useQuery(ALL_USERS);
