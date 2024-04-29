@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./styles/typography.css";
 type TypographyComponentType = {
   [key: string]: keyof JSX.IntrinsicElements | React.ElementType; // Accepts HTML tags and custom components
 };
@@ -26,7 +26,9 @@ export default function Typography({
     throw new Error(`Variant '${variant}' not found in typographyMap`);
   }
 
-  return React.createElement(TypographyComponent, { style }, children);
-
-  // return <TypographyComponent></TypographyComponent>;
+  return React.createElement(
+    TypographyComponent,
+    { style, className: `${typographyMap[variant]}-variant` },
+    children
+  );
 }
