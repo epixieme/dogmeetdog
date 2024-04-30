@@ -18,7 +18,7 @@ Server:
 
 <section>
   <h1>Dog Meet Dog</h1>
-  <section style="display: flex; flex-direction: row;" >
+  <section style="display: flex; flex-direction: row; border:1px solid white" >
 <img width="400" alt="dmd" src="https://user-images.githubusercontent.com/39728053/225086962-3c6079aa-2c68-4027-aa41-2cffcf544e17.png">
 <img width="400" alt="login" src="https://github.com/epixieme/dogmeetdog/assets/39728053/fc46de92-13f1-4f56-99c5-6a4b803b341e">
 </section>
