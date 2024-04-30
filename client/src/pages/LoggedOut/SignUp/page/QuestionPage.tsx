@@ -38,14 +38,14 @@ const dropDownType = [
 //the below needs to be added to the database
 const questionText = [
   "Hello There, I'm Woofus. Lets start with your dogs name?",
-  "whats your dogs breed?",
-  "whats your dogs age?",
-  "whats your dogs personality?",
+  "What's your dogs breed?",
+  "What's your dogs age?",
+  "What's your dogs personality?",
 
   // these to be moved to an email a sign up email and password screen. may need to merge createuser and adddog queries
   "Enter your email address",
   "Enter your password",
-  "confirm your password",
+  "Confirm your password",
 ];
 
 export default function Questions(initialAnswer = []) {
