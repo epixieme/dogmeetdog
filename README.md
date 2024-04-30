@@ -19,8 +19,8 @@ Server:
 <section>
   <h1>Dog Meet Dog</h1>
   <section style="display: flex; flex-direction: row; align-items:center; border:1px solid white" >
-    <img width="400" height="300" alt="home" src="https://github.com/epixieme/dogmeetdog/assets/39728053/2b186195-d971-48e6-a2b3-cb609433cbb5">
-<img width="400" height="300" alt="login" src="https://github.com/epixieme/dogmeetdog/assets/39728053/fc46de92-13f1-4f56-99c5-6a4b803b341e">
+    <img width="400" height="200" alt="home" src="https://github.com/epixieme/dogmeetdog/assets/39728053/2b186195-d971-48e6-a2b3-cb609433cbb5">
+<img width="400" height="200" alt="login" src="https://github.com/epixieme/dogmeetdog/assets/39728053/fc46de92-13f1-4f56-99c5-6a4b803b341e">
 </section>
 <img width="200" src="https://github.com/epixieme/dogmeetdog/assets/39728053/3862725a-08f0-4f3c-bb7e-d90109f57d75" >
 
