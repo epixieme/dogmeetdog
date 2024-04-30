@@ -1,6 +1,7 @@
 import { Button } from "@shared";
 import backgroundImage from "../assets/about-hero-image.jpg";
 import "../styles/about.css";
+
 import Typography from "shared/Typography/Typography";
 export default function About() {
   return (
@@ -25,9 +26,11 @@ export default function About() {
         </Typography>
       </section>
       <section className="about-call-to-action">
-        <h2>What are you waiting for? Your dogs play date is waiting.</h2>
-        <h3>Check out our dogs online.</h3>
-        <Button btnText="Explore our dogs" route="/dogs" />
+        <Typography variant={"h2"}>
+          What are you waiting for? Your dogs play date is waiting.
+        </Typography>
+        <Typography variant={"h3"}>Check out our dogs online.</Typography>
+        <Button btnText="Explore our dogs" route="/dogs" disabled={undefined} />
       </section>
     </section>
   );

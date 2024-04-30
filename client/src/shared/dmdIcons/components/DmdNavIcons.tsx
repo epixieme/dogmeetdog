@@ -9,10 +9,21 @@ import {
   Favorite,
   Notifications,
   Forum,
+  AccountBox,
+  Info,
+  Pets,
 } from "@mui/icons-material";
 
 interface DmdNavIconsProps {
-  source: "Home" | "ManageAccounts" | "Favorite" | "Notifications" | "Forum";
+  source:
+    | "Home"
+    | "ManageAccounts"
+    | "Favorite"
+    | "Notifications"
+    | "Forum"
+    | "AccountBox"
+    | "Info"
+    | "Pets";
   themeType: "rounded" | "filled" | "outlined";
 }
 
@@ -27,6 +38,9 @@ const DmdNavIcons: React.FC<DmdNavIconsProps> = ({
     Favorite: Favorite,
     Notifications: Notifications,
     Forum: Forum,
+    AccountBox: AccountBox,
+    Info: Info,
+    Pets: Pets,
   };
 
   const IconComponent = iconMap[source];
@@ -72,6 +86,7 @@ const DmdNavIcons: React.FC<DmdNavIconsProps> = ({
             styleOverrides: {
               root: {
                 borderRadius: "50%",
+                stroke: "white", // Outline color
               },
             },
           },
@@ -83,7 +98,7 @@ const DmdNavIcons: React.FC<DmdNavIconsProps> = ({
         ...defaultIconStyles,
         palette: {
           primary: {
-            main: "#2C7B62",
+            main: "#FFFFFF",
           },
         },
       });
@@ -95,7 +110,7 @@ const DmdNavIcons: React.FC<DmdNavIconsProps> = ({
           MuiSvgIcon: {
             styleOverrides: {
               root: {
-                stroke: "#2C7B62", // Outline color
+                stroke: "white", // Outline color
                 strokeWidth: 1, // Outline thickness
               },
             },

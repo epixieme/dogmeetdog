@@ -78,6 +78,7 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
         <h1>Sign in to your account</h1>
         <form onSubmit={handleLogin} className="login-form">
           <input
+            className="login-input"
             name="email"
             onChange={handleEmailChange}
             type="email"
@@ -85,6 +86,7 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
             value={email}
           />
           <input
+            className="login-input"
             name="password"
             onChange={handlePasswordChange}
             type="password"
