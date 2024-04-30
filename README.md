@@ -16,7 +16,7 @@ Server:
 - npm install
 - npm start
 
-<section>
+<section >
   <h1>Dog Meet Dog</h1>
 <img width="757" alt="dmd" src="https://user-images.githubusercontent.com/39728053/225086962-3c6079aa-2c68-4027-aa41-2cffcf544e17.png">
 <img width="757" alt="login" src="https://github.com/epixieme/dogmeetdog/assets/39728053/fc46de92-13f1-4f56-99c5-6a4b803b341e">
