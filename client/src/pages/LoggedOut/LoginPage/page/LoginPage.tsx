@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useApolloClient } from "@apollo/client";
-import LoginForm from "features/auth/LoginForm/components/LoginForm";
+import LoginForm from "features/Auth/LoginForm/components/LoginForm";
 import { ErrorMessage, Loader } from "@shared";
 import "../styles/loginPage.css";
 export default function LoginPage() {
@@ -15,12 +15,6 @@ export default function LoginPage() {
       setErrorMessage(null);
     }, 4000);
   };
-
-  // const logout = () => {
-  //   setToken(null);
-  //   localStorage.clear();
-  //   client.resetStore();
-  // };
 
   return (
     <div className="login-container">

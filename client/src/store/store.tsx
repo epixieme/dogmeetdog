@@ -5,7 +5,7 @@ import { persistReducer, persistStore } from "redux-persist";
 
 import storage from "redux-persist/lib/storage"; // Defaults to localStorage for web
 
-import authReducer from "features/auth/state/authSlice";
+import authReducer from "features/Auth/state/authSlice";
 import postcodeReducer from "features/Nearby/state/postcodeSlice";
 // Combine your reducers
 const rootReducer = combineReducers({

@@ -11,7 +11,7 @@ import DisplayDogs from "pages/LoggedOut/Dogs/page/DisplayDogs";
 import NotFound from "shared/NotFound";
 import Dashboard from "pages/LoggedIn/DashBoard/page/Dashboard";
 import QuestionPage from "../pages/LoggedOut/SignUp/page/QuestionPage";
-import AuthRequired from "features/auth/components/AuthRequired";
+import AuthRequired from "features/Auth/components/AuthRequired";
 import { useSelector } from "react-redux";
 import LoginPage from "../pages/LoggedOut/LoginPage/page/LoginPage";
 import Dashboard_Layout from "Layouts/Dashboard/components/Dashboard_Layout";

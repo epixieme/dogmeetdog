@@ -1,6 +1,6 @@
 import { Button } from "@shared";
 import "../styles/home.css";
-import Typography from "shared/typography/Typography";
+import Typography from "shared/Typography/Typography";
 
 export default function HomePage() {
   return (

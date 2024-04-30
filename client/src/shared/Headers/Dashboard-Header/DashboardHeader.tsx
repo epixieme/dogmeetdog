@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import "./dashboardHeader.css";
 import { useApolloClient } from "@apollo/client";
 import { useDispatch } from "react-redux";
-import { logout } from "features/auth/state/authSlice";
+import { logout } from "features/Auth/state/authSlice";
 import { useNavigate } from "react-router-dom";
-import DmdNavIcons from "shared/dmdIcons/components/DmdNavIcons";
+import DmdNavIcons from "shared/DmdIcons/components/DmdNavIcons";
 
 export default function DashboardHeader() {
   const navigate = useNavigate();

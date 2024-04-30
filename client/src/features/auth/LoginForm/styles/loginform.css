@@ -3,21 +3,51 @@
   width: 100%;
 }
 
-.login-container > h1 {
+.login-container h1 {
   color: white;
+  text-align: center;
 }
+.login-form-outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: flex-start; */
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 30px;
+  height: auto;
+  width: 70%;
+  background-image: url(../assets/login-image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+}
+
 .login-form {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   gap: 40px;
-  width: 80%;
+  width: 100%;
+  height: auto;
 }
-.input {
-  display: flex;
-  justify-content: center;
-  width: 200px;
+input {
+  min-width: 100%;
+  min-height: 35px;
 }
 input::placeholder {
   padding-inline: 20px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 800px) {
+  input {
+    min-width: 30%;
+  }
+
+  .login-form-outer-container {
+    background-size: contain;
+    width: 60%;
+  }
 }

@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
 import AUTH from "graphql/mutations/AUTH";
-import { login } from "features/auth/state/authSlice";
+import { login } from "features/Auth/state/authSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -51,7 +51,6 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
       setErrorMsg("Email and password are required.");
       return;
     }
-
     try {
       await loginUser({
         variables: {
@@ -75,27 +74,29 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
 
   return (
     <div className="login-container">
-      <h1>Sign in to your account</h1>
-      <form onSubmit={handleLogin} className="login-form">
-        <input
-          name="email"
-          onChange={handleEmailChange}
-          type="email"
-          placeholder="Email address"
-          value={email}
-        />
-        <input
-          name="password"
-          onChange={handlePasswordChange}
-          type="password"
-          placeholder="Password"
-          value={password}
-        />
+      <div className="login-form-outer-container">
+        <h1>Sign in to your account</h1>
+        <form onSubmit={handleLogin} className="login-form">
+          <input
+            name="email"
+            onChange={handleEmailChange}
+            type="email"
+            placeholder="Email address"
+            value={email}
+          />
+          <input
+            name="password"
+            onChange={handlePasswordChange}
+            type="password"
+            placeholder="Password"
+            value={password}
+          />
 
-        <button type="submit" disabled={loading}>
-          Log In
-        </button>
-      </form>
+          <button type="submit" disabled={loading}>
+            Log In
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

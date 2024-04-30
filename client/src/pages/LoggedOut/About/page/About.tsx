@@ -1,7 +1,7 @@
 import { Button } from "@shared";
 import backgroundImage from "../assets/about-hero-image.jpg";
 import "../styles/about.css";
-import Typography from "shared/typography/Typography";
+import Typography from "shared/Typography/Typography";
 export default function About() {
   return (
     <section className="about-container">
