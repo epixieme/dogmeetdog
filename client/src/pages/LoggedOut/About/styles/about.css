@@ -1,6 +1,6 @@
 .about-hero-img {
   margin-top: 40px;
-  max-width: 85%;
+  max-width: 100%;
   border-radius: 20px;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
   border: 1px solid grey;
@@ -9,9 +9,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-inline: 30px;
 }
 .about-content {
-  padding-inline: 23px;
   color: white;
   margin-bottom: 55px;
 }
@@ -25,6 +25,10 @@
 }
 
 .about-call-to-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #3d7f61;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
   border: 1px solid #3d7e61;
@@ -35,7 +39,7 @@
   border-radius: 30px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   margin-bottom: 20px;
-  max-width: 65%;
+  max-width: 85%;
   height: auto;
 }
 
