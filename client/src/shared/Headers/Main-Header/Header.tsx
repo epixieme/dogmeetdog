@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { useWindowWidth } from "hooks";
+import { useSpring, animated } from "@react-spring/web";
 
 import "./header.css";
 import BurgerMenu from "shared/Nav/BurgerMenu/components/BurgerMenu";
@@ -20,6 +21,12 @@ export default function Header() {
 
   const screenWidth = useWindowWidth();
   const [showMenu, setShowMenu] = useState(false);
+
+  const fadeProps = useSpring({
+    opacity: 1, // Final opacity
+    from: { opacity: 0 }, // Initial opacity
+    config: { duration: 500 }, // Duration of the fade-in
+  });
 
   return (
     <header
@@ -55,7 +62,6 @@ export default function Header() {
         <MobileNav
           activeStyles={activeStyles}
           inactiveStyles={inactiveStyles}
-          onClick={() => setShowMenu(false)}
         />
       )}
       {screenWidth > 800 && (
