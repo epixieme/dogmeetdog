@@ -42,7 +42,7 @@ input::placeholder {
 }
 
 @media screen and (min-width: 800px) {
-  input {
+  .login-input {
     min-width: 30%;
   }
 
