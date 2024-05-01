@@ -1,3 +1,4 @@
+import Typography from "shared/Typography/Typography";
 import "../styles/errorMessage.css";
 
 interface errorProps {
@@ -10,7 +11,7 @@ const ErrorMessage: React.FC<errorProps> = ({ error }) => {
   }
   return (
     <div className="error">
-      <h1>{error}</h1>
+      <Typography variant={"h3"}>{error}</Typography>
     </div>
   );
 };

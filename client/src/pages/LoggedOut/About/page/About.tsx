@@ -6,9 +6,9 @@ import Typography from "shared/Typography/Typography";
 export default function About() {
   return (
     <section className="about-container">
-      <img src={backgroundImage} className="about-hero-img" />
       <section className="about-content">
         <Typography variant="h1">Welcome to Dog Meet Dog</Typography>
+        <img src={backgroundImage} className="about-hero-img" />
         <Typography variant="body">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
           consequuntur aspernatur iusto fugit vitae doloremque recusandae quis

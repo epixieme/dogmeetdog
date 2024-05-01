@@ -14,10 +14,25 @@ interface Props {
 }
 
 export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
-  const [loginUser, { data, loading, error }] = useMutation(AUTH);
+  const [loginUser, { data, loading, error }] = useMutation(
+    AUTH,
+
+    {
+      onError: (error) => {
+        setErrorMsg(error.graphQLErrors[0].message);
+      },
+    }
+  );
+
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
+
+  // const [ login, result ] = useMutation(LOGIN, {
+  //   onError: (error) => {
+  //     setError(error.graphQLErrors[0].message)
+  //   }
+  // })
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -26,17 +41,35 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
     email: "",
     password: "",
   });
-
+  const token = data?.loginUser.value;
   const { email, password } = loginFormData;
-  // needs to be in a useEffect or will get a render error
+
   useEffect(() => {
-    if (loading) setLoader("Submitting...");
-    if (error) setErrorMsg(`Submission error! ${error.message}`);
-  }, [loading, error, setLoader, setErrorMsg]);
+    if (error) {
+      const graphQLErrors = error.graphQLErrors;
+
+      // Check for specific error codes and handle them
+      if (graphQLErrors && graphQLErrors.length > 0) {
+        const firstError = graphQLErrors[0];
+        // console.log(errorCode);
+        const errorCode = firstError.extensions?.code;
+        console.log(errorCode);
+        const errorMessage = firstError.message;
+        console.log(errorMessage);
+
+        if (errorCode === "BAD_USER_INPUT") {
+          setErrorMsg(errorMessage); // Update state, but do not return JSX
+        }
+
+        // else {
+        //   setErrorMsg("An unexpected error occurred.");
+        // }
+      }
+    }
+  }, [error, setErrorMsg]); // Ensure dependencies are correctly defined
 
   useEffect(() => {
     if (data) {
-      const token = data.loginUser.value;
       setToken(token);
       localStorage.setItem("dogUser-user-token", token);
       dispatch(login({ email, password }));
@@ -47,10 +80,6 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
 
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!email || !password) {
-      setErrorMsg("Email and password are required.");
-      return;
-    }
     try {
       await loginUser({
         variables: {
@@ -60,7 +89,7 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
       });
     } catch (error) {
       console.log(error);
-      setErrorMsg("There was an error, please try again.");
+      setErrorMsg("Login failed. Please try again.");
     }
   }
 

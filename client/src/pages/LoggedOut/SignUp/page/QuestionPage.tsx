@@ -12,6 +12,7 @@ import ALL_PERSONALITY_TYPES from "graphql/queries/allPersonalityTypes/ALL_PERSO
 import { ErrorMessage, Loader } from "@shared";
 import { useNavigate } from "react-router";
 import SignUpQuestion from "features/SignUp/components/SignUpQuestion";
+import { ALL_DOGS } from "@queries";
 
 // add these arrays to mongodb
 const fieldType = [
@@ -48,7 +49,7 @@ const questionText = [
   "Confirm your password",
 ];
 
-export default function Questions(initialAnswer = []) {
+export default function QuestionPage({ initialAnswer = [] }: any) {
   const navigate = useNavigate();
   const { currentScreen, nextScreen, previousScreen } =
     useQuestionHook(questionText);
@@ -70,8 +71,19 @@ export default function Questions(initialAnswer = []) {
     error: personalityError,
   } = useQuery(ALL_PERSONALITY_TYPES);
 
+  const [error, setError] = useState("");
+  console.log(error);
+
   // need to call all ages and breeds, combine query into one
   const [createUser] = useMutation(CREATE_USER);
+
+  // const [createUser] = useMutation(CREATE_USER, {
+  //   refetchQueries: [{ query: ALL_DOGS }],
+  //   onError: (error) => {
+  //     const messages = error.graphQLErrors.map((e) => e.message).join("\n");
+  //     setError(messages);
+  //   },
+  // });
   // post answers and create a graph query
   // animate inputs and text
 

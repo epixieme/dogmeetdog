@@ -1,9 +1,11 @@
 .about-hero-img {
   margin-top: 40px;
-  max-width: 100%;
+  max-width: 90%;
   border-radius: 20px;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
   border: 1px solid grey;
+  align-self: center;
+  margin-bottom: 30px;
 }
 .about-container {
   display: flex;

@@ -90,23 +90,53 @@ const resolvers = {
 
     loginUser: async (_root: any, args: any) => {
       const user = await User.findOne({ email: args.email });
+      console.log("user", user);
 
       const userForToken = {
-        email: user.email,
-        id: user._id,
+        email: user?.email,
+        id: user?._id,
       };
+
+      if (!args.email) {
+        throw new GraphQLError("Email is required", {
+          extensions: { code: "BAD_USER_INPUT" },
+        });
+      }
+      if (!args.password) {
+        throw new GraphQLError("Password is required", {
+          extensions: { code: "BAD_USER_INPUT" },
+        });
+      }
+
+      if (!user) {
+        throw new GraphQLError("User not found", {
+          extensions: { code: "BAD_USER_INPUT" },
+        });
+      }
+
+      if (!bcrypt.compareSync(args.password, user.password)) {
+        throw new GraphQLError("Incorrect password", {
+          extensions: { code: "BAD_USER_INPUT" },
+        });
+      }
 
       if (user && bcrypt.compareSync(args.password, user?.password as string)) {
         return {
           value: jwt.sign(userForToken, SECRET_KEY, { expiresIn: "2h" }),
         };
-      } else if (!user || args.password !== user.password) {
-        throw new GraphQLError("wrong credentials", {
-          extensions: {
-            code: "BAD_USER_INPUT",
-          },
-        });
       }
+
+      //       else if (
+      //         !user.email ||
+      //         user.password ||
+      //         args.password !== user.password
+      //       ) {
+      //         throw new GraphQLError("wrong credentials", {
+      //           extensions: {
+      //             code: "BAD_USER_INPUT",
+      //           },
+      //         });
+      //       }
     },
   },
 };

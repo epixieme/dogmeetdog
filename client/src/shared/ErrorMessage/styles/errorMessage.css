@@ -1,3 +1,7 @@
-.error h1 {
+.error h3 {
   color: white;
+  border: 1px solid white;
+  background: #b75658;
+  padding: 10px;
+  border-radius: 10px;
 }
