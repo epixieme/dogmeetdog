@@ -129,6 +129,7 @@ const resolvers = {
 
       return {
         value: jwt.sign(userForToken, SECRET_KEY, { expiresIn: "2h" }),
+        message: "Login successful!",
       };
     },
   },

@@ -6,23 +6,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../styles/loginform.css";
 import { RootState } from "store/types";
+import {
+  setSuccess,
+  setError,
+} from "../../../../shared/state/NotificationMessageSlice";
 
 interface Props {
   setErrorMsg: (args: any) => void;
   setLoader: (args: any) => void;
   setToken: (args: any) => void;
+  setSuccessMsg: (args: any) => void;
 }
 
-export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
-  const [loginUser, { data, loading, error }] = useMutation(
-    AUTH,
-
-    {
-      onError: (error) => {
-        setErrorMsg(error.graphQLErrors[0].message);
-      },
-    }
-  );
+export default function LoginForm({
+  setErrorMsg,
+  setLoader,
+  setToken,
+  setSuccessMsg,
+}: Props) {
+  const [loginUser, { data, loading, error }] = useMutation(AUTH, {
+    onError: (error) => {
+      setErrorMsg(error.graphQLErrors[0].message);
+    },
+  });
 
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
@@ -72,12 +78,16 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      await loginUser({
+      const result = await loginUser({
         variables: {
           email,
           password,
         },
       });
+      if (result) {
+        dispatch(setSuccess(result.data.loginUser.message));
+        // setSuccessMsg(result.data.loginUser.message);
+      }
     } catch (error) {
       console.log(error);
       setErrorMsg("Login failed. Please try again.");

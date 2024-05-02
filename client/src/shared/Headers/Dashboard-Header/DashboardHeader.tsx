@@ -5,12 +5,14 @@ import { useDispatch } from "react-redux";
 import { logout } from "features/Auth/state/authSlice";
 import { useNavigate } from "react-router-dom";
 import DmdNavIcons from "shared/DmdIcons/components/DmdNavIcons";
-
+import { useSelector } from "react-redux";
+import { RootState } from "store/types";
 export default function DashboardHeader() {
   const navigate = useNavigate();
   const client = useApolloClient();
   const dispatch = useDispatch();
-
+  const { success, error } = useSelector((state) => state.NotificationMessage);
+  console.log("success", success);
   const handleLogout = async () => {
     await dispatch(logout());
     // Remove token from localStorage
@@ -55,6 +57,8 @@ export default function DashboardHeader() {
           Help
         </Link>
         <button onClick={handleLogout}>logout</button>
+
+        <h1 style={{ color: "white" }}>{success}</h1>
       </nav>
     </header>
   );

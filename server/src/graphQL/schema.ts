@@ -26,6 +26,11 @@ type Personality {
   id:ID!
   personality: String!
 }
+
+type LoginResponse {
+  value: String! # The token
+  message: String # A success message
+}
   
 type Query {
   currentUser: User
@@ -63,10 +68,12 @@ type Mutation {
       confirmPassword: String!
       ): User
       
+
+      
     loginUser(
       email: String!
       password: String!
-      ): Token
+      ): LoginResponse
   }
 `;
 

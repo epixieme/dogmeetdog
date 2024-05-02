@@ -7,10 +7,12 @@ import storage from "redux-persist/lib/storage"; // Defaults to localStorage for
 
 import authReducer from "features/Auth/state/authSlice";
 import postcodeReducer from "features/Nearby/state/postcodeSlice";
+import NotificationMessageReducer from "shared/state/NotificationMessageSlice";
 // Combine your reducers
 const rootReducer = combineReducers({
   auth: authReducer,
   postcode: postcodeReducer,
+  NotificationMessage: NotificationMessageReducer,
 });
 
 // Configure Redux Persist options
