@@ -21,11 +21,12 @@ export default function LoginPage() {
 
   const notify = (message: React.SetStateAction<null>) => {
     console.log(message, "msg");
-    setErrorMessage(message);
-    const timeout = setTimeout(() => {
+    setErrorMessage("test");
+    setTimeout(() => {
+      console.log("test");
       setErrorMessage(null);
     }, 4000);
-    return () => clearTimeout(timeout);
+    // return () => clearTimeout(timeout);
   };
 
   return (

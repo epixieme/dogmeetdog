@@ -28,12 +28,6 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
     (state: RootState) => state.auth.isAuthenticated
   );
 
-  // const [ login, result ] = useMutation(LOGIN, {
-  //   onError: (error) => {
-  //     setError(error.graphQLErrors[0].message)
-  //   }
-  // })
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -48,23 +42,22 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
     if (error) {
       const graphQLErrors = error.graphQLErrors;
 
-      // Check for specific error codes and handle them
+      // Check for error codes and set to state
       if (graphQLErrors && graphQLErrors.length > 0) {
         const firstError = graphQLErrors[0];
-        // console.log(errorCode);
         const errorCode = firstError.extensions?.code;
-        console.log(errorCode);
+
         const errorMessage = firstError.message;
         console.log(errorMessage);
 
         if (errorCode === "BAD_USER_INPUT") {
-          setErrorMsg(errorMessage); // Update state, but do not return JSX
+          setErrorMsg(errorMessage);
         } else {
           setErrorMsg("An unexpected error occurred.");
         }
       }
     }
-  }, [error, setErrorMsg]); // Ensure dependencies are correctly defined
+  }, [error]);
 
   useEffect(() => {
     if (data) {
