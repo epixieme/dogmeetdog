@@ -7,12 +7,27 @@ import { useNavigate } from "react-router-dom";
 import DmdNavIcons from "shared/DmdIcons/components/DmdNavIcons";
 import { useSelector } from "react-redux";
 import { RootState } from "store/types";
+import { setSuccess } from "shared/state/NotificationMessageSlice";
+import { useEffect } from "react";
 export default function DashboardHeader() {
   const navigate = useNavigate();
   const client = useApolloClient();
   const dispatch = useDispatch();
-  const { success, error } = useSelector((state) => state.NotificationMessage);
-  console.log("success", success);
+  const { success, error } = useSelector(
+    (state: RootState) => state.NotificationMessage
+  );
+
+  useEffect(() => {
+    if (success) {
+      const timeout = setTimeout(() => {
+        dispatch(setSuccess(null));
+      }, 4000);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, []);
+
   const handleLogout = async () => {
     await dispatch(logout());
     // Remove token from localStorage

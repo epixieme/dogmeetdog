@@ -11,6 +11,11 @@ export interface OriginalRootState {
   postcode: {
     postcode: string;
   };
+  NotificationMessage: {
+    success: string;
+    error: string;
+  };
+
   // Add other slices of state as needed
 }
 

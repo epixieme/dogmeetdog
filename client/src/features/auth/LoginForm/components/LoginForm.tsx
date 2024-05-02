@@ -15,15 +15,9 @@ interface Props {
   setErrorMsg: (args: any) => void;
   setLoader: (args: any) => void;
   setToken: (args: any) => void;
-  setSuccessMsg: (args: any) => void;
 }
 
-export default function LoginForm({
-  setErrorMsg,
-  setLoader,
-  setToken,
-  setSuccessMsg,
-}: Props) {
+export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
   const [loginUser, { data, loading, error }] = useMutation(AUTH, {
     onError: (error) => {
       setErrorMsg(error.graphQLErrors[0].message);
@@ -86,7 +80,6 @@ export default function LoginForm({
       });
       if (result) {
         dispatch(setSuccess(result.data.loginUser.message));
-        // setSuccessMsg(result.data.loginUser.message);
       }
     } catch (error) {
       console.log(error);
