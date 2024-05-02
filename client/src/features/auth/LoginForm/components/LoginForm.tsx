@@ -59,11 +59,9 @@ export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
 
         if (errorCode === "BAD_USER_INPUT") {
           setErrorMsg(errorMessage); // Update state, but do not return JSX
+        } else {
+          setErrorMsg("An unexpected error occurred.");
         }
-
-        // else {
-        //   setErrorMsg("An unexpected error occurred.");
-        // }
       }
     }
   }, [error, setErrorMsg]); // Ensure dependencies are correctly defined

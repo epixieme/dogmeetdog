@@ -89,54 +89,47 @@ const resolvers = {
     },
 
     loginUser: async (_root: any, args: any) => {
-      const user = await User.findOne({ email: args.email });
-      console.log("user", user);
+      const { email, password } = args;
 
-      const userForToken = {
-        email: user?.email,
-        id: user?._id,
-      };
-
-      if (!args.email) {
+      if (!email) {
         throw new GraphQLError("Email is required", {
           extensions: { code: "BAD_USER_INPUT" },
         });
       }
-      if (!args.password) {
+
+      // Check for missing password
+      if (!password) {
         throw new GraphQLError("Password is required", {
           extensions: { code: "BAD_USER_INPUT" },
         });
       }
 
+      const user = await User.findOne({ email });
+
+      // Check if user exists
       if (!user) {
         throw new GraphQLError("User not found", {
           extensions: { code: "BAD_USER_INPUT" },
         });
       }
 
-      if (!bcrypt.compareSync(args.password, user.password)) {
+      // Check if password matches
+      const passwordMatches = bcrypt.compareSync(password, user.password);
+      if (!passwordMatches) {
         throw new GraphQLError("Incorrect password", {
           extensions: { code: "BAD_USER_INPUT" },
         });
       }
 
-      if (user && bcrypt.compareSync(args.password, user?.password as string)) {
-        return {
-          value: jwt.sign(userForToken, SECRET_KEY, { expiresIn: "2h" }),
-        };
-      }
+      // If user exists and password matches, create JWT token
+      const userForToken = {
+        email: user?.email,
+        id: user?._id,
+      };
 
-      //       else if (
-      //         !user.email ||
-      //         user.password ||
-      //         args.password !== user.password
-      //       ) {
-      //         throw new GraphQLError("wrong credentials", {
-      //           extensions: {
-      //             code: "BAD_USER_INPUT",
-      //           },
-      //         });
-      //       }
+      return {
+        value: jwt.sign(userForToken, SECRET_KEY, { expiresIn: "2h" }),
+      };
     },
   },
 };
