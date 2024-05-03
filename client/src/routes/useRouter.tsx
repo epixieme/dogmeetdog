@@ -33,10 +33,16 @@ export default function useRouter() {
         element={isAuthenticated ? <Dashboard_Layout /> : <Home_Layout />}
       >
         <Route index element={isAuthenticated ? <Dashboard /> : <HomePage />} />
-        <Route path="meetdogs" element={<DisplayDogs />} />
-        <Route path="about" element={<About />} />
-        <Route path="questions" element={<QuestionPage />} />
-        <Route path="login" element={<LoginPage />} />
+
+        {/* not authenticated */}
+        <Route element={<AuthRequired isAuthenticated={!isAuthenticated} />}>
+          <Route path="meetdogs" element={<DisplayDogs />} />
+          <Route path="about" element={<About />} />
+          <Route path="questions" element={<QuestionPage />} />
+          <Route path="login" element={<LoginPage />} />
+        </Route>
+
+        {/* authenticated */}
         <Route element={<AuthRequired isAuthenticated={isAuthenticated} />}>
           <Route path="manage-account" element={<ManageAccountPage />} />
           <Route path="nearby" element={<Nearby />} />

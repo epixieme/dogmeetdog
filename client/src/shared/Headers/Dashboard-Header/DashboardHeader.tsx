@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "store/types";
 import { setSuccess } from "shared/state/NotificationMessageSlice";
 import { useEffect } from "react";
+import SuccessMessage from "shared/SuccessMessage/components/SuccessMessage";
 export default function DashboardHeader() {
   const navigate = useNavigate();
   const client = useApolloClient();
@@ -72,8 +73,7 @@ export default function DashboardHeader() {
           Help
         </Link>
         <button onClick={handleLogout}>logout</button>
-
-        <h1 style={{ color: "white" }}>{success}</h1>
+        <SuccessMessage success={success} />
       </nav>
     </header>
   );

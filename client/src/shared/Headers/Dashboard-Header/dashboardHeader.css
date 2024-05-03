@@ -1,6 +1,5 @@
 .dash-navigation-menu-container {
   display: flex;
-  /* flex-direction: column; */
 }
 .dash-navigation-links-container {
   display: flex;
@@ -14,8 +13,10 @@
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
-  /* border: red 1px solid; */
   gap: 20px;
   color: white;
   padding: 10px;
+}
+
+@media screen and (min-width: 800px) {
 }
