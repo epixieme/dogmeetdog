@@ -10,8 +10,10 @@ const SuccessMessage: React.FC<errorProps> = ({ success }) => {
     return null;
   }
   return (
-    <div className="error">
-      <Typography variant={"h3"}>{success}</Typography>
+    <div className="success-message-alignment">
+      <div className="success">
+        <Typography variant={"h3"}>{success}</Typography>
+      </div>
     </div>
   );
 };

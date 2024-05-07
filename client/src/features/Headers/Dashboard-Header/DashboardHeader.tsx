@@ -10,6 +10,7 @@ import { RootState } from "store/types";
 import { setSuccess } from "shared/state/NotificationMessageSlice";
 import { useEffect } from "react";
 import SuccessMessage from "shared/SuccessMessage/components/SuccessMessage";
+import BurgerMenu from "features/Nav/BurgerMenu/components/BurgerMenu";
 export default function DashboardHeader() {
   const navigate = useNavigate();
   const client = useApolloClient();
@@ -34,7 +35,16 @@ export default function DashboardHeader() {
     // Remove token from localStorage
     localStorage.removeItem("dogUser-user-token");
     // Reset the Apollo Client store after logout
-    client.resetStore();
+
+    // check for if it is a promise
+    // const result = client.resetStore();
+
+    // if (typeof result.then === "function") {
+    //   console.log("It returns a promise.");
+    // } else {
+    //   console.log("It does not return a promise.");
+    // }
+    await client.resetStore();
     // Navigate to the home page
     navigate("/");
   };

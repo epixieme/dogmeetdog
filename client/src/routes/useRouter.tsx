@@ -30,7 +30,7 @@ export default function useRouter() {
     createRoutesFromElements(
       <Route
         path="/"
-        element={isAuthenticated ? <Dashboard_Layout /> : <Home_Layout />}
+        element={<Home_Layout />} // need to remove this and just call it home layout
       >
         <Route index element={isAuthenticated ? <Dashboard /> : <HomePage />} />
 
@@ -48,6 +48,7 @@ export default function useRouter() {
           <Route path="nearby" element={<Nearby />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Route>
+
         <Route path="*" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Route>

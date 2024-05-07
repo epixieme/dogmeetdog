@@ -1,7 +1,13 @@
-.error h3 {
+.success h3 {
   color: white;
   border: 1px solid white;
-  background: #29c483;
+  background: #478d47;
   padding: 10px;
   border-radius: 10px;
+  width: 90%;
+}
+
+.success-message-alignment {
+  display: flex;
+  justify-content: center;
 }

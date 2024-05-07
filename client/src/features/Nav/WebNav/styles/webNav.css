@@ -1,3 +1,19 @@
+.nav-links-container a {
+  font-size: 1rem;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.nav-links-container {
+  display: flex;
+  gap: 10em;
+}
+
+.navLink-style {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .dash-navigation-menu-container {
   display: flex;
 }
@@ -16,7 +32,4 @@
   gap: 20px;
   color: white;
   padding: 10px;
-}
-
-@media screen and (min-width: 800px) {
 }
