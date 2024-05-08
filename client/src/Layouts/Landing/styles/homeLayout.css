@@ -1,6 +1,12 @@
 .layout-wrapper {
   min-height: 40vh;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   background: #2c2c2c;
+}
+
+.dash-layout-wrapper {
+  display: flex;
+  flex-direction: row;
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useWindowWidth } from "hooks";
 import { useSpring, animated } from "@react-spring/web";
 
-import "./header.css";
+import "../styles/header.css";
 import BurgerMenu from "features/Nav/BurgerMenu/components/BurgerMenu";
 import { useState } from "react";
 import MobileNav from "features/Nav/MobileNav/components/MobileNav";
@@ -27,11 +27,11 @@ export default function Header() {
     (state: RootState) => state.auth.isAuthenticated
   );
 
-  const fadeProps = useSpring({
-    opacity: 1, // Final opacity
-    from: { opacity: 0 }, // Initial opacity
-    config: { duration: 500 }, // Duration of the fade-in
-  });
+  // const fadeProps = useSpring({
+  //   opacity: 1, // Final opacity
+  //   from: { opacity: 0 }, // Initial opacity
+  //   config: { duration: 500 }, // Duration of the fade-in
+  // });
 
   return (
     <header

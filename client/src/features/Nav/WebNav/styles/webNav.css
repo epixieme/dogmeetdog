@@ -25,7 +25,7 @@
   background: #282828;
 }
 
-.nav-link {
+.nav-link-style-logged-in {
   display: flex;
   justify-content: flex-start;
   align-items: baseline;

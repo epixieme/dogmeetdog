@@ -14,7 +14,7 @@
       rgba(15, 115, 85, 0.8),
       rgba(15, 115, 85, 0.9)
     ),
-    url("./assets/images/nav-background-img.jpg") no-repeat center center;
+    url("../assets/images/nav-background-img.jpg") no-repeat center center;
   background-size: 100vh 100vw;
 }
 

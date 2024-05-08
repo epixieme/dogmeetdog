@@ -1,7 +1,7 @@
 import { describe, it, expect, test } from "vitest";
 import { render, screen, getByText, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Header from "./Header";
+import Header from "./components/Header";
 // import a page with a button and test that button
 
 describe("header", () => {
