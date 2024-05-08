@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "../styles/mobileNav.css";
-import DmdNavIcons from "shared/DmdIcons/components/DmdNavIcons";
+import DmdNavIcons from "../../../../shared/DmdIcons/components/DmdNavIcons";
 interface Props {
   activeStyles: {};
   inactiveStyles: {};

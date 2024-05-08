@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
 import AUTH from "graphql/mutations/AUTH";
-import { login } from "features/Auth/state/authSlice";
+import { login } from "../../state/authSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
