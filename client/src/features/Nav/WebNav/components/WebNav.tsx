@@ -67,6 +67,17 @@ const loggedIn = [
     key: "5",
   },
 ];
+type AllowedIconNames =
+  | "Home"
+  | "ManageAccounts"
+  | "Favorite"
+  | "Notifications"
+  | "Forum"
+  | "AccountBox"
+  | "Info"
+  | "Pets";
+
+type AllowedThemeTypes = "rounded" | "filled" | "outlined";
 
 export default function WebNav({ activeStyles, inactiveStyles }: Props) {
   const navigate = useNavigate();
@@ -103,7 +114,14 @@ export default function WebNav({ activeStyles, inactiveStyles }: Props) {
   };
 
   const navigationLinks = isAuthenticated ? loggedIn : loggedOut;
-  console.log(navigationLinks);
+
+  // const validatedNavLinks = navigationlinks.map((icon) => {
+  //   if (['Home', 'ManageAccounts', 'Favorite', 'Notifications', 'Forum', 'AccountBox', 'Info', 'Pets'].includes(icon.iconName)) {
+  //     return icon; // Valid icon, include it
+  //   } else {
+  //     return { ...icon, iconName: 'Home' }; // Invalid icon, set default
+  //   }
+  // });
 
   return (
     <nav
@@ -123,9 +141,9 @@ export default function WebNav({ activeStyles, inactiveStyles }: Props) {
           style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
         >
           <DmdNavIcons
-            key={item.key}
-            source={item.iconName}
-            themeType={item.iconType}
+            key={item?.key}
+            source={item?.iconName as AllowedIconNames}
+            themeType={item?.iconType as AllowedThemeTypes}
           />
           {item.title}
         </NavLink>
