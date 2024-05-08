@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
-import { LatLngExpression } from "leaflet";
+// import { LatLngExpression } from "leaflet";
 
 // Component to move the map to specific coordinates
 const MapScroll = ({ center, zoom }: any) => {
