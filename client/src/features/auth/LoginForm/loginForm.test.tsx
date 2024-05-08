@@ -71,7 +71,7 @@ describe("LoginForm component", () => {
     fireEvent.change(getByPlaceholderText("Password"), {
       target: { value: "secret" },
     });
-    fireEvent.click(getByText("Log in")); // Use fireEvent.click instead of fireEvent.submit
+    fireEvent.click(getByText("Log In")); // Use fireEvent.click instead of fireEvent.submit
 
     await waitFor(() => {
       expect(mocks[0].request.variables.email).toBe("darwin@darwin.com");
