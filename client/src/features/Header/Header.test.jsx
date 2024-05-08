@@ -44,6 +44,8 @@ describe("header", () => {
     );
     // const user = fireEvent;
     // await user.click(screen.getByText(/Our Dogs/i));
+    await screen.findByText(/Meet the Dogs/i); // Wait for text to appear
+    await screen.findByText(/About/i); // Wait for text to appear
     expect(screen.getByText(/Meet the Dogs/i)).toBeInTheDocument();
     expect(screen.getByText(/About/i)).toBeInTheDocument();
 
