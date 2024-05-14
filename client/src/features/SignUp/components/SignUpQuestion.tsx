@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/question.css";
 import { Button } from "@shared";
 import DynamicForm from "shared/DynamicForm/components/DynamicForm";
@@ -71,11 +71,11 @@ const SignUpQuestion: React.FC<Props> = ({
         )}
       </animated.div>
       <div className="question-buttons">
-        <Button btnText={"<"} onClick={previousScreen} />
+        <Button btnText={"<"} onClick={previousScreen} disabled={undefined} />
 
         {/* if some fields are no complete */}
         {answers.some((isNotComplete) => isNotComplete === "") ? (
-          <Button btnText={">"} onClick={handleClick} />
+          <Button btnText={">"} onClick={handleClick} disabled={undefined} />
         ) : (
           <button type="submit">Next</button>
         )}

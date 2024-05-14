@@ -42,16 +42,21 @@
 }
 
 input {
+  position: relative;
   max-width: 40%;
   height: 35px;
   border-radius: 5px;
+  z-index: 1000;
+  padding-left: 10px;
 }
 
 select {
+  position: relative;
   max-width: 40%;
   height: 35px;
   border-radius: 5px;
+  z-index: 1000;
 }
-
+/* 
 @media screen and (min-width: 800px) {
-}
+} */

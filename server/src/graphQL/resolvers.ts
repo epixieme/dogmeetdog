@@ -20,28 +20,6 @@ const resolvers = {
     },
   },
   Mutation: {
-    // addAsFriend: async (_root: any, args: any, { currentUser }: any) => {
-    //   // const isFriend = (user: any) =>
-    //   //   currentUser.friends
-    //   //     .map((f: { _id: { toString: () => any } }) => f._id.toString())
-    //   //     .includes(user._id.toString());
-
-    //   if (!currentUser) {
-    //     throw new GraphQLError("wrong credentials", {
-    //       extensions: { code: "BAD_USER_INPUT" },
-    //     });
-    //   }
-
-    // const user = await User.findOne({ name: args.name });
-    // if (!isFriend(user)) {
-    //   currentUser.friends = currentUser.friends.concat(user);
-    // }
-
-    // return currentUser.save();
-
-    //  currentUser;
-    // },
-
     addAge: async (_root: any, args: any) => {
       const age = new Age({ ...args });
       return age.save();
@@ -57,14 +35,14 @@ const resolvers = {
     },
 
     createUser: async (_root: any, args: any) => {
-      // const [name, breed, age, personality, email ] = args;
+      const { name, breed, age, personality, email, password } = args;
       const user = new User({
-        name: args.name,
-        breed: args.breed,
-        age: args.age,
-        personality: args.personality,
-        email: args.email,
-        password: bcrypt.hashSync(args.password, bcrypt.genSaltSync(10)),
+        name: name,
+        breed: breed,
+        age: age,
+        personality: personality,
+        email: email,
+        password: bcrypt.hashSync(password, bcrypt.genSaltSync(10)),
       });
       return user.save().catch((error: any) => {
         if (error.code === 11000 && error.keyPattern.email) {

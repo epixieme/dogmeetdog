@@ -34,7 +34,17 @@ describe("LoginForm component", () => {
       <Provider store={store}>
         <MockedProvider mocks={mocks}>
           <MemoryRouter>
-            <LoginForm />
+            <LoginForm
+              setErrorMsg={function (args: any): void {
+                throw new Error("Function not implemented.");
+              }}
+              setLoader={function (args: any): void {
+                throw new Error("Function not implemented.");
+              }}
+              setToken={function (args: any): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
           </MemoryRouter>
         </MockedProvider>
       </Provider>

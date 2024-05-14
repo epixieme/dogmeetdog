@@ -55,6 +55,7 @@ export default function DynamicForm({
           onChange={onChange}
           value={value}
           placeholder={fieldType}
+          aria-label={questionText}
         ></input>
       ) : (
         <select

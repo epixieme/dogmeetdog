@@ -1,4 +1,3 @@
-import { useState } from "react";
 import DogInformationCard from "features/DogInformationCard/components/DogInformationCard";
 import "../styles/dogCardList.css";
 

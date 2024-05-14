@@ -8,7 +8,7 @@ import "../styles/loginform.css";
 import { RootState } from "store/types";
 import {
   setSuccess,
-  setError,
+  // setError,
 } from "../../../../shared/state/NotificationMessageSlice";
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   setToken: (args: any) => void;
 }
 
-export default function LoginForm({ setErrorMsg, setLoader, setToken }: Props) {
+export default function LoginForm({ setErrorMsg, setToken }: Props) {
   const [loginUser, { data, loading, error }] = useMutation(AUTH, {
     onError: (error) => {
       setErrorMsg(error.graphQLErrors[0].message);
