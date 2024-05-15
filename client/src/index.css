@@ -13,6 +13,10 @@
 }
 
 html {
+  box-sizing: border-box;
+}
+
+html {
   font-size: 100%;
 }
 
@@ -21,7 +25,6 @@ body {
   padding: 0;
   box-sizing: border-box;
   min-height: 100vh;
-  /* background:white */
 }
 
 a {
@@ -185,7 +188,7 @@ body {
 }
 
 @media screen and (min-width: 800px) {
-  .dog-condition {
+  /* .dog-condition {
     display: flex;
     align-items: center;
   }
@@ -204,5 +207,5 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding-bottom: 20px;
-  }
+  } */
 }
