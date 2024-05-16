@@ -17,20 +17,12 @@ interface TypographyProps {
   style?: React.CSSProperties; // Optional style prop
 }
 
-export default function Typography({
-  variant,
-  children,
-  style,
-}: TypographyProps) {
+export default function Typography({ variant, children, style }: TypographyProps) {
   const TypographyComponent = typographyMap[variant];
 
   if (!TypographyComponent) {
     throw new Error(`Variant '${variant}' not found in typographyMap`);
   }
 
-  return React.createElement(
-    TypographyComponent,
-    { style, className: `${typographyMap[variant]}-variant` },
-    children
-  );
+  return React.createElement(TypographyComponent, { style, className: `${typographyMap[variant]}__variant` }, children);
 }
