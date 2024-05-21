@@ -23,6 +23,11 @@ export default function Typography({ variant, children, style }: TypographyProps
   if (!TypographyComponent) {
     throw new Error(`Variant '${variant}' not found in typographyMap`);
   }
+  return (
+    <TypographyComponent style={style} className={`${typographyMap[variant]}__variant`}>
+      {children}
+    </TypographyComponent>
+  );
 
-  return React.createElement(TypographyComponent, { style, className: `${typographyMap[variant]}__variant` }, children);
+  // return React.createElement(TypographyComponent, { style, className: `${typographyMap[variant]}__variant` }, children);
 }
