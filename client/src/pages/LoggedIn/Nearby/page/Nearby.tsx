@@ -7,11 +7,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/types";
 import { setPostcode } from "features/Nearby/state/postcodeSlice";
 import MapScroll from "features/Nearby/state/components/MapScroll";
+import CustomMarker from "features/Nearby/state/components/CustomMarker";
+
+const markers = [
+  { position: [51.6057, -0.1], name: "Marker 1" },
+  { position: [51.6056, -0.2], name: "Marker 2" },
+  // Add more markers as needed
+];
+
+// [51.60572, -0.0087899]
 
 export default function Nearby() {
   const dispatch = useDispatch();
   const postcode = useSelector((state: RootState) => state.postcode);
   const [coords, setCoords] = useState<LatLngExpression | null>(null);
+
+  console.log(coords);
 
   console.log(postcode.postcode);
   // Function to convert a postcode to coordinates using OpenStreetMap's Nominatim API
@@ -70,12 +81,13 @@ export default function Nearby() {
       <section className="map-container">
         <MapContainer center={coords} zoom={13} scrollWheelZoom={false} style={{ height: 400, width: 400 }}>
           <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <MapScroll center={coords} />
-          <Marker position={coords}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
+          {/* <MapScroll center={coords} /> */}
+          {markers.map((marker, index) => (
+            <Marker key={index} position={marker.position as LatLngExpression}>
+              <Popup>{marker.name}</Popup>
+            </Marker>
+          ))}
+          <CustomMarker coords={coords} />
         </MapContainer>
       </section>
     </>
