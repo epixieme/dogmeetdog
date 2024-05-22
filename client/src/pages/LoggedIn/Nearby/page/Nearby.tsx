@@ -12,11 +12,11 @@ export default function Nearby() {
   const dispatch = useDispatch();
   const postcode = useSelector((state: RootState) => state.postcode);
   const [coords, setCoords] = useState<LatLngExpression | null>(null);
+
+  console.log(postcode.postcode);
   // Function to convert a postcode to coordinates using OpenStreetMap's Nominatim API
   async function getCoordinatesFromPostcode(postcode: string) {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-      postcode
-    )}&addressdetails=1`;
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(postcode)}&addressdetails=1`;
 
     try {
       const response = await fetch(url);
@@ -31,34 +31,28 @@ export default function Nearby() {
           console.error("No coordinates found for the given postcode.");
         }
       } else {
-        console.error(
-          "Error fetching data from Nominatim API:",
-          response.statusText
-        );
+        console.error("Error fetching data from Nominatim API:", response.statusText);
       }
     } catch (error) {
       console.error("An error occurred while fetching coordinates:", error);
     }
   }
-
-  function handlePostCode(value: string) {
-    dispatch(setPostcode(value));
-    getCoordinatesFromPostcode(value).then((result) => {
+  async function updateCoordinates(postcodeValue: string | null) {
+    if (postcodeValue) {
+      const result = await getCoordinatesFromPostcode(postcodeValue);
       if (result) {
         setCoords(result);
       }
-    });
+    }
   }
 
+  async function handlePostCode(value: string) {
+    dispatch(setPostcode(value));
+  }
+
+  // Fetch coordinates when postcode changes
   useEffect(() => {
-    if (postcode.postcode) {
-      // create global state and use it on the sign up screen for postcode then use that state in the below function
-      getCoordinatesFromPostcode(postcode.postcode).then((result) => {
-        if (result) {
-          setCoords(result);
-        }
-      });
-    }
+    updateCoordinates(postcode.postcode);
   }, [postcode.postcode]);
 
   if (!coords) {
@@ -71,25 +65,12 @@ export default function Nearby() {
     <>
       <form action="">
         <label>Enter your postcode</label>
-        <input
-          type="text"
-          value={postcode.postcode}
-          onChange={(event) => handlePostCode(event.target.value)}
-        />
-        {/* <button onClick={() => }></button> */}
+        <input type="text" value={postcode.postcode} onChange={(event) => handlePostCode(event.target.value)} />
       </form>
       <section className="map-container">
-        <MapContainer
-          center={coords}
-          zoom={13}
-          scrollWheelZoom={false}
-          style={{ height: 400, width: 400 }}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <MapScroll center={coords} zoom={zoom} />
+        <MapContainer center={coords} zoom={13} scrollWheelZoom={false} style={{ height: 400, width: 400 }}>
+          <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <MapScroll center={coords} />
           <Marker position={coords}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
