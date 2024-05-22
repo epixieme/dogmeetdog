@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage, // storage engine to use
-  whitelist: ["auth"], // list of reducers to persist
+  whitelist: ["auth", "postcode"], // list of reducers to persist
 };
 
 // Create a persisted reducer
