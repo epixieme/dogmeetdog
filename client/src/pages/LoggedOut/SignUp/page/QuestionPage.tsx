@@ -102,7 +102,9 @@ export default function QuestionPage({ initialAnswer = [] }: any) {
   // change below to a hook
 
   const handleAnswerChange = (index: number, value: string) => {
+    // copy array
     const newAnswers = [...answers];
+    //replace value at current screen index with value from form element eg input
     newAnswers[index] = value;
     setAnswers(newAnswers);
     localStorage.setItem("answers", JSON.stringify(newAnswers));
