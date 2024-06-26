@@ -49,6 +49,9 @@
   "bcrypt": "^5.1.1",
  
    
+  "cloudinary": "^2.2.0",
+ 
+   
   "cookie-parser": "^1.4.6",
  
    
@@ -107,7 +110,7 @@
   "easygraphql-tester": "^6.0.1",
  
    
-  "eslint-plugin-graphql": "^4.0.0",
+  "eslint-plugin-graphql": "^3.1.1",
  
    
   "graphql-schema-linter": "^3.0.1",

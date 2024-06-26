@@ -29,11 +29,18 @@ const loggedOut = [
     key: "2",
   },
   {
+    route: "/questions",
+    iconName: "AccountBox",
+    iconType: "filled",
+    title: "sign-up",
+    key: "3",
+  },
+  {
     route: "/login",
     iconName: "AccountBox",
     iconType: "filled",
     title: "Login",
-    key: "3",
+    key: "4",
   },
 ];
 
@@ -67,15 +74,7 @@ const loggedIn = [
     key: "5",
   },
 ];
-type AllowedIconNames =
-  | "Home"
-  | "ManageAccounts"
-  | "Favorite"
-  | "Notifications"
-  | "Forum"
-  | "AccountBox"
-  | "Info"
-  | "Pets";
+type AllowedIconNames = "Home" | "ManageAccounts" | "Favorite" | "Notifications" | "Forum" | "AccountBox" | "Info" | "Pets";
 
 type AllowedThemeTypes = "rounded" | "filled" | "outlined";
 
@@ -84,13 +83,9 @@ export default function WebNav({ activeStyles, inactiveStyles }: Props) {
   const client = useApolloClient();
   const dispatch = useDispatch();
 
-  const { success, error } = useSelector(
-    (state: RootState) => state.NotificationMessage
-  );
+  const { success, error } = useSelector((state: RootState) => state.NotificationMessage);
 
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated
-  );
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
   useEffect(() => {
     if (success) {
@@ -124,28 +119,11 @@ export default function WebNav({ activeStyles, inactiveStyles }: Props) {
   // });
 
   return (
-    <nav
-      className={
-        isAuthenticated
-          ? "dash-navigation-links-container"
-          : "nav-links-container"
-      }
-    >
-      {navigationLinks.map((item, index) => (
-        <NavLink
-          key={item.key}
-          className={
-            isAuthenticated ? "nav-link-style-logged-in" : "navLink-style"
-          }
-          to={item.route}
-          style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}
-        >
-          <DmdNavIcons
-            key={item?.key}
-            source={item?.iconName as AllowedIconNames}
-            themeType={item?.iconType as AllowedThemeTypes}
-          />
-          {item.title}
+    <nav className={isAuthenticated ? "dash-navigation-links-container" : "nav-links-container"}>
+      {navigationLinks.map((link, index) => (
+        <NavLink key={link.key} className={isAuthenticated ? "nav-link-style-logged-in" : "navLink-style"} to={link.route} style={({ isActive }) => (isActive ? activeStyles : inactiveStyles)}>
+          <DmdNavIcons key={link?.key} source={link?.iconName as AllowedIconNames} themeType={link?.iconType as AllowedThemeTypes} />
+          {link.title}
         </NavLink>
       ))}
 

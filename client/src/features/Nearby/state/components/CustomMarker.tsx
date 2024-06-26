@@ -1,5 +1,7 @@
 import L from "leaflet";
 import { Marker, Popup } from "react-leaflet";
+
+
 const customIcon = new L.Icon({
   iconUrl: "./src/assets/images/location.png", // URL to the icon image
   iconSize: [50, 50], // Size of the icon

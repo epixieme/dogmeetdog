@@ -3,10 +3,16 @@ import { describe, it, expect } from "vitest";
 import DogCardList from "./components/DogCardList";
 import { MemoryRouter } from "react-router";
 
+interface Dog {
+  id: number;
+  name: string;
+  breed: string;
+}
+
 describe("DogCardList component", () => {
   it("renders dog cards correctly", () => {
     // Mock dog data
-    const dogs = [
+    const dogs: Dog[] = [
       { id: 1, name: "Buddy", breed: "Labrador Retriever" },
       { id: 2, name: "Max", breed: "German Shepherd" },
       // Add more mock data as needed
