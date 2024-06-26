@@ -19,20 +19,7 @@ interface Props {
   dropDownType: string;
 }
 
-const SignUpQuestion: React.FC<Props> = ({
-  onSubmit,
-  answers,
-  previousScreen,
-  nextScreen,
-  fieldType,
-  ageData,
-  breedData,
-  personalityData,
-  questionText,
-  dropDownType,
-  value,
-  onChange,
-}: Props) => {
+const SignUpQuestion = ({ onSubmit, answers, previousScreen, nextScreen, fieldType, ageData, breedData, personalityData, questionText, dropDownType, value, onChange }: Props) => {
   // State variable to track whether the button has been clicked
   const [buttonClicked, setButtonClicked] = useState(false);
   // Define the spring animation
@@ -74,11 +61,7 @@ const SignUpQuestion: React.FC<Props> = ({
         <Button btnText={"<"} onClick={previousScreen} disabled={undefined} />
 
         {/* if some fields are no complete */}
-        {answers.some((isNotComplete) => isNotComplete === "") ? (
-          <Button btnText={">"} onClick={handleClick} disabled={undefined} />
-        ) : (
-          <button type="submit">Next</button>
-        )}
+        {answers.some((isNotComplete) => isNotComplete === "") ? <Button btnText={">"} onClick={handleClick} disabled={undefined} /> : <button type="submit">Next</button>}
       </div>
     </form>
   );

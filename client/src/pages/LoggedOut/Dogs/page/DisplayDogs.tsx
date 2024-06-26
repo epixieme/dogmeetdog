@@ -7,6 +7,7 @@ import "../styles/displaydogs.css";
 
 export default function DisplayDogs() {
   const { data, loading, error } = useQuery(ALL_USERS);
+  console.log(data, "all users");
 
   if (loading) {
     console.log("loading");

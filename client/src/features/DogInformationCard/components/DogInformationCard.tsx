@@ -18,7 +18,7 @@ const DogInformationCard = ({ dog, onClose }: DogProps) => {
 
   useEffect(() => {
     fetchDogs().then((dogs) => {
-      console.log("dogs", dogs);
+      // console.log("dogs", dogs);
       setDogs(dogs.message); // fetched movies
     });
   }, []);

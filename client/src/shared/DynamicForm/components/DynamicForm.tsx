@@ -33,9 +33,12 @@ export default function DynamicForm({ questionText, onChange, value, fieldType, 
       <img className="dog-ai-assistant-image" src={dogPhoto} alt={altImageText} />
       <label className="question-labels">{questionText}:</label>
 
-      {fieldType === "text" || fieldType === "email" || fieldType === "password" ? (
-        <input type={fieldType} onChange={onChange} value={value} placeholder={fieldType} aria-label={questionText}></input>
-      ) : (
+      {fieldType === "file" && <input type="file" onChange={onChange} accept="image/png, image/jpeg, image/svg" />}
+      {fieldType === "email" || fieldType === "password" || fieldType === "text" ? (
+        <input type={fieldType} onChange={onChange} value={value} placeholder={fieldType} aria-label={questionText} />
+      ) : null}
+
+      {fieldType === "select" && (
         <select required defaultValue={"Select"} onChange={onChange} className="drop-down-menu">
           {dropDownContent && dropDownContent?.map((item: string | number) => <option>{item}</option>)}
         </select>

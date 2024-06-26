@@ -15,31 +15,16 @@ import SignUpQuestion from "features/SignUp/components/SignUpQuestion";
 import { ALL_DOGS } from "@queries";
 
 // add these arrays to mongodb
-const fieldType = [
-  "text",
-  "select",
-  "select",
-  "select",
-  "email",
-  "password",
-  "password",
-];
+const fieldType = ["file", "text", "select", "select", "select", "email", "password", "password"];
 
-const dropDownType = [
-  "",
-  "breedData",
-  "ageData",
-  "personalityData",
-  "",
-  "",
-  "",
-];
+const dropDownType = ["", "", "breedData", "ageData", "personalityData", "", "", ""];
 
 // need to change this so email and password are not stored to local storage
 //the below needs to be added to the database
 const questionText = [
-  "Hello There, I'm Woofus. Lets start with your dogs name?",
-  "What's your dogs breed?",
+  "Hello There, I'm Woofus. Lets get started Can you upload a photo?",
+  "Great thanks, Next can you tell us your dogs name?",
+  "Thanks, nearly there, whats {names} breed?",
   "What's your dogs age?",
   "What's your dogs personality?",
 
@@ -51,25 +36,12 @@ const questionText = [
 
 export default function QuestionPage({ initialAnswer = [] }: any) {
   const navigate = useNavigate();
-  const { currentScreen, nextScreen, previousScreen } =
-    useQuestionHook(questionText);
+  const { currentScreen, nextScreen, previousScreen } = useQuestionHook(questionText);
 
-  const {
-    data: ageData,
-    loading: ageLoader,
-    error: ageError,
-  } = useQuery(ALL_AGES);
-  const {
-    data: breedData,
-    loading: breedLoader,
-    error: breedError,
-  } = useQuery(ALL_BREEDS);
+  const { data: ageData, loading: ageLoader, error: ageError } = useQuery(ALL_AGES);
+  const { data: breedData, loading: breedLoader, error: breedError } = useQuery(ALL_BREEDS);
 
-  const {
-    data: personalityData,
-    loading: personalityLoader,
-    error: personalityError,
-  } = useQuery(ALL_PERSONALITY_TYPES);
+  const { data: personalityData, loading: personalityLoader, error: personalityError } = useQuery(ALL_PERSONALITY_TYPES);
 
   const [error, setError] = useState("");
   console.log(error);
@@ -87,9 +59,7 @@ export default function QuestionPage({ initialAnswer = [] }: any) {
   // post answers and create a graph query
   // animate inputs and text
 
-  const [answers, setAnswers] = useState<string[]>(
-    Array(questionText.length).fill("") || initialAnswer
-  );
+  const [answers, setAnswers] = useState<string[]>(Array(questionText.length).fill("") || initialAnswer);
 
   useEffect(() => {
     const storedAnswers = JSON.parse(localStorage.getItem("answers") as string);
@@ -111,8 +81,7 @@ export default function QuestionPage({ initialAnswer = [] }: any) {
   };
 
   const handleSubmit = (e: any) => {
-    const [name, breed, age, personality, email, password, confirmPassword] =
-      answers;
+    const [name, breed, age, personality, email, password, confirmPassword] = answers;
     e.preventDefault();
     createUser({
       variables: {
@@ -136,16 +105,13 @@ export default function QuestionPage({ initialAnswer = [] }: any) {
   if (ageError) return <ErrorMessage error={ageError?.message} />;
 
   if (breedError) return <ErrorMessage error={breedError?.message} />;
-  if (personalityError)
-    return <ErrorMessage error={personalityError?.message} />;
+  if (personalityError) return <ErrorMessage error={personalityError?.message} />;
 
   return (
     <div className="questionText">
       <SignUpQuestion
         questionText={questionText[currentScreen]}
-        onChange={(event) =>
-          handleAnswerChange(currentScreen, event.target.value)
-        }
+        onChange={(event) => handleAnswerChange(currentScreen, event.target.value)}
         value={answers[currentScreen] || ""}
         fieldType={fieldType[currentScreen]}
         dropDownType={dropDownType[currentScreen]} //needs to be
@@ -154,12 +120,8 @@ export default function QuestionPage({ initialAnswer = [] }: any) {
         previousScreen={previousScreen}
         nextScreen={nextScreen}
         ageData={ageData?.allAges.map((item: { age: number }) => item.age)}
-        breedData={breedData?.allBreeds.map(
-          (item: { breed: string }) => item.breed
-        )}
-        personalityData={personalityData?.allPersonalityTypes.map(
-          (item: { personality: string }) => item.personality
-        )}
+        breedData={breedData?.allBreeds.map((item: { breed: string }) => item.breed)}
+        personalityData={personalityData?.allPersonalityTypes.map((item: { personality: string }) => item.personality)}
       />
     </div>
   );
