@@ -18,6 +18,7 @@ Server:
 - npm start
 
 <section>
+  
   <h1>Dog Meet Dog</h1>
   <section style="display: flex; flex-direction: row; align-items:center;">
     <img width="400" alt="home" src="https://github.com/epixieme/dogmeetdog/assets/39728053/2b186195-d971-48e6-a2b3-cb609433cbb5">
