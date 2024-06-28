@@ -1,4 +1,11 @@
 const typeDefs = `
+type File {
+  url: String!
+}
+  
+
+  
+
 type User {
   id: ID!
   name: String!
@@ -33,6 +40,7 @@ type LoginResponse {
 }
   
 type Query {
+  _empty: String
   currentUser: User
   allUsers: [User!]!
   allAges: [Age!]!
@@ -41,7 +49,8 @@ type Query {
 }
 
 type Mutation {
-  
+uploadFile(file: Upload!): File!
+
   addAsFriend(
     name: String!
     ): User

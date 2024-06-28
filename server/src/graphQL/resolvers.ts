@@ -1,4 +1,8 @@
 const { GraphQLError } = require("graphql");
+const { GraphQLUpload } = require("graphql-upload");
+const cloudinary = require("cloudinary").v2;
+const { finished } = require("stream/promises");
+const { cloudinaryConfig } = require("../../config/cloudinaryConfig");
 
 const Age = require("../../model/Age");
 const Breed = require("../../model/Breed");
@@ -19,7 +23,30 @@ const resolvers = {
       return context.currentUser;
     },
   },
+  Upload: GraphQLUpload,
   Mutation: {
+    uploadFile: async (parent, { file }) => {
+      const { createReadStream } = await file;
+      const stream = createReadStream();
+
+      let cloudinaryUploadStream;
+
+      const uploadPromise = new Promise((resolve, reject) => {
+        cloudinaryUploadStream = cloudinary.uploader.upload_stream({ folder: "uploads" }, (error, result) => {
+          if (result) {
+            resolve(result);
+          } else {
+            reject(error);
+          }
+        });
+      });
+      stream.pipe(cloudinaryUploadStream);
+      const result = await uploadPromise;
+
+      return {
+        url: result.secure_url,
+      };
+    },
     addAge: async (_root: any, args: any) => {
       const age = new Age({ ...args });
       return age.save();
