@@ -2,9 +2,6 @@ const typeDefs = `
 type File {
   url: String!
 }
-  
-
-  
 
 type User {
   id: ID!
