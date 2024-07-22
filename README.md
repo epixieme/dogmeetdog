@@ -8,6 +8,7 @@ This is a React project.
 To run it please install node.js and then install all dependencies by running the following from a terminal:
 
 
+
 Client:
 - cd client
 - npm install
