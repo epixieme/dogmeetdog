@@ -40,3 +40,4 @@ describe("The button works as expected", () => {
     await fireEvent.click(button);
     expect(button).toBeDisabled();
   });
+});
