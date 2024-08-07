@@ -34,6 +34,6 @@
   "noUnusedParameters": true,
   "noFallthroughCasesInSwitch": true
 },
-"include": ["./**/*.ts", "./**/*.tsx", "server/src/index.ts", "app.test.old", "src/features/Nav/BurgerMenu"],
+"include": ["./**/*.ts", "./**/*.tsx", "server/src/index.ts", "app.test.old", "src/features/Nav/BurgerMenu", "src/features/DogCardList/dogCardList.test.jsx"],
 "references": [{ "path": "./tsconfig.node.json" }]
 }

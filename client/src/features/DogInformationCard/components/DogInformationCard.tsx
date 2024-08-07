@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 interface DogProps {
   onClose?: () => void;
   dog: any;
+  testid: string;
 }
 
-const DogInformationCard = ({ dog, onClose }: DogProps) => {
+const DogInformationCard = ({ dog, onClose, testid }: DogProps) => {
   const [dogs, setDogs] = useState("");
 
   // place holder fetch  until something is set up with cloudinary - for testing only
@@ -24,7 +25,7 @@ const DogInformationCard = ({ dog, onClose }: DogProps) => {
   }, []);
 
   return (
-    <div key={dog.id} className="dog-card" data-testid="dog-information-card">
+    <div key={dog.id} className="dog-card" data-testid={testid}>
       {/* <Link to={`/dogs/${dog.id}`}> */}
       <div className="dog-card-contents">
         <img src={dogs} />

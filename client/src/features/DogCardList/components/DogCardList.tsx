@@ -13,9 +13,9 @@ interface DogCardListProps {
   dogs: Dog[];
 }
 
-export default function DogCardList({ dogs }: {dogs: { id: number; name: string; breed: string; }[]}) {
+export default function DogCardList({ dogs }: { dogs: { id: number; name: string; breed: string }[] }) {
   console.log("dogs", dogs);
-  const dogElements = dogs.map((dog) => <DogInformationCard dog={dog} />);
+  const dogElements = dogs.map((dog) => <DogInformationCard dog={dog} testid="dog-information-card" />);
 
   return (
     <>
