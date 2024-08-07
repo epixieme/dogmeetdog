@@ -8,17 +8,10 @@ interface buttonProps {
   disabled: any;
 }
 
-export default function Button({
-  btnText,
-  route,
-  onClick,
-  type,
-  disabled,
-}: buttonProps) {
+export default function Button({ btnText, route, onClick, type, disabled }: buttonProps) {
   return (
     <Link to={route} onClick={onClick} className="btnLink">
-      <button type={type} disabled={disabled}>
-        {" "}
+      <button type={type} disabled={disabled} name="button">
         {btnText}
       </button>
     </Link>

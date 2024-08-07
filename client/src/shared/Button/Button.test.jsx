@@ -1,11 +1,11 @@
 import { describe, it, expect, test } from "vitest";
-import { render, screen, getByText, fireEvent } from "@testing-library/react";
+import { render, screen, getByText, fireEvent, getAllByRole } from "@testing-library/react";
 import Button from "./components/Button";
 import { MemoryRouter } from "react-router-dom";
 
 // import a page with a button and test that button
 
-describe("button", () => {
+describe("The button works as expected", () => {
   it("renders text", () => {
     render(
       <MemoryRouter>
@@ -13,16 +13,30 @@ describe("button", () => {
       </MemoryRouter>
     );
     expect(screen.getByText(/test/i)).toBeDefined();
+
     // check if App components renders headline
   });
-  // it('renders text', async() => {
 
-  //     render(
-  //       <MemoryRouter><Button route='/dogs'  btnText = 'test' /> </MemoryRouter>
-  //     );
-  //     const user = fireEvent
-  //     await user.click(screen.getByText(/test/i))
-  //     expect(screen.getByText(/Explore our /i)).toBeInTheDocument()
-  //     // check if App components renders headline
-  //   });
-});
+  it("can be clicked", async () => {
+    const handleClick = vi.fn();
+    render(
+      <MemoryRouter>
+        <Button btnText="Click me" onClick={handleClick} disabled={false} />
+      </MemoryRouter>
+    );
+    const button = screen.getByRole("button", { name: /click me/i });
+    await fireEvent.click(button);
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("is disabled", async () => {
+    const handleClick = vi.fn();
+    render(
+      <MemoryRouter>
+        <Button btnText="Click me" onClick={handleClick} disabled={true} />
+      </MemoryRouter>
+    );
+    const button = screen.getByRole("button", { name: /click me/i });
+    await fireEvent.click(button);
+    expect(button).toBeDisabled();
+  });
